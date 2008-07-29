@@ -4,4 +4,5 @@ zeit.calendar changes
 1.1 (unreleased)
 ----------------
 
+- Neues Feld "Erledigt".
 - First release after split from zeit.cms.

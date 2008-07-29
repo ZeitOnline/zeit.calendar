@@ -11,7 +11,7 @@ import gocept.form.grouped
 import zeit.cms.browser.form
 import zeit.cms.browser.interfaces
 import zeit.cms.repository.interfaces
-from zeit.cms.i18n import MessageFactory as _
+from zeit.calendar.i18n import MessageFactory as _
 
 import zeit.calendar.event
 import zeit.calendar.interfaces

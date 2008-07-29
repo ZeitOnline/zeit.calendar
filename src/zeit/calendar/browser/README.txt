@@ -123,46 +123,46 @@ There are 5 navigation links in the calendar. We have added an event for
 year back" link, we're at 2005/05:
 
 >>> browser.open(bookmark)
->>> print browser.etree.xpath('//div[@id="content"]//h1')[0].text
-Termine...5/2006...
+>>> browser.etree.xpath('//div[@id="content"]//h1')[0].text
+'Events for 5/2006'
 >>> browser.getLink("«").click()
->>> print browser.etree.xpath('//div[@id="content"]//h1')[0].text
-Termine...5/2005...
+>>> browser.etree.xpath('//div[@id="content"]//h1')[0].text
+'Events for 5/2005'
 
 The "month back" link takes us to 4/2005 then:
     
 >>> browser.getLink("‹").click()
->>> print browser.etree.xpath('//div[@id="content"]//h1')[0].text
-Termine...4/2005...
+>>> browser.etree.xpath('//div[@id="content"]//h1')[0].text
+'Events for 4/2005'
 
 When we go one month back from 1/2005 we reach 12/2004:
 
 >>> browser.getLink("‹").click()
->>> print browser.etree.xpath('//div[@id="content"]//h1')[0].text
-Termine...3/2005...
+>>> browser.etree.xpath('//div[@id="content"]//h1')[0].text
+'Events for 3/2005'
 >>> browser.getLink("‹").click()
->>> print browser.etree.xpath('//div[@id="content"]//h1')[0].text
-Termine...2/2005...
+>>> browser.etree.xpath('//div[@id="content"]//h1')[0].text
+'Events for 2/2005'
 >>> browser.getLink("‹").click()
->>> print browser.etree.xpath('//div[@id="content"]//h1')[0].text
-Termine...1/2005...
+>>> browser.etree.xpath('//div[@id="content"]//h1')[0].text
+'Events for 1/2005'
 >>> browser.getLink("‹").click()
->>> print browser.etree.xpath('//div[@id="content"]//h1')[0].text
-Termine...12/2004...
+>>> browser.etree.xpath('//div[@id="content"]//h1')[0].text
+'Events for 12/2004'
 
 
 The "month forward" again will result in 1/2005:
 
 >>> browser.getLink("›").click()
->>> print browser.etree.xpath('//div[@id="content"]//h1')[0].text
-Termine...1/2005...
+>>> browser.etree.xpath('//div[@id="content"]//h1')[0].text
+'Events for 1/2005'
 
 
 The "year forward" leaps us to 1/2006:
     
 >>> browser.getLink("»").click()
->>> print browser.etree.xpath('//div[@id="content"]//h1')[0].text
-Termine...1/2006...
+>>> browser.etree.xpath('//div[@id="content"]//h1')[0].text
+'Events for 1/2006'
 
 
 
@@ -191,32 +191,32 @@ looking at 1/2006, so we see the week starting at 31.12.2005:
     </thead>
     ...
 
->>> print browser.etree.xpath('//div[@id="content"]//h1')[0].text
-Termine für 31.12.2005 – 07.01.2006
+>>> browser.etree.xpath('//div[@id="content"]//h1')[0].text
+'Events for 31.12.2005 - 07.01.2006'
 
 Navigation works like with the month calendar. Move one day forward:
     
 >>> browser.getLink("›").click()
->>> print browser.etree.xpath('//div[@id="content"]//h1')[0].text
-Termine für 01.01.2006 – 08.01.2006
+>>> browser.etree.xpath('//div[@id="content"]//h1')[0].text
+'Events for 01.01.2006 - 08.01.2006'
 
 Move 7 days forward:
     
 >>> browser.getLink("»").click()
->>> print browser.etree.xpath('//div[@id="content"]//h1')[0].text
-Termine für 08.01.2006 – 15.01.2006
+>>> browser.etree.xpath('//div[@id="content"]//h1')[0].text
+'Events for 08.01.2006 - 15.01.2006'
 
 Move 1 day backward:
     
 >>> browser.getLink("‹").click()
->>> print browser.etree.xpath('//div[@id="content"]//h1')[0].text
-Termine für 07.01.2006 – 14.01.2006
+>>> browser.etree.xpath('//div[@id="content"]//h1')[0].text
+'Events for 07.01.2006 - 14.01.2006'
 
 Move 7 days backward:
 
 >>> browser.getLink("«").click()
->>> print browser.etree.xpath('//div[@id="content"]//h1')[0].text
-Termine für 31.12.2005 – 07.01.2006
+>>> browser.etree.xpath('//div[@id="content"]//h1')[0].text
+'Events for 31.12.2005 - 07.01.2006'
 
 Finally, the "today" link points us to the current week:
 
@@ -224,6 +224,12 @@ Finally, the "today" link points us to the current week:
 >>> browser.getLink("Month").click()
 >>> '%s/%s' % (now.month, now.year) in browser.contents
 True
+
+Completing Events
+=================
+
+When an event is completed it is rendered lighter. A css class is set for this:
+
 
 
 Deleting Events

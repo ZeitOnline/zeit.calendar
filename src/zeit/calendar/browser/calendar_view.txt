@@ -8,13 +8,14 @@ Monthly Calendar
 
 The calendar view provides some helper functionality:
 
->>> from zope.publisher.browser import TestRequest
 >>> from zeit.calendar.browser.calendar_view import Calendar
+>>> import zeit.calendar.event
+>>> event = zeit.calendar.event.Event()
 >>> class CalendarMock(object):
 ...
 ...     def getEvents(self, date):
 ...         if date.day == 12:
-...             return ['this-could-be-an-event']
+...             return [event]
 ...         return None
 ...
 ...     def haveEvents(self, date):
@@ -25,7 +26,9 @@ The calendar view provides some helper functionality:
 
 Request a calendar for 6/2006:
 
->>> request = TestRequest(form={'year': 2001, 'month': 6})
+>>> import zope.publisher.browser
+>>> request = zope.publisher.browser.TestRequest(
+...     form={'year': 2001, 'month': 6})
 >>> calendar = Calendar(CalendarMock(), request)
 
 According to the request we expect the calendar for 6/2001 back:
@@ -63,7 +66,8 @@ According to the request we expect the calendar for 6/2001 back:
    'is_today': False},
   {'date_str': '2001-06-12',
    'day': 12,
-   'events': ['this-could-be-an-event'],
+   'events': [{'css': 'event',
+               'obj': <zeit.calendar.event.Event object at 0x...>}],
    'have_events': True,
    'is_today': False},
    ...
@@ -109,7 +113,8 @@ The weekly calendar is not really weekly but shows yesterday and the next
 seven days:
 
 >>> from zeit.calendar.browser.calendar_view import Week
->>> request = TestRequest(form={'year': 2001, 'month': 6, 'day': 13})
+>>> request = zope.publisher.browser.TestRequest(
+...     form={'year': 2001, 'month': 6, 'day': 13})
 >>> week = Week(CalendarMock(), request)
 >>> week
 <zeit.calendar.browser.calendar_view.Week object at 0x...>
@@ -125,7 +130,8 @@ Get the events:
 >>> pprint(week.selected_week_calendar)
 [{'date_str': '2001-06-12',
   'day': 12,
-  'events': ['this-could-be-an-event'],
+  'events': [{'css': 'event',
+              'obj': <zeit.calendar.event.Event object at 0x...>}],
   'have_events': True,
   'is_today': False},
  {'date_str': '2001-06-13',

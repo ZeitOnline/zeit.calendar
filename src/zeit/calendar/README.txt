@@ -8,6 +8,8 @@ Events
 Events are objects which can be added to the calendar. Let's create an event:
 
 >>> import datetime
+>>> import zope.interface.verify
+>>> import zeit.calendar.interfaces
 >>> from zeit.calendar.event import Event
 >>> event = Event(
 ...     start=datetime.date(2007, 6, 5),
@@ -15,12 +17,17 @@ Events are objects which can be added to the calendar. Let's create an event:
 ...     description="FG fuer Foo erstellen.")
 >>> event
 <zeit.calendar.event.Event object at 0x...>
+>>> zope.interface.verify.verifyObject(
+...     zeit.calendar.interfaces.ICalendarEvent, event)
+True
 >>> event.start
 datetime.date(2007, 6, 5)
 >>> event.title
 'Fotogalerie erstellen'
 >>> event.description
 'FG fuer Foo erstellen.'
+>>> event.completed
+False
 
 
  XXX test object references / related
@@ -30,14 +37,13 @@ Calendar
 
 The calendar is a container for events. Create a calendar. Initally it's empty:
 
->>> import zope.interface.verify
->>> from zeit.calendar.interfaces import ICalendar
->>> from zeit.calendar.calendar import Calendar
->>> zope.interface.verify.verifyClass(ICalendar, Calendar)
-True
->>> calendar = Calendar()
+>>> import zeit.calendar.calendar
+>>> calendar = zeit.calendar.calendar.Calendar()
 >>> calendar
 <zeit.calendar.calendar.Calendar object at 0x...>
+>>> zope.interface.verify.verifyObject(
+...     zeit.calendar.interfaces.ICalendar, calendar)
+True
 >>> len(calendar)
 0
 

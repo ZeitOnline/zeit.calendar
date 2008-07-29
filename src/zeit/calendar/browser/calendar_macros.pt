@@ -16,18 +16,21 @@
     </div>
     <tal:event repeat="event day/events">
       <div class="event"
-        tal:attributes="class python:event.thema and 'event thema' or 'event'" >
+        tal:attributes="class event/css">
 
-        <a href="#" title="Löschen"
+        <a href="#" title="Delete"
+          class="event-delete"
           tal:attributes="
-          href python:(view.get_navigation_url(view.selected_date) + '&delete_event=' + event.__name__)">
+          href python:(view.get_navigation_url(view.selected_date) + '&delete_event=' + event['obj'].__name__)"
+          i18n:attributes="title">
           [x]
         </a>
         <a href="#"
+          class="event-title"
           tal:attributes="
-          href string:${event/@@absolute_url}/@@edit.html;
-          title event/title"
-          tal:content="event/title">
+          href string:${event/obj/@@absolute_url}/@@edit.html;
+          title event/obj/title"
+          tal:content="event/obj/title">
           Knopfen
         </a>
       </div>

@@ -11,10 +11,10 @@ import gocept.form.grouped
 import zeit.cms.browser.form
 import zeit.cms.browser.interfaces
 import zeit.cms.repository.interfaces
-from zeit.calendar.i18n import MessageFactory as _
 
 import zeit.calendar.event
 import zeit.calendar.interfaces
+from zeit.calendar.i18n import MessageFactory as _
 
 
 class EventFormBase(object):
@@ -22,7 +22,7 @@ class EventFormBase(object):
     field_groups = (
         gocept.form.grouped.Fields(
             _("Event"),
-            ('start', 'location', 'thema'),
+            ('start', 'location', 'thema', 'completed'),
             css_class='column-left-small'),
         gocept.form.grouped.Fields(
             _('Description'),

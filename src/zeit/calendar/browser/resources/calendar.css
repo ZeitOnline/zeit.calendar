@@ -68,7 +68,7 @@
 }
 
 #calendar td.day{
-    background-color: #eeeeee;
+    background-color: #F2F2F2;
 }
 
 #calendar td.today{
@@ -104,6 +104,15 @@
 
 #calendar .thema {
   background-color: #e88;
+}
+
+#calendar .completed {
+  background-color: transparent;
+}
+
+#calendar .completed > a.event-title {
+    text-decoration: line-through;
+    color: #888;
 }
 
 /* DND */

@@ -18,6 +18,8 @@ class Event(persistent.Persistent,
 
     zope.interface.implements(zeit.calendar.interfaces.ICalendarEvent)
 
+    completed = False
+
     def __init__(self, **kwargs):
         zeit.cms.content.util.applySchemaData(
             self,

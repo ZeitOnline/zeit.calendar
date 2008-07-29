@@ -1,24 +1,23 @@
-# vim: fileencoding=utf8 encoding=utf8
 # Copyright (c) 2007-2008 gocept gmbh & co. kg
 # See also LICENSE.txt
-# $Id$
+"""Calendar views."""
 
 import calendar
 import datetime
-import persistent
 
+import persistent
+import zope.annotation
+import zope.app.container.contained
 import zope.cachedescriptors.property
 import zope.component
 import zope.interface
 import zope.security.interfaces
 import zope.viewlet.viewlet
-import zope.annotation
 
-import zope.app.container.contained
+import zeit.cms.browser.menu
 
 import zeit.calendar.interfaces
 import zeit.calendar.browser.interfaces
-import zeit.cms.browser.menu
 from zeit.calendar.i18n import MessageFactory as _
 
 
@@ -96,11 +95,17 @@ class CalendarBase(object):
             date.year, date.month, date.day)
 
     def _get_day_dict(self, date):
+        events = self.context.getEvents(date)
+        event_dicts = None
+        if events:
+            event_dicts = [dict(obj=event,
+                                 css=self.get_event_css(event))
+                            for event in events]
         return {'day': date.day,
                 'date_str': '%4d-%02d-%02d' % (date.year, date.month,
                                                date.day),
                 'have_events': self.context.haveEvents(date),
-                'events': self.context.getEvents(date),
+                'events': event_dicts,
                 'is_today': date == self.today}
 
     def _register_last_view(self):
@@ -113,12 +118,22 @@ class CalendarBase(object):
             return
         del self.context[delete_id]
 
+    def get_event_css(self, event):
+        classes = ['event']
+        if event.completed:
+            classes.append('completed')
+        if event.thema:
+            classes.append('thema')
+        return ' '.join(classes)
+
 
 class Calendar(CalendarBase):
 
     @zope.cachedescriptors.property.Lazy
     def title(self):
-        return u'Termine für %s/%s' % (self.selected_month, self.selected_year)
+        return _('Events for ${month}/${year}',
+                 mapping=dict(month=self.selected_month,
+                              year=self.selected_year))
 
     @zope.cachedescriptors.property.Lazy
     def selected_month_calendar(self):
@@ -181,9 +196,12 @@ class Week(CalendarBase):
     def title(self):
         start = self.day_list[0]
         end = self.day_list[-1]
-        return u'Termine für %02d.%02d.%4d – %02d.%02d.%4d' % (
-            start.day, start.month, start.year,
-            end.day, end.month, end.year)
+        # XXX we could/should use a locale dependent date formatter here
+        return _('Events for ${start} - ${end}',
+                 mapping=dict(
+                     start='%02d.%02d.%4d' % (start.day, start.month,
+                                              start.year),
+                     end='%02d.%02d.%4d' % (end.day, end.month, end.year)))
 
     @zope.cachedescriptors.property.Lazy
     def day_names(self):

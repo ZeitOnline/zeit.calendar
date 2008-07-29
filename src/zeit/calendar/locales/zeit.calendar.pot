@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Development/Unknown\n"
-"POT-Creation-Date: Tue Jul 29 11:58:03 2008\n"
+"POT-Creation-Date: Tue Jul 29 15:15:05 2008\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope3-dev@zope.org>\n"
@@ -23,19 +23,33 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: zope/app/locales/extract.py\n"
 
-#: src/zeit/calendar/browser/calendar_macros.pt:42
+#: src/zeit/calendar/browser/calendar_macros.pt:21
+msgid "Delete"
+msgstr ""
+
+#: src/zeit/calendar/browser/calendar_macros.pt:45
 msgid "Month"
 msgstr ""
 
-#: src/zeit/calendar/browser/calendar_macros.pt:47
+#: src/zeit/calendar/browser/calendar_macros.pt:50
 msgid "Week"
 msgstr ""
 
-#: src/zeit/calendar/browser/calendar_macros.pt:64
+#: src/zeit/calendar/browser/calendar_macros.pt:67
 msgid "Today"
 msgstr ""
 
-#: src/zeit/calendar/browser/calendar_view.py:27
+#: src/zeit/calendar/browser/calendar_view.py:134
+#. Default: ""
+msgid "Events for ${month}/${year}"
+msgstr ""
+
+#: src/zeit/calendar/browser/calendar_view.py:200
+#. Default: ""
+msgid "Events for ${start} - ${end}"
+msgstr ""
+
+#: src/zeit/calendar/browser/calendar_view.py:26
 msgid "Calendar"
 msgstr ""
 
@@ -102,5 +116,9 @@ msgstr ""
 
 #: src/zeit/calendar/interfaces.py:48
 msgid "Is the article a topic for the next week?"
+msgstr ""
+
+#: src/zeit/calendar/interfaces.py:51
+msgid "Completed?"
 msgstr ""
 

@@ -47,6 +47,10 @@ class ICalendarEvent(zope.interface.Interface):
         title=_("Topic?"),
         description=_("Is the article a topic for the next week?"))
 
+    completed = zope.schema.Bool(
+        title=_('Completed?'),
+        default=False)
+
 
 class ICalendar(zope.app.container.interfaces.IReadContainer):
     """Calendar."""

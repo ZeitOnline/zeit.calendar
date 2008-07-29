@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: zeit.calendar\n"
-"POT-Creation-Date: Tue Jul 29 11:58:03 2008\n"
+"POT-Creation-Date: Tue Jul 29 15:15:05 2008\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Christian Zagrodnick <cz@gocept.com>\n"
 "Language-Team: Christian Zagrodnick <cz@gocept.com>\n"
@@ -11,19 +11,33 @@ msgstr ""
 "X-Poedit-Language: German\n"
 "X-Poedit-Country: GERMANY\n"
 
-#: src/zeit/calendar/browser/calendar_macros.pt:42
+#: src/zeit/calendar/browser/calendar_macros.pt:21
+msgid "Delete"
+msgstr "Löschen"
+
+#: src/zeit/calendar/browser/calendar_macros.pt:45
 msgid "Month"
 msgstr "Monat"
 
-#: src/zeit/calendar/browser/calendar_macros.pt:47
+#: src/zeit/calendar/browser/calendar_macros.pt:50
 msgid "Week"
 msgstr "Woche"
 
-#: src/zeit/calendar/browser/calendar_macros.pt:64
+#: src/zeit/calendar/browser/calendar_macros.pt:67
 msgid "Today"
 msgstr "Heute"
 
-#: src/zeit/calendar/browser/calendar_view.py:27
+#. Default: ""
+#: src/zeit/calendar/browser/calendar_view.py:134
+msgid "Events for ${month}/${year}"
+msgstr "Termine für ${monty}/${year}"
+
+#. Default: ""
+#: src/zeit/calendar/browser/calendar_view.py:200
+msgid "Events for ${start} - ${end}"
+msgstr "Termine für ${start} – ${end}"
+
+#: src/zeit/calendar/browser/calendar_view.py:26
 msgid "Calendar"
 msgstr "Kalender"
 
@@ -91,4 +105,8 @@ msgstr "Thema?"
 #: src/zeit/calendar/interfaces.py:48
 msgid "Is the article a topic for the next week?"
 msgstr "Ist der Artikel ggf. ein Thema für die nächste Woche?"
+
+#: src/zeit/calendar/interfaces.py:51
+msgid "Completed?"
+msgstr "Erledigt?"
 

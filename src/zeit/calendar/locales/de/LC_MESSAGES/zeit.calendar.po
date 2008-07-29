@@ -1,0 +1,94 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: zeit.calendar\n"
+"POT-Creation-Date: Tue Jul 29 11:58:03 2008\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Christian Zagrodnick <cz@gocept.com>\n"
+"Language-Team: Christian Zagrodnick <cz@gocept.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: GERMANY\n"
+
+#: src/zeit/calendar/browser/calendar_macros.pt:42
+msgid "Month"
+msgstr "Monat"
+
+#: src/zeit/calendar/browser/calendar_macros.pt:47
+msgid "Week"
+msgstr "Woche"
+
+#: src/zeit/calendar/browser/calendar_macros.pt:64
+msgid "Today"
+msgstr "Heute"
+
+#: src/zeit/calendar/browser/calendar_view.py:27
+msgid "Calendar"
+msgstr "Kalender"
+
+#: src/zeit/calendar/browser/event.py:24
+msgid "Event"
+msgstr "Termin"
+
+#: src/zeit/calendar/browser/event.py:28
+#: src/zeit/calendar/interfaces.py:30
+msgid "Description"
+msgstr "Beschreibung"
+
+#: src/zeit/calendar/browser/event.py:32
+msgid "Related"
+msgstr "Links"
+
+#: src/zeit/calendar/browser/event.py:52
+msgid "Add event"
+msgstr "Termin hinzufügen"
+
+#: src/zeit/calendar/browser/event.py:66
+msgid "Edit event"
+msgstr "Termin bearbeiten"
+
+#: src/zeit/calendar/browser/event.py:69
+msgid "Apply"
+msgstr "Speichern"
+
+#: src/zeit/calendar/interfaces.py:22
+msgid "Start"
+msgstr "Beginn"
+
+#: src/zeit/calendar/interfaces.py:23
+msgid "Date when the event starts."
+msgstr "Datum/Uhrzeit des Terminbeginns"
+
+#: src/zeit/calendar/interfaces.py:26
+msgid "Title"
+msgstr "Titel"
+
+#: src/zeit/calendar/interfaces.py:27
+msgid "Title will be shown in overview pages."
+msgstr "Der Titel wird in den Übersitchtsseiten angezeigt."
+
+#: src/zeit/calendar/interfaces.py:34
+msgid "Related content"
+msgstr " Verlinkte Objekte"
+
+#: src/zeit/calendar/interfaces.py:35
+msgid "Documents that are related to this object."
+msgstr "Dokumente, die verlinkt werden sollen."
+
+#: src/zeit/calendar/interfaces.py:42
+msgid "Location/Type"
+msgstr " Location/Typ"
+
+#: src/zeit/calendar/interfaces.py:43
+msgid "Where should the article be placed."
+msgstr "Wo soll der Artikel erscheinen?"
+
+#: src/zeit/calendar/interfaces.py:47
+msgid "Topic?"
+msgstr "Thema?"
+
+#: src/zeit/calendar/interfaces.py:48
+msgid "Is the article a topic for the next week?"
+msgstr "Ist der Artikel ggf. ein Thema für die nächste Woche?"
+

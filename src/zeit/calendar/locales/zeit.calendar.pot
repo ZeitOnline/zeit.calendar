@@ -1,0 +1,106 @@
+##############################################################################
+#
+# Copyright (c) 2003-2004 Zope Corporation and Contributors.
+# All Rights Reserved.
+#
+# This software is subject to the provisions of the Zope Public License,
+# Version 2.1 (ZPL).  A copy of the ZPL should accompany this distribution.
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
+# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
+# FOR A PARTICULAR PURPOSE.
+#
+##############################################################################
+msgid ""
+msgstr ""
+"Project-Id-Version: Development/Unknown\n"
+"POT-Creation-Date: Tue Jul 29 11:58:03 2008\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Zope 3 Developers <zope3-dev@zope.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: zope/app/locales/extract.py\n"
+
+#: src/zeit/calendar/browser/calendar_macros.pt:42
+msgid "Month"
+msgstr ""
+
+#: src/zeit/calendar/browser/calendar_macros.pt:47
+msgid "Week"
+msgstr ""
+
+#: src/zeit/calendar/browser/calendar_macros.pt:64
+msgid "Today"
+msgstr ""
+
+#: src/zeit/calendar/browser/calendar_view.py:27
+msgid "Calendar"
+msgstr ""
+
+#: src/zeit/calendar/browser/event.py:24
+msgid "Event"
+msgstr ""
+
+#: src/zeit/calendar/browser/event.py:28
+#: src/zeit/calendar/interfaces.py:30
+msgid "Description"
+msgstr ""
+
+#: src/zeit/calendar/browser/event.py:32
+msgid "Related"
+msgstr ""
+
+#: src/zeit/calendar/browser/event.py:52
+msgid "Add event"
+msgstr ""
+
+#: src/zeit/calendar/browser/event.py:66
+msgid "Edit event"
+msgstr ""
+
+#: src/zeit/calendar/browser/event.py:69
+msgid "Apply"
+msgstr ""
+
+#: src/zeit/calendar/interfaces.py:22
+msgid "Start"
+msgstr ""
+
+#: src/zeit/calendar/interfaces.py:23
+msgid "Date when the event starts."
+msgstr ""
+
+#: src/zeit/calendar/interfaces.py:26
+msgid "Title"
+msgstr ""
+
+#: src/zeit/calendar/interfaces.py:27
+msgid "Title will be shown in overview pages."
+msgstr ""
+
+#: src/zeit/calendar/interfaces.py:34
+msgid "Related content"
+msgstr ""
+
+#: src/zeit/calendar/interfaces.py:35
+msgid "Documents that are related to this object."
+msgstr ""
+
+#: src/zeit/calendar/interfaces.py:42
+msgid "Location/Type"
+msgstr ""
+
+#: src/zeit/calendar/interfaces.py:43
+msgid "Where should the article be placed."
+msgstr ""
+
+#: src/zeit/calendar/interfaces.py:47
+msgid "Topic?"
+msgstr ""
+
+#: src/zeit/calendar/interfaces.py:48
+msgid "Is the article a topic for the next week?"
+msgstr ""
+

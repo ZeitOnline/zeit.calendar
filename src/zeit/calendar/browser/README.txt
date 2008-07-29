@@ -172,7 +172,7 @@ Week Overview
 There is also an overview showing the last day and the next 7 days. We were
 looking at 1/2006, so we see the week starting at 31.12.2005:
 
->>> browser.getLink('Woche').click()
+>>> browser.getLink('Week').click()
 >>> print browser.contents
 <?xml version="1.0"?>
 <!DOCTYPE ...
@@ -220,8 +220,8 @@ Termine für 31.12.2005 – 07.01.2006
 
 Finally, the "today" link points us to the current week:
 
->>> browser.getLink("Heute").click()
->>> browser.getLink("Monat").click()
+>>> browser.getLink("Today").click()
+>>> browser.getLink("Month").click()
 >>> '%s/%s' % (now.month, now.year) in browser.contents
 True
 

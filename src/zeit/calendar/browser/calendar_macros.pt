@@ -1,4 +1,4 @@
-<html>
+<html i18n:domain="zeit.calendar">
   <metal:macro define-macro="day">
     <div class="day"
          tal:define="day_url string:$calendar_url/@@zeit.calendar.Event.AddForm?form.start=${day/date_str};
@@ -39,15 +39,15 @@
     <ul class="mode-switch"
       tal:define="query python:view.get_navigation_query(view.selected_date)"
       >
-      <a href="#"
+      <a href="#" class="MonthView"
         tal:attributes="href string:$calendar_url/month.html?$query"
-        class="MonthView">
-        Monat
+        i18n:translate="">
+        Month
       </a>
-      <a href="#"
+      <a href="#" class="WeekView"
         tal:attributes="href string:$calendar_url/week.html?$query"
-        class="WeekView">
-        Woche
+        i18n:translate="">
+        Week
       </a>
     </ul>
 
@@ -62,8 +62,9 @@
       </a> 
 
       <a href="#"
-        tal:attributes="href view/url">
-        Heute
+        tal:attributes="href view/url"
+        i18n:translate="">
+        Today
       </a>
 
       <a href="#"

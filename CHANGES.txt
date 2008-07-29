@@ -1,0 +1,7 @@
+zeit.calendar changes
+=====================
+
+1.1 (unreleased)
+----------------
+
+- First release after split from zeit.cms.

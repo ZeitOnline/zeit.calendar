@@ -8,7 +8,6 @@ import zope.formlib.form
 
 import gocept.form.grouped
 
-import zeit.cms.interfaces
 import zeit.cms.browser.form
 import zeit.cms.browser.interfaces
 import zeit.cms.repository.interfaces

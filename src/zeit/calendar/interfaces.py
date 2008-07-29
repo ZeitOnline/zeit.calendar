@@ -10,7 +10,6 @@ import zope.schema
 
 import zope.app.container.interfaces
 
-import zeit.cms.interfaces
 import zeit.cms.content.contentsource
 from zeit.cms.i18n import MessageFactory as _
 

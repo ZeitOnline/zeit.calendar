@@ -16,7 +16,7 @@ setup(
     namespace_packages = ['zeit'],
     install_requires=[
         'setuptools',
-        'zeit.cms>=1.1dev',
+        'zeit.cms>=1.1',
     ],
     extras_require={
         'test': [

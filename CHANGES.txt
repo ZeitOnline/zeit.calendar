@@ -8,4 +8,4 @@ zeit.calendar changes
 ----------------
 
 - Neues Feld "Erledigt".
-- Erestes Release nach der Trennung von vom zeit.cms-Kern.
+- Erestes Release nach der Trennung vom zeit.cms-Kern.

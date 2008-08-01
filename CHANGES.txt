@@ -1,8 +1,8 @@
 zeit.calendar changes
 =====================
 
-1.1 (unreleased)
+1.1 (2008-08-01)
 ----------------
 
 - Neues Feld "Erledigt".
-- First release after split from zeit.cms.
+- Erestes Release nach der Trennung von vom zeit.cms-Kern.

@@ -30,7 +30,7 @@ msgstr "Heute"
 #. Default: ""
 #: src/zeit/calendar/browser/calendar_view.py:134
 msgid "Events for ${month}/${year}"
-msgstr "Termine für ${monty}/${year}"
+msgstr "Termine für ${month}/${year}"
 
 #. Default: ""
 #: src/zeit/calendar/browser/calendar_view.py:200

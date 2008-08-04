@@ -114,7 +114,8 @@ seven days:
 
 >>> from zeit.calendar.browser.calendar_view import Week
 >>> request = zope.publisher.browser.TestRequest(
-...     form={'year': 2001, 'month': 6, 'day': 13})
+...     form={'year': 2001, 'month': 6, 'day': 13},
+...     HTTP_ACCEPT_LANGUAGE='en')
 >>> week = Week(CalendarMock(), request)
 >>> week
 <zeit.calendar.browser.calendar_view.Week object at 0x...>
@@ -123,7 +124,7 @@ We can get the day names. 2001-06-13 was a Wednesday. So our list starts with
 Tuesday and ranges till the *next* Tuesday:
 
 >>> week.day_names
-['Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Mon', 'Tue']
+[u'Tue, 12. Jun', u'Wed, 13. Jun', u'Thu, 14. Jun', u'Fri, 15. Jun', u'Sat, 16. Jun', u'Sun, 17. Jun', u'Mon, 18. Jun', u'Tue, 19. Jun']
 
 Get the events:
 

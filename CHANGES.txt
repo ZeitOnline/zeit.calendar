@@ -6,6 +6,7 @@ zeit.calendar changes
 
 - Feld "Hinzugefügt von" hinzugefügt.
 - Feld "Ressort" hinzugefügt
+- Wochenansicht zeigt jetzt Datum in der Spaltenüberschrift.
 
 1.1 (2008-08-01)
 ----------------

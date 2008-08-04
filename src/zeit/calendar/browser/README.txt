@@ -8,6 +8,7 @@ Create a browser first:
 >>> from z3c.etestbrowser.testing import ExtendedTestBrowser 
 >>> browser = ExtendedTestBrowser()
 >>> browser.addHeader('Authorization', 'Basic user:userpw')
+>>> browser.addHeader('Accept-Language', 'en')
 
 
 Calendar
@@ -198,14 +199,14 @@ looking at 1/2006, so we see the week starting at 31.12.2005:
   <table id="calendar" class="week">
     <thead>
       <tr>
-        <th>Sat</th>
-        <th>Sun</th>
-        <th>Mon</th>
-        <th>Tue</th>
-        <th>Wed</th>
-        <th>Thu</th>
-        <th>Fri</th>
-        <th>Sat</th>
+              <th>Sat, 31. Dec</th>
+              <th>Sun, 1. Jan</th>
+              <th>Mon, 2. Jan</th>
+              <th>Tue, 3. Jan</th>
+              <th>Wed, 4. Jan</th>
+              <th>Thu, 5. Jan</th>
+              <th>Fri, 6. Jan</th>
+              <th>Sat, 7. Jan</th>
       </tr>
     </thead>
     ...

@@ -10,6 +10,7 @@ import zope.annotation
 import zope.app.container.contained
 import zope.cachedescriptors.property
 import zope.component
+import zope.i18n.format
 import zope.interface
 import zope.security.interfaces
 import zope.viewlet.viewlet
@@ -157,7 +158,8 @@ class Calendar(CalendarBase):
 
     @property
     def day_names(self):
-        return calendar.day_abbr
+        return self.request.locale.dates.calendars[
+            'gregorian'].getDayAbbreviations()
 
     @zope.cachedescriptors.property.Lazy
     def forward(self):
@@ -205,9 +207,11 @@ class Week(CalendarBase):
 
     @zope.cachedescriptors.property.Lazy
     def day_names(self):
+        formatter = self.request.locale.dates.getFormatter('date')
+        pattern = u'EEE, d. MMM'
         weekdays = []
         for day in self.day_list:
-            weekdays.append(calendar.day_abbr[day.weekday()])
+            weekdays.append(formatter.format(day, pattern))
         return weekdays
 
     @zope.cachedescriptors.property.Lazy

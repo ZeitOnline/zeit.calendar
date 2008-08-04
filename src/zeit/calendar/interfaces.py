@@ -1,14 +1,15 @@
-# vim: fileencoding=utf8 encoding=utf8
 # Copyright (c) 2007-2008 gocept gmbh & co. kg
 # See also LICENSE.txt
-# $Id$
+"""Calendar interfaces.
 
-# Inspired by schooltool.
+To some extend inspired by schooltool.
 
-import zope.interface
-import zope.schema
+"""
 
 import zope.app.container.interfaces
+import zope.app.security.vocabulary
+import zope.interface
+import zope.schema
 
 import zeit.cms.content.contentsource
 from zeit.calendar.i18n import MessageFactory as _
@@ -49,7 +50,13 @@ class ICalendarEvent(zope.interface.Interface):
 
     completed = zope.schema.Bool(
         title=_('Completed?'),
+        description=_('Check when the event has been completed.'),
         default=False)
+
+    added_by = zope.schema.Choice(
+        title=_('Added by'),
+        readonly=True,
+        source=zope.app.security.vocabulary.PrincipalSource())
 
 
 class ICalendar(zope.app.container.interfaces.IReadContainer):

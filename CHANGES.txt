@@ -4,6 +4,8 @@ zeit.calendar changes
 1.2 (unreleased)
 ----------------
 
+- Feld "Hinzugefügt von" hinzugefügt.
+
 1.1 (2008-08-01)
 ----------------
 

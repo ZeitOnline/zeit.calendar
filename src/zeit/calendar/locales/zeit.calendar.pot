@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Development/Unknown\n"
-"POT-Creation-Date: Tue Jul 29 15:15:05 2008\n"
+"POT-Creation-Date: Mon Aug  4 15:03:59 2008\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope3-dev@zope.org>\n"
@@ -58,7 +58,7 @@ msgid "Event"
 msgstr ""
 
 #: src/zeit/calendar/browser/event.py:28
-#: src/zeit/calendar/interfaces.py:30
+#: src/zeit/calendar/interfaces.py:31
 msgid "Description"
 msgstr ""
 
@@ -70,55 +70,63 @@ msgstr ""
 msgid "Add event"
 msgstr ""
 
-#: src/zeit/calendar/browser/event.py:66
+#: src/zeit/calendar/browser/event.py:70
 msgid "Edit event"
 msgstr ""
 
-#: src/zeit/calendar/browser/event.py:69
+#: src/zeit/calendar/browser/event.py:73
 msgid "Apply"
 msgstr ""
 
-#: src/zeit/calendar/interfaces.py:22
+#: src/zeit/calendar/interfaces.py:23
 msgid "Start"
 msgstr ""
 
-#: src/zeit/calendar/interfaces.py:23
+#: src/zeit/calendar/interfaces.py:24
 msgid "Date when the event starts."
 msgstr ""
 
-#: src/zeit/calendar/interfaces.py:26
+#: src/zeit/calendar/interfaces.py:27
 msgid "Title"
 msgstr ""
 
-#: src/zeit/calendar/interfaces.py:27
+#: src/zeit/calendar/interfaces.py:28
 msgid "Title will be shown in overview pages."
 msgstr ""
 
-#: src/zeit/calendar/interfaces.py:34
+#: src/zeit/calendar/interfaces.py:35
 msgid "Related content"
 msgstr ""
 
-#: src/zeit/calendar/interfaces.py:35
+#: src/zeit/calendar/interfaces.py:36
 msgid "Documents that are related to this object."
 msgstr ""
 
-#: src/zeit/calendar/interfaces.py:42
+#: src/zeit/calendar/interfaces.py:43
 msgid "Location/Type"
 msgstr ""
 
-#: src/zeit/calendar/interfaces.py:43
+#: src/zeit/calendar/interfaces.py:44
 msgid "Where should the article be placed."
 msgstr ""
 
-#: src/zeit/calendar/interfaces.py:47
+#: src/zeit/calendar/interfaces.py:48
 msgid "Topic?"
 msgstr ""
 
-#: src/zeit/calendar/interfaces.py:48
+#: src/zeit/calendar/interfaces.py:49
 msgid "Is the article a topic for the next week?"
 msgstr ""
 
-#: src/zeit/calendar/interfaces.py:51
+#: src/zeit/calendar/interfaces.py:52
 msgid "Completed?"
+msgstr ""
+
+#: src/zeit/calendar/interfaces.py:53
+msgid "Check when the event has been completed."
+msgstr ""
+
+#: src/zeit/calendar/interfaces.py:57
+msgid "Added by"
 msgstr ""
 

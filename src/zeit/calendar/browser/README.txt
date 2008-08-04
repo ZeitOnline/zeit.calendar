@@ -91,6 +91,19 @@ After successful adding, the calendar is displayed for the added month:
 The event can be edited again:
 
 >>> browser.getLink('Bild erstellen').click()
+
+On the edit screen there is also information about who created the image:
+
+>>> print browser.contents
+<?xml ...
+          <span>Added by</span>
+        </label>
+        ...
+        <div class="widget">User</div>
+        ...
+
+Add a related:
+
 >>> browser.getControl(name='form.related.0.').value
 'http://xml.zeit.de/online'
 >>> browser.getControl(name='form.related.0.').value = (

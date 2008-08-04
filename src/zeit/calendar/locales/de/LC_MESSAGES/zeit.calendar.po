@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: zeit.calendar\n"
-"POT-Creation-Date: Tue Jul 29 15:15:05 2008\n"
+"POT-Creation-Date: Mon Aug  4 15:03:59 2008\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Christian Zagrodnick <cz@gocept.com>\n"
 "Language-Team: Christian Zagrodnick <cz@gocept.com>\n"
@@ -46,7 +46,7 @@ msgid "Event"
 msgstr "Termin"
 
 #: src/zeit/calendar/browser/event.py:28
-#: src/zeit/calendar/interfaces.py:30
+#: src/zeit/calendar/interfaces.py:31
 msgid "Description"
 msgstr "Beschreibung"
 
@@ -58,55 +58,63 @@ msgstr "Links"
 msgid "Add event"
 msgstr "Termin hinzufügen"
 
-#: src/zeit/calendar/browser/event.py:66
+#: src/zeit/calendar/browser/event.py:70
 msgid "Edit event"
 msgstr "Termin bearbeiten"
 
-#: src/zeit/calendar/browser/event.py:69
+#: src/zeit/calendar/browser/event.py:73
 msgid "Apply"
 msgstr "Speichern"
 
-#: src/zeit/calendar/interfaces.py:22
+#: src/zeit/calendar/interfaces.py:23
 msgid "Start"
 msgstr "Beginn"
 
-#: src/zeit/calendar/interfaces.py:23
+#: src/zeit/calendar/interfaces.py:24
 msgid "Date when the event starts."
 msgstr "Datum/Uhrzeit des Terminbeginns"
 
-#: src/zeit/calendar/interfaces.py:26
+#: src/zeit/calendar/interfaces.py:27
 msgid "Title"
 msgstr "Titel"
 
-#: src/zeit/calendar/interfaces.py:27
+#: src/zeit/calendar/interfaces.py:28
 msgid "Title will be shown in overview pages."
 msgstr "Der Titel wird in den Übersitchtsseiten angezeigt."
 
-#: src/zeit/calendar/interfaces.py:34
+#: src/zeit/calendar/interfaces.py:35
 msgid "Related content"
 msgstr " Verlinkte Objekte"
 
-#: src/zeit/calendar/interfaces.py:35
+#: src/zeit/calendar/interfaces.py:36
 msgid "Documents that are related to this object."
 msgstr "Dokumente, die verlinkt werden sollen."
 
-#: src/zeit/calendar/interfaces.py:42
+#: src/zeit/calendar/interfaces.py:43
 msgid "Location/Type"
 msgstr " Location/Typ"
 
-#: src/zeit/calendar/interfaces.py:43
+#: src/zeit/calendar/interfaces.py:44
 msgid "Where should the article be placed."
 msgstr "Wo soll der Artikel erscheinen?"
 
-#: src/zeit/calendar/interfaces.py:47
+#: src/zeit/calendar/interfaces.py:48
 msgid "Topic?"
 msgstr "Thema?"
 
-#: src/zeit/calendar/interfaces.py:48
+#: src/zeit/calendar/interfaces.py:49
 msgid "Is the article a topic for the next week?"
 msgstr "Ist der Artikel ggf. ein Thema für die nächste Woche?"
 
-#: src/zeit/calendar/interfaces.py:51
+#: src/zeit/calendar/interfaces.py:52
 msgid "Completed?"
 msgstr "Erledigt?"
+
+#: src/zeit/calendar/interfaces.py:53
+msgid "Check when the event has been completed."
+msgstr "Auswählen, wenn die Aufgabe erledigt ist."
+
+#: src/zeit/calendar/interfaces.py:57
+msgid "Added by"
+msgstr "Hinzugefügt von"
 

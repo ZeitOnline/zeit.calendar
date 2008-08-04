@@ -22,7 +22,7 @@ class EventFormBase(object):
     field_groups = (
         gocept.form.grouped.Fields(
             _("Event"),
-            ('start', 'location', 'thema', 'completed'),
+            ('start', 'location', 'thema', 'completed', 'added_by'),
             css_class='column-left-small'),
         gocept.form.grouped.Fields(
             _('Description'),
@@ -51,6 +51,12 @@ class AddForm(EventFormBase, zeit.cms.browser.form.AddForm):
 
     title = _('Add event')
     factory = zeit.calendar.event.Event
+    form_fields = EventFormBase.form_fields.omit('added_by')
+
+    def create(self, data):
+        obj = super(AddForm, self).create(data)
+        obj.added_by = self.request.principal.id
+        return obj
 
     def suggestName(self, event):
         return event.title

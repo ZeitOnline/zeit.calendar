@@ -16,6 +16,7 @@ class Event(persistent.Persistent,
 
     zope.interface.implements(zeit.calendar.interfaces.ICalendarEvent)
 
+    added_by = None
     completed = False
     description = None
     location = None

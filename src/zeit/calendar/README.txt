@@ -11,10 +11,10 @@ Events are objects which can be added to the calendar. Let's create an event:
 >>> import zope.interface.verify
 >>> import zeit.calendar.interfaces
 >>> from zeit.calendar.event import Event
->>> event = Event(
-...     start=datetime.date(2007, 6, 5),
-...     title="Fotogalerie erstellen",
-...     description="FG fuer Foo erstellen.")
+>>> event = Event()
+>>> event.start=datetime.date(2007, 6, 5)
+>>> event.title = u"Fotogalerie erstellen"
+>>> event.description = u"FG fuer Foo erstellen."
 >>> event
 <zeit.calendar.event.Event object at 0x...>
 >>> zope.interface.verify.verifyObject(
@@ -23,9 +23,9 @@ True
 >>> event.start
 datetime.date(2007, 6, 5)
 >>> event.title
-'Fotogalerie erstellen'
+u'Fotogalerie erstellen'
 >>> event.description
-'FG fuer Foo erstellen.'
+u'FG fuer Foo erstellen.'
 >>> event.completed
 False
 
@@ -63,7 +63,7 @@ We can get the event by date using the getEvents method:
 >>> events
 [<zeit.calendar.event.Event object at 0x...>]
 >>> events[0].title
-'Fotogalerie erstellen'
+u'Fotogalerie erstellen'
 >>> calendar.haveEvents(date)
 True
 

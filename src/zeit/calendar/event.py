@@ -1,12 +1,10 @@
 # Copyright (c) 2007-2008 gocept gmbh & co. kg
 # See also LICENSE.txt
-# $Id$
+"""Event in calendar."""
 
 import persistent
-
-import zope.interface
-
 import zope.app.container.contained
+import zope.interface
 
 import zeit.cms.content.util
 
@@ -19,9 +17,9 @@ class Event(persistent.Persistent,
     zope.interface.implements(zeit.calendar.interfaces.ICalendarEvent)
 
     completed = False
-
-    def __init__(self, **kwargs):
-        zeit.cms.content.util.applySchemaData(
-            self,
-            zeit.calendar.interfaces.ICalendarEvent,
-            kwargs)
+    description = None
+    location = None
+    related = ()
+    start = None
+    thema = False
+    title = None

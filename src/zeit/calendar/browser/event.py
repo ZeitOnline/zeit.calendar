@@ -50,9 +50,7 @@ class EventFormBase(object):
 class AddForm(EventFormBase, zeit.cms.browser.form.AddForm):
 
     title = _('Add event')
-
-    def create(self, data):
-        return zeit.calendar.event.Event(**data)
+    factory = zeit.calendar.event.Event
 
     def suggestName(self, event):
         return event.title

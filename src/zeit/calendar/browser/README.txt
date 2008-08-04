@@ -92,6 +92,11 @@ The event can be edited again:
 
 >>> browser.getLink('Bild erstellen').click()
 
+There is no ressort set currently:
+
+>>> browser.getControl('Ressort').displayValue
+['(no value)']
+
 On the edit screen there is also information about who created the image:
 
 >>> print browser.contents
@@ -102,12 +107,13 @@ On the edit screen there is also information about who created the image:
         <div class="widget">User</div>
         ...
 
-Add a related:
+Add a related and set the ressort:
 
 >>> browser.getControl(name='form.related.0.').value
 'http://xml.zeit.de/online'
 >>> browser.getControl(name='form.related.0.').value = (
 ...     'http://xml.zeit.de/online/2007')
+>>> browser.getControl('Ressort').displayValue = ['International']
 >>> browser.getControl('Apply').click()
 
 After editing we're also back at the calendar view.

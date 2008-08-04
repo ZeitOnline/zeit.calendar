@@ -21,6 +21,7 @@ class Event(persistent.Persistent,
     description = None
     location = None
     related = ()
+    ressort = None
     start = None
     thema = False
     title = None

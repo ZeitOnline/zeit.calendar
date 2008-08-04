@@ -5,6 +5,7 @@ zeit.calendar changes
 ----------------
 
 - Feld "Hinzugefügt von" hinzugefügt.
+- Feld "Ressort" hinzugefügt
 
 1.1 (2008-08-01)
 ----------------

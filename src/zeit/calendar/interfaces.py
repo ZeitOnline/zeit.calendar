@@ -12,8 +12,8 @@ import zope.interface
 import zope.schema
 
 import zeit.cms.content.contentsource
+import zeit.cms.content.sources
 from zeit.calendar.i18n import MessageFactory as _
-
 
 
 class ICalendarEvent(zope.interface.Interface):
@@ -42,6 +42,11 @@ class ICalendarEvent(zope.interface.Interface):
     location = zope.schema.TextLine(
         title=_("Location/Type"),
         description=_("Where should the article be placed."),
+        required=False)
+
+    ressort = zope.schema.Choice(
+        title=_('Ressort'),
+        source=zeit.cms.content.sources.NavigationSource(),
         required=False)
 
     thema = zope.schema.Bool(

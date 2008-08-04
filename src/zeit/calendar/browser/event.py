@@ -26,7 +26,7 @@ class EventFormBase(object):
             css_class='column-left-small'),
         gocept.form.grouped.Fields(
             _('Description'),
-            ('title', 'description'),
+            ('ressort', 'title', 'description'),
             css_class='column-right-small'),
         gocept.form.grouped.Fields(
             _('Related'),

@@ -184,6 +184,11 @@ The "year forward" leaps us to 1/2006:
 >>> browser.etree.xpath('//div[@id="content"]//h1')[0].text
 'Events for 1/2006'
 
+When we freshly enter the calendar we'll still see 1/2006:
+
+>>> browser.getLink("Calendar").click()
+>>> browser.etree.xpath('//div[@id="content"]//h1')[0].text
+'Events for 1/2006'
 
 
 Week Overview

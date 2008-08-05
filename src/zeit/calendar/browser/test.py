@@ -15,7 +15,7 @@ def test_suite():
     suite.addTest(doctest.DocFileSuite(
         'calendar_view.txt', 'event.txt',
         optionflags=(doctest.REPORT_NDIFF + doctest.NORMALIZE_WHITESPACE +
-                     doctest.ELLIPSIS)))
+                     doctest.ELLIPSIS + doctest.INTERPRET_FOOTNOTES)))
     suite.addTest(zeit.cms.testing.FunctionalDocFileSuite(
         'README.txt',
         layer=zeit.calendar.test.CalendarLayer))

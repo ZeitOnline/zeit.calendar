@@ -39,21 +39,6 @@
 
   <metal:macro define-macro="navigation">
 
-    <ul class="mode-switch"
-      tal:define="query python:view.get_navigation_query(view.selected_date)"
-      >
-      <a href="#" class="MonthView"
-        tal:attributes="href string:$calendar_url/month.html?$query"
-        i18n:translate="">
-        Month
-      </a>
-      <a href="#" class="WeekView"
-        tal:attributes="href string:$calendar_url/week.html?$query"
-        i18n:translate="">
-        Week
-      </a>
-    </ul>
-
     <div class="backforward">
       <a href="#"
         tal:attributes="href python:view.get_navigation_url(view.fastbackward)">
@@ -65,7 +50,7 @@
       </a> 
 
       <a href="#"
-        tal:attributes="href view/url"
+        tal:attributes="href python:view.get_navigation_url(view.today)"
         i18n:translate="">
         Today
       </a>

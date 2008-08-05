@@ -13,6 +13,7 @@ import zope.component
 import zope.i18n.format
 import zope.interface
 import zope.security.interfaces
+import zope.session.interfaces
 import zope.viewlet.viewlet
 
 import zeit.cms.browser.menu
@@ -29,15 +30,14 @@ class MenuItem(zeit.cms.browser.menu.GlobalMenuItem):
     pathitem = 'calendar'
 
 
-class IndexRedirect(object):
+class IndexRedirect(zeit.cms.browser.view.Base):
 
     def __call__(self):
         last_view = zeit.calendar.browser.interfaces.ILastView(
             self.request.principal).last_view
-        view = zope.component.getMultiAdapter(
-            (self.context, self.request),
-            name=last_view)
-        return view()
+        self.redirect('%s?%s' % (self.url(last_view),
+                                 self.request.get('QUERY_STRING')))
+        return ''
 
 
 class CalendarBase(object):
@@ -46,10 +46,12 @@ class CalendarBase(object):
         self.context = context
         self.request = request
 
-    def __call__(self):
+    def update(self):
         self._delete_event()
         self._register_last_view()
-        return self.index()
+
+        # Store potential request values to session:
+        self.selected_day, self.selected_month, self.selected_year
 
     @zope.cachedescriptors.property.Lazy
     def today(self):
@@ -63,24 +65,31 @@ class CalendarBase(object):
 
     @zope.cachedescriptors.property.Lazy
     def selected_day(self):
-        request = self.request
         now = datetime.datetime.now()
-        day = request.get('day', now.day)
+        day = self._get_request_or_session_value('day', now.day)
         return day
 
     @zope.cachedescriptors.property.Lazy
     def selected_month(self):
-        request = self.request
         now = datetime.datetime.now()
-        month = request.get('month', now.month)
+        month = self._get_request_or_session_value('month', now.month)
         return month
 
     @zope.cachedescriptors.property.Lazy
     def selected_year(self):
-        request = self.request
         now = datetime.datetime.now()
-        year = request.get('year', now.year)
+        year = self._get_request_or_session_value('year', now.year)
         return year
+
+    def _get_request_or_session_value(self, name, default):
+        value = self.request.get(name)
+        if value:
+            self.session[name] = value
+        else:
+            value = self.session.get(name)
+        if not value:
+            value = default
+        return value
 
     @zope.cachedescriptors.property.Lazy
     def url(self):
@@ -126,6 +135,14 @@ class CalendarBase(object):
         if event.thema:
             classes.append('thema')
         return ' '.join(classes)
+
+    @zope.cachedescriptors.property.Lazy
+    def session(self):
+        return zope.session.interfaces.ISession(self.request)['zeit.calendar']
+
+    @zope.cachedescriptors.property.Lazy
+    def today(self):
+        return datetime.date.today()
 
 
 class Calendar(CalendarBase):

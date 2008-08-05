@@ -1,6 +1,7 @@
 <configure
   xmlns="http://namespaces.zope.org/zope"
   xmlns:browser="http://namespaces.zope.org/browser"
+  xmlns:gocept="http://namespaces.gocept.com/zcml"
   i18n_domain="zeit.calendar">
 
   <browser:page
@@ -20,20 +21,22 @@
     sort="10"
     />
 
-  <browser:page
+  <gocept:pagelet
     for="zeit.calendar.interfaces.ICalendar"
     permission="zope.View"
     template="calendar.pt"
     class=".calendar_view.Calendar"
     name="month.html"
+    menu="zeit-context-views" title="Month"
     />
 
-  <browser:page
+  <gocept:pagelet
     for="zeit.calendar.interfaces.ICalendar"
     permission="zope.View"
     template="week_view.pt"
     class=".calendar_view.Week"
     name="week.html"
+    menu="zeit-context-views" title="Week"
     />
 
   <browser:page

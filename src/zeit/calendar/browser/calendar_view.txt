@@ -31,7 +31,7 @@ Request a calendar for 6/2006:
 ...     form={'year': 2001, 'month': 6})
 >>> calendar = Calendar(CalendarMock(), request)
 
-According to the request we expect the calendar for 6/2001 back:
+According to the request we expect the calendar for 6/2001 back[#session]_:
 
 >>> calendar.selected_year
 2001
@@ -146,3 +146,14 @@ Get the events:
   'events': None,
   'have_events': False,
   'is_today': False}]
+
+
+Clean up:
+
+>>> zope.session.tests.tearDown()
+
+.. [#session] set up session
+
+    >>> import zope.session.tests
+    >>> dummy = zope.session.tests.setUp()
+

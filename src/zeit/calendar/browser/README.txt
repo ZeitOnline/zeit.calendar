@@ -29,6 +29,8 @@ True
 >>> print browser.contents
 <?xml version="1.0"?>
 <!DOCTYPE ...
+    <title> calendar – Events for 8/2008 </title>
+    ...
     <table id="calendar" class="month">
       <thead>
         <tr>
@@ -76,8 +78,9 @@ After successful adding, the calendar is displayed for the added month:
     <div class="day" id="calendarday4">
       4
       <a href="http://.../calendar/@@zeit.calendar.Event.AddForm?form.start=2006-05-04"
-        class="add-event">
-            [+]
+        class="add-event" title="Add event">
+        <img alt="(+)"
+             src="http://localhost/++skin++cms/@@/zeit.cms/icons/insert.png" />
       </a>
       <script ...
         ...</script>

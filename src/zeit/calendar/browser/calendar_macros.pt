@@ -6,9 +6,11 @@
          tal:attributes="id element_id"
          >
       <span tal:replace="day/day">25</span>
-      <a href="#" class="add-event"
-        tal:attributes="href day_url">
-        [+]        
+      <a href="#" class="add-event" title="Add event"
+        tal:attributes="href day_url"
+        i18n:attributes="title">
+        <img alt="(+)"
+          tal:attributes="src context/++resource++zeit.cms/icons/insert.png" />
       </a>
       <script type="text/javascript" tal:content="string:
         var $element_id = new zeit.calendar.DND('$day_url', '$element_id');"

@@ -111,6 +111,11 @@ label.kultur,
     visibility: visible;
 }
 
+#calendar td.day a.add-event > img {
+  border: 0;
+  vertical-align: middle;
+}
+
 #calendar .event {
   overflow: hidden;
   margin-top: 0.5ex;
@@ -138,4 +143,6 @@ label.kultur,
 
 div.day {
   top: 1ex;
+  font-size: 1.2em;
+  margin-bottom: 0.5em;
 }

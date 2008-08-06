@@ -21,28 +21,43 @@
     font-weight: normal;
 }
 
-.calendar-links .mode-switch {
+.calendar-links > #ressort-filter {
     display: inline;
     margin-right: 4em;
     margin-left: 2em;
 }
 
-.calendar-links .mode-switch a {
-    margin-right: 1em;
+.calendar-links > #ressort-filter > form,
+.calendar-links > #ressort-filter > form > .ressort {
+  display: inline;
 }
 
-.calendar-links .backforward {
+.calendar-links > #ressort-filter > form > .ressort input {
+  margin-left: 2em;
+}
+
+.calendar-links > .backforward {
     display: inline;
 }
 
-.MonthView {
-    background: url("/@@/zeit.calendar/icons/monthview.png") no-repeat left center;
-    padding-left: 20px;
+/* Ressort colors */
+
+label.politik,
+.politik .event-title {
+  color: #46f;
 }
-.WeekView {
-    background: url("/@@/zeit.calendar/icons/weekview.png") no-repeat left center;
-    padding-left: 20px;
+
+label.wirtschaft,
+.wirtschaft .event-title {
+  color: #f63;
 }
+
+label.kultur,
+.kultur .event-title {
+  color: #0a6;
+}
+
+
 
 .calendar-table {
   position: absolute;

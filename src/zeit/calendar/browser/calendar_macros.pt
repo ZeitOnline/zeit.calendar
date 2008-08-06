@@ -11,7 +11,7 @@
         [+]        
       </a>
       <script type="text/javascript" tal:content="string:
-        var $element_id = new CalendarDayDND('$day_url', '$element_id');"
+        var $element_id = new zeit.calendar.DND('$day_url', '$element_id');"
         ></script>
     </div>
     <tal:event repeat="event day/events">
@@ -39,6 +39,21 @@
 
   <metal:macro define-macro="navigation">
 
+    <div id="ressort-filter">
+      <form>
+        <div class="ressort"
+          tal:repeat="combined view/combined_ressort">
+          <label tal:attributes="class combined/css_class">
+            <input type="checkbox" value="1"
+              tal:attributes="
+              name combined/css_class;
+              checked python:combined['css_class'] not in view.hidden_ressorts" />
+            <span tal:content="combined/title" />
+          </label>
+        </div>
+      </form>
+    </div>
+
     <div class="backforward">
       <a href="#"
         tal:attributes="href python:view.get_navigation_url(view.fastbackward)">
@@ -64,6 +79,10 @@
         »
       </a> 
     </div>
+    <script language="javascript" tal:content="string:
+      new zeit.calendar.RessortFilter('${context/@@absolute_url}');  
+      ">
+    </script>
 
   </metal:macro>
 </html>

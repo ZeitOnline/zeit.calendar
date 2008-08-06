@@ -42,6 +42,25 @@ class IndexRedirect(zeit.cms.browser.view.Base):
 
 class CalendarBase(object):
 
+    misc_class = 'misc'
+    combined_ressort = (
+        dict(title=u'Politik',
+             ressorts=('Deutschland', 'International'),
+             css_class='politik'),
+        dict(title=u'Wirtschaft',
+             ressorts=('Wirtschaft', 'Finanzen'),
+             css_class='wirtschaft'),
+        dict(title=u'Kultur',
+             ressorts=('Kultur', 'Feuilleton', 'Musik', 'Literatur'),
+             css_class='kultur'),
+        dict(title=u'weitere Themen',
+             css_class=misc_class))
+
+    ressort_css = {}
+    for combined in combined_ressort:
+        for ressort in combined.get('ressorts', []):
+            ressort_css[ressort] = combined['css_class']
+
     def __init__(self, context, request):
         self.context = context
         self.request = request
@@ -134,6 +153,13 @@ class CalendarBase(object):
             classes.append('completed')
         if event.thema:
             classes.append('thema')
+        ressort_class = self.ressort_css.get(event.ressort)
+        if ressort_class:
+            classes.append(ressort_class)
+        else:
+            classes.append(self.misc_class)
+        if ressort_class in self.hidden_ressorts:
+            classes.append('hidden')
         return ' '.join(classes)
 
     @zope.cachedescriptors.property.Lazy
@@ -143,6 +169,14 @@ class CalendarBase(object):
     @zope.cachedescriptors.property.Lazy
     def today(self):
         return datetime.date.today()
+
+    @zope.cachedescriptors.property.Lazy
+    def hidden_ressorts(self):
+        last_view = zeit.calendar.browser.interfaces.ILastView(
+            self.request.principal, None)
+        if last_view is None:
+            return ()
+        return last_view.hidden_ressorts
 
 
 class Calendar(CalendarBase):
@@ -285,6 +319,26 @@ class LastView(persistent.Persistent,
     zope.component.adapts(zope.security.interfaces.IPrincipal)
 
     last_view = 'month.html'
+    hidden_ressorts = frozenset()
 
 
 lastViewFactory = zope.annotation.factory(LastView)
+
+
+class HideRessort(object):
+    """Hide a ressort."""
+
+    def __call__(self, ressort):
+        last_view = zeit.calendar.browser.interfaces.ILastView(
+            self.request.principal)
+        last_view.hidden_ressorts = last_view.hidden_ressorts.union([ressort])
+
+
+class ShowRessort(object):
+    """Show a ressort."""
+
+    def __call__(self, ressort):
+        last_view = zeit.calendar.browser.interfaces.ILastView(
+            self.request.principal)
+        last_view.hidden_ressorts = last_view.hidden_ressorts.difference(
+            [ressort])

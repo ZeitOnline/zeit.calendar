@@ -30,8 +30,6 @@ u'FG fuer Foo erstellen.'
 False
 
 
- XXX test object references / related
-
 Calendar
 ========
 

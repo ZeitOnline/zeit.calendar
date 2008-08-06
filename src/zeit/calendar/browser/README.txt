@@ -82,7 +82,7 @@ After successful adding, the calendar is displayed for the added month:
       <script ...
         ...</script>
     </div>
-    <div class="event">
+    <div class="event misc">
       <a href="...">Bild erstellen</a>
     </div>
   </td>
@@ -279,3 +279,299 @@ True
 False
 
 
+Filtering events
+================
+
+Events can be filtered for their ressort. Initially all events are shown.
+
+>>> browser.getLink('Calendar').click()
+>>> print browser.contents
+<?xml ...
+    <div id="ressort-filter">
+      <form>
+        <div class="ressort">
+          <label class="politik">
+            <input type="checkbox" value="1"
+                   checked="checked" name="politik" />
+            <span>Politik</span>
+          </label>
+        </div>
+        <div class="ressort">
+          <label class="wirtschaft">
+            <input type="checkbox" value="1"
+                   checked="checked" name="wirtschaft" />
+            <span>Wirtschaft</span>
+          </label>
+        </div>
+        <div class="ressort">
+          <label class="kultur">
+            <input type="checkbox" value="1"
+                   checked="checked" name="kultur" />
+            <span>Kultur</span>
+          </label>
+        </div>
+        <div class="ressort">
+          <label class="misc">
+            <input type="checkbox" value="1"
+                   checked="checked" name="misc" />
+            <span>weitere Themen</span>
+          </label>
+        </div>
+      </form>
+    </div>
+    ...
+
+Indivdual events are also marked with a css class when they have a ressort
+associated:
+
+>>> browser.open('http://localhost:8080/++skin++cms/calendar/'
+...              '@@zeit.calendar.Event.AddForm')
+>>> browser.getControl('Start').value = '2008-08-07'
+>>> browser.getControl('Title').value = 'Olympia'
+>>> browser.getControl('Ressort').displayValue = ['International']
+>>> browser.getControl(name='form.actions.add').click()
+
+>>> browser.open('http://localhost:8080/++skin++cms/calendar/'
+...              '@@zeit.calendar.Event.AddForm')
+>>> browser.getControl('Start').value = '2008-08-07'
+>>> browser.getControl('Title').value = 'Oelpreis'
+>>> browser.getControl('Ressort').displayValue = ['Wirtschaft']
+>>> browser.getControl(name='form.actions.add').click()
+
+>>> print browser.contents
+<?xml ...
+      <div class="event wirtschaft">
+        <a href="http://localhost:8080/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=oelpreis"
+           title="Delete" class="event-delete">
+          [x]
+        </a>
+        <a href="http://localhost:8080/++skin++cms/calendar/oelpreis/@@edit.html"
+           class="event-title" title="Oelpreis">Oelpreis</a>
+      </div>
+      <div class="event politik">
+        <a href="http://localhost:8080/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=olympia"
+           title="Delete" class="event-delete">
+          [x]
+        </a>
+        <a href="http://localhost:8080/++skin++cms/calendar/olympia/@@edit.html"
+           class="event-title" title="Olympia">Olympia</a>
+      </div>
+      ...
+
+
+When we hide "Politik" this is indicated by the "hidden" css class. Hiding is
+done in the browser via Javascript. The current hiding state is transferred to
+the server via an AJAX call so the server can restore the state later.
+Construct a request to the server to hide politik:
+
+>>> browser.open('http://localhost:8080/++skin++cms/calendar/'
+...              '@@hide-ressort?ressort=politik')
+
+Accessing the calendar now shows 1. that the Politk checkbox is not checked and
+2. that the politk event is hidden:
+
+>>> browser.open('http://localhost:8080/++skin++cms/calendar')
+>>> print browser.contents
+<?xml ...
+    <div id="ressort-filter">
+      <form>
+        <div class="ressort">
+          <label class="politik">
+            <input type="checkbox" value="1" name="politik" />
+            <span>Politik</span>
+          </label>
+        </div>
+        <div class="ressort">
+          <label class="wirtschaft">
+            <input type="checkbox" value="1"
+                   checked="checked" name="wirtschaft" />
+            <span>Wirtschaft</span>
+          </label>
+        </div>
+        <div class="ressort">
+          <label class="kultur">
+            <input type="checkbox" value="1"
+                   checked="checked" name="kultur" />
+            <span>Kultur</span>
+          </label>
+        </div>
+        <div class="ressort">
+          <label class="misc">
+            <input type="checkbox" value="1"
+                   checked="checked" name="misc" />
+            <span>weitere Themen</span>
+          </label>
+        </div>
+      </form>
+    </div>
+    ...
+      <div class="event wirtschaft">
+        <a href="http://localhost:8080/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=oelpreis"
+           title="Delete" class="event-delete">
+          [x]
+        </a>
+        <a href="http://localhost:8080/++skin++cms/calendar/oelpreis/@@edit.html"
+           class="event-title" title="Oelpreis">Oelpreis</a>
+      </div>
+      <div class="event politik hidden">
+        <a href="http://localhost:8080/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=olympia"
+           title="Delete" class="event-delete">
+          [x]
+        </a>
+        <a href="http://localhost:8080/++skin++cms/calendar/olympia/@@edit.html"
+           class="event-title" title="Olympia">Olympia</a>
+      </div>
+      ...
+
+
+We can of course hide more than one at a time:
+
+>>> browser.open('http://localhost:8080/++skin++cms/calendar/'
+...              '@@hide-ressort?ressort=wirtschaft')
+>>> browser.open('http://localhost:8080/++skin++cms/calendar')
+>>> print browser.contents
+<?xml ...
+    <div id="ressort-filter">
+      <form>
+        <div class="ressort">
+          <label class="politik">
+            <input type="checkbox" value="1" name="politik" />
+            <span>Politik</span>
+          </label>
+        </div>
+        <div class="ressort">
+          <label class="wirtschaft">
+            <input type="checkbox" value="1" name="wirtschaft" />
+            <span>Wirtschaft</span>
+          </label>
+        </div>
+        <div class="ressort">
+          <label class="kultur">
+            <input type="checkbox" value="1"
+                   checked="checked" name="kultur" />
+            <span>Kultur</span>
+          </label>
+        </div>
+        <div class="ressort">
+          <label class="misc">
+            <input type="checkbox" value="1"
+                   checked="checked" name="misc" />
+            <span>weitere Themen</span>
+          </label>
+        </div>
+      </form>
+    </div>
+    ...
+      <div class="event wirtschaft hidden">
+        <a href="http://localhost:8080/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=oelpreis"
+           title="Delete" class="event-delete">
+          [x]
+        </a>
+        <a href="http://localhost:8080/++skin++cms/calendar/oelpreis/@@edit.html"
+           class="event-title" title="Oelpreis">Oelpreis</a>
+      </div>
+      <div class="event politik hidden">
+        <a href="http://localhost:8080/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=olympia"
+           title="Delete" class="event-delete">
+          [x]
+        </a>
+        <a href="http://localhost:8080/++skin++cms/calendar/olympia/@@edit.html"
+           class="event-title" title="Olympia">Olympia</a>
+      </div>
+      ...
+
+
+Let's show politik again:
+
+>>> browser.open('http://localhost:8080/++skin++cms/calendar/'
+...              '@@show-ressort?ressort=politik')
+>>> browser.open('http://localhost:8080/++skin++cms/calendar')
+>>> print browser.contents
+<?xml ...
+    <div id="ressort-filter">
+      <form>
+        <div class="ressort">
+          <label class="politik">
+            <input type="checkbox" value="1"
+                   checked="checked" name="politik" />
+            <span>Politik</span>
+          </label>
+        </div>
+        <div class="ressort">
+          <label class="wirtschaft">
+            <input type="checkbox" value="1" name="wirtschaft" />
+            <span>Wirtschaft</span>
+          </label>
+        </div>
+        <div class="ressort">
+          <label class="kultur">
+            <input type="checkbox" value="1"
+                   checked="checked" name="kultur" />
+            <span>Kultur</span>
+          </label>
+        </div>
+        <div class="ressort">
+          <label class="misc">
+            <input type="checkbox" value="1"
+                   checked="checked" name="misc" />
+            <span>weitere Themen</span>
+          </label>
+        </div>
+      </form>
+    </div>
+    ...
+      <div class="event wirtschaft hidden">
+        <a href="http://localhost:8080/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=oelpreis"
+           title="Delete" class="event-delete">
+          [x]
+        </a>
+        <a href="http://localhost:8080/++skin++cms/calendar/oelpreis/@@edit.html"
+           class="event-title" title="Oelpreis">Oelpreis</a>
+      </div>
+      <div class="event politik">
+        <a href="http://localhost:8080/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=olympia"
+           title="Delete" class="event-delete">
+          [x]
+        </a>
+        <a href="http://localhost:8080/++skin++cms/calendar/olympia/@@edit.html"
+           class="event-title" title="Olympia">Olympia</a>
+      </div>
+      ...
+
+
+When we add an event to no ressort it will be added to the misc class:
+
+>>> browser.open('http://localhost:8080/++skin++cms/calendar/'
+...              '@@zeit.calendar.Event.AddForm')
+>>> browser.getControl('Start').value = '2008-08-07'
+>>> browser.getControl('Title').value = 'Ocht'
+>>> browser.getControl(name='form.actions.add').click()
+>>> print browser.contents
+<?xml ...
+      <div class="event misc">
+        <a href="http://localhost:8080/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=ocht"
+           title="Delete" class="event-delete">
+          [x]
+        </a>
+        <a href="http://localhost:8080/++skin++cms/calendar/ocht/@@edit.html"
+           class="event-title" title="Ocht">Ocht</a>
+      </div>
+      ...
+
+
+Other ressors are also added to misc:
+
+>>> browser.getLink('Ocht').click()
+>>> browser.getControl('Ressort').displayValue = ['Computer']
+>>> browser.getControl('Apply').click()
+>>> print browser.contents
+<?xml ...
+      <div class="event misc">
+        <a href="http://localhost:8080/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=ocht"
+           title="Delete" class="event-delete">
+          [x]
+        </a>
+        <a href="http://localhost:8080/++skin++cms/calendar/ocht/@@edit.html"
+           class="event-title" title="Ocht">Ocht</a>
+      </div>
+      ...

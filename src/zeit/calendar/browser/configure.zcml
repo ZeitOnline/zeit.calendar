@@ -41,9 +41,26 @@
 
   <browser:page
     for="zeit.calendar.interfaces.ICalendar"
+    layer="zeit.cms.browser.interfaces.ICMSLayer"
+    name="calendar-macros"
     permission="zope.View"
     template="calendar_macros.pt"
-    name="calendar-macros"
+    />
+
+  <browser:page
+    for="zeit.calendar.interfaces.ICalendar"
+    layer="zeit.cms.browser.interfaces.ICMSLayer"
+    name="hide-ressort"
+    class=".calendar_view.HideRessort"
+    permission="zope.View"
+    />
+
+  <browser:page
+    for="zeit.calendar.interfaces.ICalendar"
+    layer="zeit.cms.browser.interfaces.ICMSLayer"
+    name="show-ressort"
+    class=".calendar_view.ShowRessort"
+    permission="zope.View"
     />
 
   <!-- events -->

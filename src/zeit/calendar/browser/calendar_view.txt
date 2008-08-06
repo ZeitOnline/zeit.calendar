@@ -66,7 +66,7 @@ According to the request we expect the calendar for 6/2001 back[#session]_:
    'is_today': False},
   {'date_str': '2001-06-12',
    'day': 12,
-   'events': [{'css': 'event',
+   'events': [{'css': 'event misc',
                'obj': <zeit.calendar.event.Event object at 0x...>}],
    'have_events': True,
    'is_today': False},
@@ -131,7 +131,7 @@ Get the events:
 >>> pprint(week.selected_week_calendar)
 [{'date_str': '2001-06-12',
   'day': 12,
-  'events': [{'css': 'event',
+  'events': [{'css': 'event misc',
               'obj': <zeit.calendar.event.Event object at 0x...>}],
   'have_events': True,
   'is_today': False},

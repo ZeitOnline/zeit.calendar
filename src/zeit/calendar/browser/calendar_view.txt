@@ -10,12 +10,12 @@ The calendar view provides some helper functionality:
 
 >>> from zeit.calendar.browser.calendar_view import Calendar
 >>> import zeit.calendar.event
->>> event = zeit.calendar.event.Event()
+>>> events = [zeit.calendar.event.Event()]
 >>> class CalendarMock(object):
 ...
 ...     def getEvents(self, date):
 ...         if date.day == 12:
-...             return [event]
+...             return events
 ...         return None
 ...
 ...     def haveEvents(self, date):
@@ -147,6 +147,40 @@ Get the events:
   'have_events': False,
   'is_today': False}]
 
+
+Sorting of events
+=================
+
+Events in the calendar are sorted:
+
+1. Unfinished events are before completed events. 
+2. Higher priority events are above lower priority events.
+
+Add a few events:
+
+>>> events[:] = []
+>>> for priority in (None, 0, 1, -1):
+...     for completed in (True, False):
+...         e = zeit.calendar.event.Event()
+...         e.priority = priority
+...         e.completed = completed
+...         e.title = u'P=%s C=%s' % (priority, completed)
+...         events.append(e)
+
+
+Get the dict for the day and print out the titles:
+
+>>> import datetime
+>>> for d in week._get_day_dict(datetime.date(2008, 4, 12))['events']:
+...     print d['obj'].title
+P=1 C=False
+P=0 C=False
+P=-1 C=False
+P=None C=False
+P=1 C=True
+P=0 C=True
+P=-1 C=True
+P=None C=True
 
 Clean up:
 

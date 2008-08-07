@@ -17,6 +17,7 @@ import zope.session.interfaces
 import zope.viewlet.viewlet
 
 import zeit.cms.browser.menu
+import zeit.cms.browser.view
 
 import zeit.calendar.interfaces
 import zeit.calendar.browser.interfaces
@@ -127,6 +128,8 @@ class CalendarBase(object):
         events = self.context.getEvents(date)
         event_dicts = None
         if events:
+            events = sorted(events, key=lambda e: e.priority, reverse=True)
+            events = sorted(events, key=lambda e: e.completed)
             event_dicts = [dict(obj=event,
                                 css=self.get_event_css(event))
                             for event in events]

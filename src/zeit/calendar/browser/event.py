@@ -22,7 +22,8 @@ class EventFormBase(object):
     field_groups = (
         gocept.form.grouped.Fields(
             _("Event"),
-            ('start', 'location', 'thema', 'completed', 'added_by'),
+            ('start', 'location', 'priority', 'thema', 'completed',
+             'added_by'),
             css_class='column-left-small'),
         gocept.form.grouped.Fields(
             _('Description'),

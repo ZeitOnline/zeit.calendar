@@ -13,6 +13,8 @@ import zope.schema
 
 import zeit.cms.content.contentsource
 import zeit.cms.content.sources
+
+import zeit.calendar.source
 from zeit.calendar.i18n import MessageFactory as _
 
 
@@ -62,6 +64,11 @@ class ICalendarEvent(zope.interface.Interface):
         title=_('Added by'),
         readonly=True,
         source=zope.app.security.vocabulary.PrincipalSource())
+
+    priority = zope.schema.Choice(
+        title=_('Priority'),
+        required=False,
+        source=zeit.calendar.source.PrioritySource())
 
 
 class ICalendar(zope.app.container.interfaces.IReadContainer):

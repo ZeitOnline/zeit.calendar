@@ -20,6 +20,7 @@ class Event(persistent.Persistent,
     completed = False
     description = None
     location = None
+    priority = None
     related = ()
     ressort = None
     start = None

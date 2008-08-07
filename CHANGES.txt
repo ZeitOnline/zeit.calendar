@@ -9,6 +9,7 @@ zeit.calendar changes
 - Wochenansicht zeigt jetzt Datum in der Spaltenüberschrift.
 - Farbkodierung für Ressorts.
 - Filter für Ressorts.
+- Feld für Priorität.
 
 1.1 (2008-08-01)
 ----------------

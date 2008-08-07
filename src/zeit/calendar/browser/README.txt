@@ -100,6 +100,16 @@ There is no ressort set currently:
 
 >>> browser.getControl('Ressort').displayValue
 ['(no value)']
+>>> browser.getControl('Ressort').displayOptions
+['(no value)', 'Deutschland', 'International', ...]
+
+The inital prioirty is not set:
+
+>>> browser.getControl('Priority').displayValue
+['(no value)']
+>>> browser.getControl('Priority').displayOptions
+['(no value)', '^^ mandatory', '^ important', '> suggestion']
+
 
 On the edit screen there is also information about who created the image:
 

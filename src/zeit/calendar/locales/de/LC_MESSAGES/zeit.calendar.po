@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: zeit.calendar\n"
-"POT-Creation-Date: Mon Aug  4 15:03:59 2008\n"
+"POT-Creation-Date: Thu Aug  7 15:01:42 2008\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Christian Zagrodnick <cz@gocept.com>\n"
 "Language-Team: Christian Zagrodnick <cz@gocept.com>\n"
@@ -11,42 +11,42 @@ msgstr ""
 "X-Poedit-Language: German\n"
 "X-Poedit-Country: GERMANY\n"
 
-#: src/zeit/calendar/browser/calendar_macros.pt:21
+#: src/zeit/calendar/browser/calendar_macros.pt:23
 msgid "Delete"
 msgstr "Löschen"
 
-#: src/zeit/calendar/browser/calendar_macros.pt:45
-msgid "Month"
-msgstr "Monat"
-
-#: src/zeit/calendar/browser/calendar_macros.pt:50
-msgid "Week"
-msgstr "Woche"
-
-#: src/zeit/calendar/browser/calendar_macros.pt:67
+#: src/zeit/calendar/browser/calendar_macros.pt:69
 msgid "Today"
 msgstr "Heute"
 
 #. Default: ""
-#: src/zeit/calendar/browser/calendar_view.py:134
+#: src/zeit/calendar/browser/calendar_view.py:183
 msgid "Events for ${month}/${year}"
 msgstr "Termine für ${month}/${year}"
 
 #. Default: ""
-#: src/zeit/calendar/browser/calendar_view.py:200
+#: src/zeit/calendar/browser/calendar_view.py:250
 msgid "Events for ${start} - ${end}"
 msgstr "Termine für ${start} – ${end}"
 
-#: src/zeit/calendar/browser/calendar_view.py:26
+#: src/zeit/calendar/browser/calendar_view.py:28
 msgid "Calendar"
 msgstr "Kalender"
+
+#: src/zeit/calendar/browser/configure.zcml:24
+msgid "Month"
+msgstr "Monat"
+
+#: src/zeit/calendar/browser/configure.zcml:33
+msgid "Week"
+msgstr "Woche"
 
 #: src/zeit/calendar/browser/event.py:24
 msgid "Event"
 msgstr "Termin"
 
 #: src/zeit/calendar/browser/event.py:28
-#: src/zeit/calendar/interfaces.py:31
+#: src/zeit/calendar/interfaces.py:33
 msgid "Description"
 msgstr "Beschreibung"
 
@@ -55,6 +55,7 @@ msgid "Related"
 msgstr "Links"
 
 #: src/zeit/calendar/browser/event.py:52
+#: src/zeit/calendar/browser/calendar_macros.pt:9
 msgid "Add event"
 msgstr "Termin hinzufügen"
 
@@ -66,55 +67,75 @@ msgstr "Termin bearbeiten"
 msgid "Apply"
 msgstr "Speichern"
 
-#: src/zeit/calendar/interfaces.py:23
+#: src/zeit/calendar/interfaces.py:25
 msgid "Start"
 msgstr "Beginn"
 
-#: src/zeit/calendar/interfaces.py:24
+#: src/zeit/calendar/interfaces.py:26
 msgid "Date when the event starts."
 msgstr "Datum/Uhrzeit des Terminbeginns"
 
-#: src/zeit/calendar/interfaces.py:27
+#: src/zeit/calendar/interfaces.py:29
 msgid "Title"
 msgstr "Titel"
 
-#: src/zeit/calendar/interfaces.py:28
+#: src/zeit/calendar/interfaces.py:30
 msgid "Title will be shown in overview pages."
 msgstr "Der Titel wird in den Übersitchtsseiten angezeigt."
 
-#: src/zeit/calendar/interfaces.py:35
+#: src/zeit/calendar/interfaces.py:37
 msgid "Related content"
 msgstr " Verlinkte Objekte"
 
-#: src/zeit/calendar/interfaces.py:36
+#: src/zeit/calendar/interfaces.py:38
 msgid "Documents that are related to this object."
 msgstr "Dokumente, die verlinkt werden sollen."
 
-#: src/zeit/calendar/interfaces.py:43
+#: src/zeit/calendar/interfaces.py:45
 msgid "Location/Type"
 msgstr " Location/Typ"
 
-#: src/zeit/calendar/interfaces.py:44
+#: src/zeit/calendar/interfaces.py:46
 msgid "Where should the article be placed."
 msgstr "Wo soll der Artikel erscheinen?"
 
-#: src/zeit/calendar/interfaces.py:48
+#: src/zeit/calendar/interfaces.py:50
+msgid "Ressort"
+msgstr "Ressort"
+
+#: src/zeit/calendar/interfaces.py:55
 msgid "Topic?"
 msgstr "Thema?"
 
-#: src/zeit/calendar/interfaces.py:49
+#: src/zeit/calendar/interfaces.py:56
 msgid "Is the article a topic for the next week?"
 msgstr "Ist der Artikel ggf. ein Thema für die nächste Woche?"
 
-#: src/zeit/calendar/interfaces.py:52
+#: src/zeit/calendar/interfaces.py:59
 msgid "Completed?"
 msgstr "Erledigt?"
 
-#: src/zeit/calendar/interfaces.py:53
+#: src/zeit/calendar/interfaces.py:60
 msgid "Check when the event has been completed."
 msgstr "Auswählen, wenn die Aufgabe erledigt ist."
 
-#: src/zeit/calendar/interfaces.py:57
+#: src/zeit/calendar/interfaces.py:64
 msgid "Added by"
 msgstr "Hinzugefügt von"
+
+#: src/zeit/calendar/interfaces.py:69
+msgid "Priority"
+msgstr "Priorität"
+
+#: src/zeit/calendar/source.py:13
+msgid "^^ mandatory"
+msgstr "⇈ zwingend"
+
+#: src/zeit/calendar/source.py:14
+msgid "^ important"
+msgstr "↑ wichtig"
+
+#: src/zeit/calendar/source.py:15
+msgid "> suggestion"
+msgstr "↝ vorschlag"
 

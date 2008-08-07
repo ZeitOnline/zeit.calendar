@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Development/Unknown\n"
-"POT-Creation-Date: Mon Aug  4 15:03:59 2008\n"
+"POT-Creation-Date: Thu Aug  7 15:01:42 2008\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope3-dev@zope.org>\n"
@@ -23,34 +23,34 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: zope/app/locales/extract.py\n"
 
-#: src/zeit/calendar/browser/calendar_macros.pt:21
+#: src/zeit/calendar/browser/calendar_macros.pt:23
 msgid "Delete"
 msgstr ""
 
-#: src/zeit/calendar/browser/calendar_macros.pt:45
-msgid "Month"
-msgstr ""
-
-#: src/zeit/calendar/browser/calendar_macros.pt:50
-msgid "Week"
-msgstr ""
-
-#: src/zeit/calendar/browser/calendar_macros.pt:67
+#: src/zeit/calendar/browser/calendar_macros.pt:69
 msgid "Today"
 msgstr ""
 
-#: src/zeit/calendar/browser/calendar_view.py:134
+#: src/zeit/calendar/browser/calendar_view.py:183
 #. Default: ""
 msgid "Events for ${month}/${year}"
 msgstr ""
 
-#: src/zeit/calendar/browser/calendar_view.py:200
+#: src/zeit/calendar/browser/calendar_view.py:250
 #. Default: ""
 msgid "Events for ${start} - ${end}"
 msgstr ""
 
-#: src/zeit/calendar/browser/calendar_view.py:26
+#: src/zeit/calendar/browser/calendar_view.py:28
 msgid "Calendar"
+msgstr ""
+
+#: src/zeit/calendar/browser/configure.zcml:24
+msgid "Month"
+msgstr ""
+
+#: src/zeit/calendar/browser/configure.zcml:33
+msgid "Week"
 msgstr ""
 
 #: src/zeit/calendar/browser/event.py:24
@@ -58,7 +58,7 @@ msgid "Event"
 msgstr ""
 
 #: src/zeit/calendar/browser/event.py:28
-#: src/zeit/calendar/interfaces.py:31
+#: src/zeit/calendar/interfaces.py:33
 msgid "Description"
 msgstr ""
 
@@ -67,6 +67,7 @@ msgid "Related"
 msgstr ""
 
 #: src/zeit/calendar/browser/event.py:52
+#: src/zeit/calendar/browser/calendar_macros.pt:9
 msgid "Add event"
 msgstr ""
 
@@ -78,55 +79,75 @@ msgstr ""
 msgid "Apply"
 msgstr ""
 
-#: src/zeit/calendar/interfaces.py:23
+#: src/zeit/calendar/interfaces.py:25
 msgid "Start"
 msgstr ""
 
-#: src/zeit/calendar/interfaces.py:24
+#: src/zeit/calendar/interfaces.py:26
 msgid "Date when the event starts."
 msgstr ""
 
-#: src/zeit/calendar/interfaces.py:27
+#: src/zeit/calendar/interfaces.py:29
 msgid "Title"
 msgstr ""
 
-#: src/zeit/calendar/interfaces.py:28
+#: src/zeit/calendar/interfaces.py:30
 msgid "Title will be shown in overview pages."
 msgstr ""
 
-#: src/zeit/calendar/interfaces.py:35
+#: src/zeit/calendar/interfaces.py:37
 msgid "Related content"
 msgstr ""
 
-#: src/zeit/calendar/interfaces.py:36
+#: src/zeit/calendar/interfaces.py:38
 msgid "Documents that are related to this object."
 msgstr ""
 
-#: src/zeit/calendar/interfaces.py:43
+#: src/zeit/calendar/interfaces.py:45
 msgid "Location/Type"
 msgstr ""
 
-#: src/zeit/calendar/interfaces.py:44
+#: src/zeit/calendar/interfaces.py:46
 msgid "Where should the article be placed."
 msgstr ""
 
-#: src/zeit/calendar/interfaces.py:48
+#: src/zeit/calendar/interfaces.py:50
+msgid "Ressort"
+msgstr ""
+
+#: src/zeit/calendar/interfaces.py:55
 msgid "Topic?"
 msgstr ""
 
-#: src/zeit/calendar/interfaces.py:49
+#: src/zeit/calendar/interfaces.py:56
 msgid "Is the article a topic for the next week?"
 msgstr ""
 
-#: src/zeit/calendar/interfaces.py:52
+#: src/zeit/calendar/interfaces.py:59
 msgid "Completed?"
 msgstr ""
 
-#: src/zeit/calendar/interfaces.py:53
+#: src/zeit/calendar/interfaces.py:60
 msgid "Check when the event has been completed."
 msgstr ""
 
-#: src/zeit/calendar/interfaces.py:57
+#: src/zeit/calendar/interfaces.py:64
 msgid "Added by"
+msgstr ""
+
+#: src/zeit/calendar/interfaces.py:69
+msgid "Priority"
+msgstr ""
+
+#: src/zeit/calendar/source.py:13
+msgid "^^ mandatory"
+msgstr ""
+
+#: src/zeit/calendar/source.py:14
+msgid "^ important"
+msgstr ""
+
+#: src/zeit/calendar/source.py:15
+msgid "> suggestion"
 msgstr ""
 

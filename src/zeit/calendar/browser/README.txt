@@ -91,7 +91,7 @@ After successful adding, the calendar is displayed for the added month:
            href="http://localhost/++skin++cms/calendar/bild-erstellen/@@complete">
           <input type="checkbox" />
         </a>
-      <a href="...@@edit.html"...>Bild erstellen</a>
+      <a href="...@@edit.html"...>...Bild erstellen </a>
     </div>
   </td>
 ... 
@@ -363,12 +363,12 @@ associated:
       <div class="event wirtschaft">
         ...
         <a href="http://localhost/++skin++cms/calendar/oelpreis/@@edit.html"
-           class="event-title" title="Oelpreis">Oelpreis</a>
+           class="event-title" title="Oelpreis">...Oelpreis </a>
       </div>
       <div class="event politik">
         ...
         <a href="http://localhost/++skin++cms/calendar/olympia/@@edit.html"
-           class="event-title" title="Olympia">Olympia</a>
+           class="event-title" title="Olympia">...Olympia </a>
       </div>
       ...
 
@@ -422,12 +422,12 @@ Accessing the calendar now shows 1. that the Politk checkbox is not checked and
       <div class="event wirtschaft">
         ...
         <a href="http://localhost/++skin++cms/calendar/oelpreis/@@edit.html"
-           class="event-title" title="Oelpreis">Oelpreis</a>
+           class="event-title" title="Oelpreis">...Oelpreis </a>
       </div>
       <div class="event politik hidden">
         ...
         <a href="http://localhost/++skin++cms/calendar/olympia/@@edit.html"
-           class="event-title" title="Olympia">Olympia</a>
+           class="event-title" title="Olympia">...Olympia </a>
       </div>
       ...
 
@@ -473,12 +473,12 @@ We can of course hide more than one at a time:
       <div class="event wirtschaft hidden">
         ...
         <a href="http://localhost/++skin++cms/calendar/oelpreis/@@edit.html"
-           class="event-title" title="Oelpreis">Oelpreis</a>
+           class="event-title" title="Oelpreis">...Oelpreis </a>
       </div>
       <div class="event politik hidden">
         ...
         <a href="http://localhost/++skin++cms/calendar/olympia/@@edit.html"
-           class="event-title" title="Olympia">Olympia</a>
+           class="event-title" title="Olympia">...Olympia </a>
       </div>
       ...
 
@@ -525,12 +525,12 @@ Let's show politik again:
       <div class="event wirtschaft hidden">
         ...
         <a href="http://localhost/++skin++cms/calendar/oelpreis/@@edit.html"
-           class="event-title" title="Oelpreis">Oelpreis</a>
+           class="event-title" title="Oelpreis">...Oelpreis </a>
       </div>
       <div class="event politik">
         ...
         <a href="http://localhost/++skin++cms/calendar/olympia/@@edit.html"
-           class="event-title" title="Olympia">Olympia</a>
+           class="event-title" title="Olympia">...Olympia </a>
       </div>
       ...
 
@@ -547,7 +547,7 @@ When we add an event to no ressort it will be added to the misc class:
       <div class="event misc">
         ...
         <a href="http://localhost/++skin++cms/calendar/ocht/@@edit.html"
-           class="event-title" title="Ocht">Ocht</a>
+           class="event-title" title="Ocht">...Ocht </a>
       </div>
       ...
 
@@ -562,7 +562,7 @@ Other ressors are also added to misc:
       <div class="event misc">
         ...
         <a href="http://localhost/++skin++cms/calendar/ocht/@@edit.html"
-           class="event-title" title="Ocht">Ocht</a>
+           class="event-title" title="Ocht">...Ocht </a>
       </div>
       ...
 
@@ -577,7 +577,7 @@ Those can be hidden as well:
       <div class="event misc hidden">
         ...
         <a href="http://localhost/++skin++cms/calendar/ocht/@@edit.html"
-           class="event-title" title="Ocht">Ocht</a>
+           class="event-title" title="Ocht">...Ocht </a>
       </div>
       ...
 
@@ -597,7 +597,7 @@ is not checked thus the event is not completed:
           <input type="checkbox" />
         </a>
         <a href="http://localhost/++skin++cms/calendar/olympia/@@edit.html"
-           class="event-title" title="Olympia">Olympia</a>
+           class="event-title" title="Olympia">...Olympia </a>
       </div>
       ...
 
@@ -616,7 +616,7 @@ open it):
           <input type="checkbox" checked="checked" />
         </a>
         <a href="http://localhost/++skin++cms/calendar/olympia/@@edit.html"
-           class="event-title" title="Olympia">Olympia</a>
+           class="event-title" title="Olympia">...Olympia </a>
       </div>
       ...
 
@@ -634,6 +634,50 @@ We can of course also "uncomplete" the event:
           <input type="checkbox" />
         </a>
         <a href="http://localhost/++skin++cms/calendar/olympia/@@edit.html"
-           class="event-title" title="Olympia">Olympia</a>
+           class="event-title" title="Olympia">...Olympia </a>
+      </div>
+      ...
+
+Priority
+========
+
+The priority is visible in the calendar. The olympia article as no priority
+set:
+
+>>> browser.open('http://localhost/++skin++cms/calendar')
+>>> print browser.contents
+<?xml...
+      <div class="event politik">
+        <a title="Complete event"
+           class="event-not-completed"
+           href="http://localhost/++skin++cms/calendar/olympia/@@complete">
+          <input type="checkbox" />
+        </a>
+        <a href="http://localhost/++skin++cms/calendar/olympia/@@edit.html"
+           class="event-title" title="Olympia">
+          <span class="priority"></span>
+          Olympia
+        </a>
+      </div>
+      ...
+
+Set to "suggestion"
+
+>>> browser.getLink('Olympia').click()
+>>> browser.getControl('Priority').displayValue = ['suggestion']
+>>> browser.getControl('Apply').click()
+>>> print browser.contents
+<?xml...
+      <div class="event politik">
+        <a title="Complete event"
+           class="event-not-completed"
+           href="http://localhost/++skin++cms/calendar/olympia/@@complete">
+          <input type="checkbox" />
+        </a>
+        <a href="http://localhost/++skin++cms/calendar/olympia/@@edit.html"
+           class="event-title" title="Olympia">
+          <span class="priority">&gt; suggestion</span>
+          Olympia
+        </a>
       </div>
       ...

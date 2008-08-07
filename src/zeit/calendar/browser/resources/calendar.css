@@ -122,6 +122,19 @@ label.kultur,
   white-space: nowrap;
 }
 
+.event-not-completed,
+.event-completed {
+  display: block;
+  float: left;
+}
+
+#calendar .priority {
+  display: block;
+  float: left;
+  width: 1em;
+  overflow: hidden;
+}
+
 #calendar .thema {
   background-color: #e88;
 }

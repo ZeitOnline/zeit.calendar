@@ -8,6 +8,7 @@ import datetime
 import persistent
 import zope.annotation
 import zope.app.container.contained
+import zope.app.form.browser.interfaces
 import zope.cachedescriptors.property
 import zope.component
 import zope.i18n.format
@@ -131,6 +132,7 @@ class CalendarBase(object):
             events = sorted(events, key=lambda e: e.priority, reverse=True)
             events = sorted(events, key=lambda e: e.completed)
             event_dicts = [dict(obj=event,
+                                priority=self.get_event_priority(event),
                                 css=self.get_event_css(event))
                             for event in events]
         return {'day': date.day,
@@ -161,6 +163,22 @@ class CalendarBase(object):
         if ressort_class in self.hidden_ressorts:
             classes.append('hidden')
         return ' '.join(classes)
+
+    def get_event_priority(self, event):
+        source = zeit.calendar.interfaces.ICalendarEvent['priority'].source
+        terms = zope.component.queryMultiAdapter(
+            (source, self.request),
+            zope.app.form.browser.interfaces.ITerms)
+        if terms is None:
+            return ''
+        try:
+            term = terms.getTerm(event.priority)
+        except KeyError:
+            return ''
+        return term.title
+
+
+
 
     @zope.cachedescriptors.property.Lazy
     def session(self):

@@ -51,7 +51,7 @@ Events
 
 Events can be added to the calendar:
 
->>> browser.open('http://localhost:8080/++skin++cms/calendar/'
+>>> browser.open('http://localhost/++skin++cms/calendar/'
 ...              '@@zeit.calendar.Event.AddForm')
 
 When we just open the add form, the start date is empty:
@@ -327,14 +327,14 @@ Events can be filtered for their ressort. Initially all events are shown.
 Indivdual events are also marked with a css class when they have a ressort
 associated:
 
->>> browser.open('http://localhost:8080/++skin++cms/calendar/'
+>>> browser.open('http://localhost/++skin++cms/calendar/'
 ...              '@@zeit.calendar.Event.AddForm')
 >>> browser.getControl('Start').value = '2008-08-07'
 >>> browser.getControl('Title').value = 'Olympia'
 >>> browser.getControl('Ressort').displayValue = ['International']
 >>> browser.getControl(name='form.actions.add').click()
 
->>> browser.open('http://localhost:8080/++skin++cms/calendar/'
+>>> browser.open('http://localhost/++skin++cms/calendar/'
 ...              '@@zeit.calendar.Event.AddForm')
 >>> browser.getControl('Start').value = '2008-08-07'
 >>> browser.getControl('Title').value = 'Oelpreis'
@@ -344,19 +344,19 @@ associated:
 >>> print browser.contents
 <?xml ...
       <div class="event wirtschaft">
-        <a href="http://localhost:8080/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=oelpreis"
+        <a href="http://localhost/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=oelpreis"
            title="Delete" class="event-delete">
           [x]
         </a>
-        <a href="http://localhost:8080/++skin++cms/calendar/oelpreis/@@edit.html"
+        <a href="http://localhost/++skin++cms/calendar/oelpreis/@@edit.html"
            class="event-title" title="Oelpreis">Oelpreis</a>
       </div>
       <div class="event politik">
-        <a href="http://localhost:8080/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=olympia"
+        <a href="http://localhost/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=olympia"
            title="Delete" class="event-delete">
           [x]
         </a>
-        <a href="http://localhost:8080/++skin++cms/calendar/olympia/@@edit.html"
+        <a href="http://localhost/++skin++cms/calendar/olympia/@@edit.html"
            class="event-title" title="Olympia">Olympia</a>
       </div>
       ...
@@ -367,13 +367,13 @@ done in the browser via Javascript. The current hiding state is transferred to
 the server via an AJAX call so the server can restore the state later.
 Construct a request to the server to hide politik:
 
->>> browser.open('http://localhost:8080/++skin++cms/calendar/'
+>>> browser.open('http://localhost/++skin++cms/calendar/'
 ...              '@@hide-ressort?ressort=politik')
 
 Accessing the calendar now shows 1. that the Politk checkbox is not checked and
 2. that the politk event is hidden:
 
->>> browser.open('http://localhost:8080/++skin++cms/calendar')
+>>> browser.open('http://localhost/++skin++cms/calendar')
 >>> print browser.contents
 <?xml ...
     <div id="ressort-filter">
@@ -409,19 +409,19 @@ Accessing the calendar now shows 1. that the Politk checkbox is not checked and
     </div>
     ...
       <div class="event wirtschaft">
-        <a href="http://localhost:8080/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=oelpreis"
+        <a href="http://localhost/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=oelpreis"
            title="Delete" class="event-delete">
           [x]
         </a>
-        <a href="http://localhost:8080/++skin++cms/calendar/oelpreis/@@edit.html"
+        <a href="http://localhost/++skin++cms/calendar/oelpreis/@@edit.html"
            class="event-title" title="Oelpreis">Oelpreis</a>
       </div>
       <div class="event politik hidden">
-        <a href="http://localhost:8080/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=olympia"
+        <a href="http://localhost/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=olympia"
            title="Delete" class="event-delete">
           [x]
         </a>
-        <a href="http://localhost:8080/++skin++cms/calendar/olympia/@@edit.html"
+        <a href="http://localhost/++skin++cms/calendar/olympia/@@edit.html"
            class="event-title" title="Olympia">Olympia</a>
       </div>
       ...
@@ -429,9 +429,9 @@ Accessing the calendar now shows 1. that the Politk checkbox is not checked and
 
 We can of course hide more than one at a time:
 
->>> browser.open('http://localhost:8080/++skin++cms/calendar/'
+>>> browser.open('http://localhost/++skin++cms/calendar/'
 ...              '@@hide-ressort?ressort=wirtschaft')
->>> browser.open('http://localhost:8080/++skin++cms/calendar')
+>>> browser.open('http://localhost/++skin++cms/calendar')
 >>> print browser.contents
 <?xml ...
     <div id="ressort-filter">
@@ -466,19 +466,19 @@ We can of course hide more than one at a time:
     </div>
     ...
       <div class="event wirtschaft hidden">
-        <a href="http://localhost:8080/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=oelpreis"
+        <a href="http://localhost/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=oelpreis"
            title="Delete" class="event-delete">
           [x]
         </a>
-        <a href="http://localhost:8080/++skin++cms/calendar/oelpreis/@@edit.html"
+        <a href="http://localhost/++skin++cms/calendar/oelpreis/@@edit.html"
            class="event-title" title="Oelpreis">Oelpreis</a>
       </div>
       <div class="event politik hidden">
-        <a href="http://localhost:8080/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=olympia"
+        <a href="http://localhost/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=olympia"
            title="Delete" class="event-delete">
           [x]
         </a>
-        <a href="http://localhost:8080/++skin++cms/calendar/olympia/@@edit.html"
+        <a href="http://localhost/++skin++cms/calendar/olympia/@@edit.html"
            class="event-title" title="Olympia">Olympia</a>
       </div>
       ...
@@ -486,9 +486,9 @@ We can of course hide more than one at a time:
 
 Let's show politik again:
 
->>> browser.open('http://localhost:8080/++skin++cms/calendar/'
+>>> browser.open('http://localhost/++skin++cms/calendar/'
 ...              '@@show-ressort?ressort=politik')
->>> browser.open('http://localhost:8080/++skin++cms/calendar')
+>>> browser.open('http://localhost/++skin++cms/calendar')
 >>> print browser.contents
 <?xml ...
     <div id="ressort-filter">
@@ -524,19 +524,19 @@ Let's show politik again:
     </div>
     ...
       <div class="event wirtschaft hidden">
-        <a href="http://localhost:8080/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=oelpreis"
+        <a href="http://localhost/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=oelpreis"
            title="Delete" class="event-delete">
           [x]
         </a>
-        <a href="http://localhost:8080/++skin++cms/calendar/oelpreis/@@edit.html"
+        <a href="http://localhost/++skin++cms/calendar/oelpreis/@@edit.html"
            class="event-title" title="Oelpreis">Oelpreis</a>
       </div>
       <div class="event politik">
-        <a href="http://localhost:8080/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=olympia"
+        <a href="http://localhost/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=olympia"
            title="Delete" class="event-delete">
           [x]
         </a>
-        <a href="http://localhost:8080/++skin++cms/calendar/olympia/@@edit.html"
+        <a href="http://localhost/++skin++cms/calendar/olympia/@@edit.html"
            class="event-title" title="Olympia">Olympia</a>
       </div>
       ...
@@ -544,7 +544,7 @@ Let's show politik again:
 
 When we add an event to no ressort it will be added to the misc class:
 
->>> browser.open('http://localhost:8080/++skin++cms/calendar/'
+>>> browser.open('http://localhost/++skin++cms/calendar/'
 ...              '@@zeit.calendar.Event.AddForm')
 >>> browser.getControl('Start').value = '2008-08-07'
 >>> browser.getControl('Title').value = 'Ocht'
@@ -552,11 +552,11 @@ When we add an event to no ressort it will be added to the misc class:
 >>> print browser.contents
 <?xml ...
       <div class="event misc">
-        <a href="http://localhost:8080/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=ocht"
+        <a href="http://localhost/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=ocht"
            title="Delete" class="event-delete">
           [x]
         </a>
-        <a href="http://localhost:8080/++skin++cms/calendar/ocht/@@edit.html"
+        <a href="http://localhost/++skin++cms/calendar/ocht/@@edit.html"
            class="event-title" title="Ocht">Ocht</a>
       </div>
       ...
@@ -570,11 +570,29 @@ Other ressors are also added to misc:
 >>> print browser.contents
 <?xml ...
       <div class="event misc">
-        <a href="http://localhost:8080/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=ocht"
+        <a href="http://localhost/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=ocht"
            title="Delete" class="event-delete">
           [x]
         </a>
-        <a href="http://localhost:8080/++skin++cms/calendar/ocht/@@edit.html"
+        <a href="http://localhost/++skin++cms/calendar/ocht/@@edit.html"
+           class="event-title" title="Ocht">Ocht</a>
+      </div>
+      ...
+
+
+Those can be hidden as well:
+
+>>> browser.open('http://localhost/++skin++cms/calendar/'
+...              '@@hide-ressort?ressort=misc')
+>>> browser.open('http://localhost/++skin++cms/calendar')
+>>> print browser.contents
+<?xml ...
+      <div class="event misc hidden">
+        <a href="http://localhost/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=ocht"
+           title="Delete" class="event-delete">
+          [x]
+        </a>
+        <a href="http://localhost/++skin++cms/calendar/ocht/@@edit.html"
            class="event-title" title="Ocht">Ocht</a>
       </div>
       ...

@@ -153,11 +153,8 @@ class CalendarBase(object):
             classes.append('completed')
         if event.thema:
             classes.append('thema')
-        ressort_class = self.ressort_css.get(event.ressort)
-        if ressort_class:
-            classes.append(ressort_class)
-        else:
-            classes.append(self.misc_class)
+        ressort_class = self.ressort_css.get(event.ressort, self.misc_class)
+        classes.append(ressort_class)
         if ressort_class in self.hidden_ressorts:
             classes.append('hidden')
         return ' '.join(classes)

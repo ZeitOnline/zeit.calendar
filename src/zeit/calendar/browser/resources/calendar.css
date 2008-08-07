@@ -131,6 +131,10 @@ label.kultur,
   opacity: 0.5;
 }
 
+#calendar .completed:hover {
+  opacity: 1;
+}
+
 #calendar .completed > a.event-title {
     text-decoration: line-through;
     color: #888;

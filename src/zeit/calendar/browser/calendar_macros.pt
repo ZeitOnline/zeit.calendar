@@ -20,13 +20,20 @@
       <div class="event"
         tal:attributes="class event/css">
 
-        <a href="#" title="Delete"
-          class="event-delete"
-          tal:attributes="
-          href python:(view.get_navigation_url(view.selected_date) + '&delete_event=' + event['obj'].__name__)"
+        <a title="Reactivate event" class="event-completed"
+          tal:condition="event/obj/completed"
+          tal:attributes="href string:${event/obj/@@absolute_url}/@@uncomplete"
           i18n:attributes="title">
-          [x]
+          <input type="checkbox" checked="checked" />
         </a>
+
+        <a title="Complete event" class="event-not-completed"
+          tal:condition="not:event/obj/completed"
+          tal:attributes="href string:${event/obj/@@absolute_url}/@@complete"
+          i18n:attributes="title">
+          <input type="checkbox"/>
+        </a>
+
         <a href="#"
           class="event-title"
           tal:attributes="

@@ -128,7 +128,7 @@ class CalendarBase(object):
         event_dicts = None
         if events:
             event_dicts = [dict(obj=event,
-                                 css=self.get_event_css(event))
+                                css=self.get_event_css(event))
                             for event in events]
         return {'day': date.day,
                 'date_str': '%4d-%02d-%02d' % (date.year, date.month,

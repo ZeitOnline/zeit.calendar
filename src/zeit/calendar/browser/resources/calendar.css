@@ -128,6 +128,7 @@ label.kultur,
 
 #calendar .completed {
   background-color: transparent;
+  opacity: 0.5;
 }
 
 #calendar .completed > a.event-title {

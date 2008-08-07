@@ -4,12 +4,12 @@
 
 import datetime
 
-import zope.formlib.form
-
 import gocept.form.grouped
+import zope.formlib.form
 
 import zeit.cms.browser.form
 import zeit.cms.browser.interfaces
+import zeit.cms.browser.view
 import zeit.cms.repository.interfaces
 
 import zeit.calendar.event
@@ -22,7 +22,7 @@ class EventFormBase(object):
     field_groups = (
         gocept.form.grouped.Fields(
             _("Event"),
-            ('start', 'location', 'priority', 'thema', 'completed',
+            ('start', 'location', 'priority', 'thema',
              'added_by'),
             css_class='column-left-small'),
         gocept.form.grouped.Fields(
@@ -35,7 +35,7 @@ class EventFormBase(object):
             css_class="full-width wide-widgets"))
 
     form_fields = zope.formlib.form.Fields(
-        zeit.calendar.interfaces.ICalendarEvent)
+        zeit.calendar.interfaces.ICalendarEvent).omit('completed')
 
     def nextURLForEvent(self, event):
         url = zope.component.getMultiAdapter(
@@ -78,6 +78,17 @@ class EditForm(EventFormBase, zeit.cms.browser.form.EditForm):
         self.request.response.redirect(self.nextURL())
         return "Redirect..."
 
+
+    @gocept.form.action.confirm(
+        _('Delete event'),
+        confirm_message=_('Really delete event?'))
+    def handle_delete_action(self, action, data):
+        next_url = self.nextURL()
+        del self.context.__parent__[self.context.__name__]
+        self.send_message(_('Event deleted.'))
+        self.redirect(next_url)
+        return "Redirect..."
+
     def nextURL(self):
         return self.nextURLForEvent(self.context)
 
@@ -114,3 +125,19 @@ def get_location_for(date):
         return repository.getContent(unique_id)
     except KeyError:
         return repository
+
+
+class CompleteEvent(zeit.cms.browser.view.Base):
+
+    def __call__(self):
+        self.context.completed = True
+        self.send_message(_('Event completed.'))
+        self.redirect(self.url(self.context.__parent__))
+
+
+class UncompleteEvent(zeit.cms.browser.view.Base):
+
+    def __call__(self):
+        self.context.completed = False
+        self.send_message(_('Event reactivated.'))
+        self.redirect(self.url(self.context.__parent__))

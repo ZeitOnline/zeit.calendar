@@ -10,6 +10,8 @@ zeit.calendar changes
 - Farbkodierung für Ressorts.
 - Filter für Ressorts.
 - Feld für Priorität.
+- Löschen von Terminen per Aktion im Bearbeiten-Bildschirm.
+- "Erledigt" via Checkbox im Kalender (da wo vorher Löschen war).
 
 1.1 (2008-08-01)
 ----------------

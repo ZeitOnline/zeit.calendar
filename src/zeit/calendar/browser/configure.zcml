@@ -67,16 +67,34 @@
 
   <browser:page
     for="zeit.calendar.interfaces.ICalendar"
-    permission="zeit.calendar.Edit"
-    class=".event.AddForm"
+    layer="zeit.cms.browser.interfaces.ICMSLayer"
     name="zeit.calendar.Event.AddForm"
+    class=".event.AddForm"
+    permission="zeit.calendar.Edit"
     />
 
   <browser:page
     for="zeit.calendar.interfaces.ICalendarEvent"
-    permission="zeit.calendar.Edit"
-    class=".event.EditForm"
+    layer="zeit.cms.browser.interfaces.ICMSLayer"
     name="edit.html"
+    class=".event.EditForm"
+    permission="zeit.calendar.Edit"
+    />
+
+  <browser:page
+    for="zeit.calendar.interfaces.ICalendarEvent"
+    layer="zeit.cms.browser.interfaces.ICMSLayer"
+    name="complete"
+    class=".event.CompleteEvent"
+    permission="zeit.calendar.Edit"
+    />
+
+  <browser:page
+    for="zeit.calendar.interfaces.ICalendarEvent"
+    layer="zeit.cms.browser.interfaces.ICMSLayer"
+    name="uncomplete"
+    class=".event.UncompleteEvent"
+    permission="zeit.calendar.Edit"
     />
 
   <adapter factory=".event.calendar_browse_location" />

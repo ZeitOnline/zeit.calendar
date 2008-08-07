@@ -78,15 +78,20 @@ After successful adding, the calendar is displayed for the added month:
     <div class="day" id="calendarday4">
       4
       <a href="http://.../calendar/@@zeit.calendar.Event.AddForm?form.start=2006-05-04"
-        class="add-event" title="Add event">
+         class="add-event" title="Add event">
         <img alt="(+)"
              src="http://localhost/++skin++cms/@@/zeit.cms/icons/insert.png" />
       </a>
       <script ...
         ...</script>
     </div>
-    <div class="event misc">
-      <a href="...">Bild erstellen</a>
+      <div class="event misc">
+        <a title="Complete event"
+           class="event-not-completed"
+           href="http://localhost/++skin++cms/calendar/bild-erstellen/@@complete">
+          <input type="checkbox" />
+        </a>
+      <a href="...@@edit.html"...>Bild erstellen</a>
     </div>
   </td>
 ... 
@@ -263,12 +268,6 @@ Finally, the "today" link points us to the current week:
 >>> '%s/%s' % (now.month, now.year) in browser.contents
 True
 
-Completing Events
-=================
-
-When an event is completed it is rendered lighter. A css class is set for this:
-
-
 
 Deleting Events
 ===============
@@ -283,9 +282,17 @@ True
 >>> 'Bild erstellen' in browser.contents
 True
 
-And click the delete link:
+Open the event:
 
->>> browser.getLink('[x]').click()
+>>> browser.getLink('Bild erstellen').click()
+
+On the edit page there is a delete control:
+
+>>> browser.getControl("Delete").click()
+>>> print browser.contents
+<?xml ...
+        <li class="message">Event deleted.</li>
+        ...
 >>> '5/2006' in browser.contents
 True
 >>> 'Bild erstellen' in browser.contents
@@ -354,18 +361,12 @@ associated:
 >>> print browser.contents
 <?xml ...
       <div class="event wirtschaft">
-        <a href="http://localhost/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=oelpreis"
-           title="Delete" class="event-delete">
-          [x]
-        </a>
+        ...
         <a href="http://localhost/++skin++cms/calendar/oelpreis/@@edit.html"
            class="event-title" title="Oelpreis">Oelpreis</a>
       </div>
       <div class="event politik">
-        <a href="http://localhost/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=olympia"
-           title="Delete" class="event-delete">
-          [x]
-        </a>
+        ...
         <a href="http://localhost/++skin++cms/calendar/olympia/@@edit.html"
            class="event-title" title="Olympia">Olympia</a>
       </div>
@@ -419,18 +420,12 @@ Accessing the calendar now shows 1. that the Politk checkbox is not checked and
     </div>
     ...
       <div class="event wirtschaft">
-        <a href="http://localhost/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=oelpreis"
-           title="Delete" class="event-delete">
-          [x]
-        </a>
+        ...
         <a href="http://localhost/++skin++cms/calendar/oelpreis/@@edit.html"
            class="event-title" title="Oelpreis">Oelpreis</a>
       </div>
       <div class="event politik hidden">
-        <a href="http://localhost/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=olympia"
-           title="Delete" class="event-delete">
-          [x]
-        </a>
+        ...
         <a href="http://localhost/++skin++cms/calendar/olympia/@@edit.html"
            class="event-title" title="Olympia">Olympia</a>
       </div>
@@ -476,18 +471,12 @@ We can of course hide more than one at a time:
     </div>
     ...
       <div class="event wirtschaft hidden">
-        <a href="http://localhost/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=oelpreis"
-           title="Delete" class="event-delete">
-          [x]
-        </a>
+        ...
         <a href="http://localhost/++skin++cms/calendar/oelpreis/@@edit.html"
            class="event-title" title="Oelpreis">Oelpreis</a>
       </div>
       <div class="event politik hidden">
-        <a href="http://localhost/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=olympia"
-           title="Delete" class="event-delete">
-          [x]
-        </a>
+        ...
         <a href="http://localhost/++skin++cms/calendar/olympia/@@edit.html"
            class="event-title" title="Olympia">Olympia</a>
       </div>
@@ -534,18 +523,12 @@ Let's show politik again:
     </div>
     ...
       <div class="event wirtschaft hidden">
-        <a href="http://localhost/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=oelpreis"
-           title="Delete" class="event-delete">
-          [x]
-        </a>
+        ...
         <a href="http://localhost/++skin++cms/calendar/oelpreis/@@edit.html"
            class="event-title" title="Oelpreis">Oelpreis</a>
       </div>
       <div class="event politik">
-        <a href="http://localhost/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=olympia"
-           title="Delete" class="event-delete">
-          [x]
-        </a>
+        ...
         <a href="http://localhost/++skin++cms/calendar/olympia/@@edit.html"
            class="event-title" title="Olympia">Olympia</a>
       </div>
@@ -562,10 +545,7 @@ When we add an event to no ressort it will be added to the misc class:
 >>> print browser.contents
 <?xml ...
       <div class="event misc">
-        <a href="http://localhost/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=ocht"
-           title="Delete" class="event-delete">
-          [x]
-        </a>
+        ...
         <a href="http://localhost/++skin++cms/calendar/ocht/@@edit.html"
            class="event-title" title="Ocht">Ocht</a>
       </div>
@@ -580,10 +560,7 @@ Other ressors are also added to misc:
 >>> print browser.contents
 <?xml ...
       <div class="event misc">
-        <a href="http://localhost/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=ocht"
-           title="Delete" class="event-delete">
-          [x]
-        </a>
+        ...
         <a href="http://localhost/++skin++cms/calendar/ocht/@@edit.html"
            class="event-title" title="Ocht">Ocht</a>
       </div>
@@ -598,11 +575,65 @@ Those can be hidden as well:
 >>> print browser.contents
 <?xml ...
       <div class="event misc hidden">
-        <a href="http://localhost/++skin++cms/calendar/month.html?year:int=2008&amp;month:int=8&amp;day:int=7&amp;delete_event=ocht"
-           title="Delete" class="event-delete">
-          [x]
-        </a>
+        ...
         <a href="http://localhost/++skin++cms/calendar/ocht/@@edit.html"
            class="event-title" title="Ocht">Ocht</a>
+      </div>
+      ...
+
+
+Completing events
+=================
+
+Events are completed by clicking on the checkbox in the calendar. The checkbox
+is not checked thus the event is not completed:
+
+>>> print browser.contents
+<?xml...
+      <div class="event politik">
+        <a title="Complete event"
+           class="event-not-completed"
+           href="http://localhost/++skin++cms/calendar/olympia/@@complete">
+          <input type="checkbox" />
+        </a>
+        <a href="http://localhost/++skin++cms/calendar/olympia/@@edit.html"
+           class="event-title" title="Olympia">Olympia</a>
+      </div>
+      ...
+
+Click the complete link (the link is hard to select in the testbrowser, so just
+open it):
+
+>>> browser.open('http://localhost/++skin++cms/calendar/olympia/@@complete')
+>>> print browser.contents
+<?xml...
+        <li class="message">Event completed.</li>
+        ...
+      <div class="event completed politik">
+        <a title="Reactivate event"
+           class="event-completed"
+           href="http://localhost/++skin++cms/calendar/olympia/@@uncomplete">
+          <input type="checkbox" checked="checked" />
+        </a>
+        <a href="http://localhost/++skin++cms/calendar/olympia/@@edit.html"
+           class="event-title" title="Olympia">Olympia</a>
+      </div>
+      ...
+
+We can of course also "uncomplete" the event:
+
+>>> browser.open('http://localhost/++skin++cms/calendar/olympia/@@uncomplete')
+>>> print browser.contents
+<?xml...
+        <li class="message">Event reactivated.</li>
+        ...
+      <div class="event politik">
+        <a title="Complete event"
+           class="event-not-completed"
+           href="http://localhost/++skin++cms/calendar/olympia/@@complete">
+          <input type="checkbox" />
+        </a>
+        <a href="http://localhost/++skin++cms/calendar/olympia/@@edit.html"
+           class="event-title" title="Olympia">Olympia</a>
       </div>
       ...

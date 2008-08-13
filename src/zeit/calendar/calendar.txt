@@ -2,13 +2,8 @@
 Calendar Utility
 ================
 
-The calendar is available as a global utility. Set the site first:
-
->>> import zope.app.component.hooks
->>> old_site = zope.app.component.hooks.getSite()
->>> zope.app.component.hooks.setSite(getRootFolder())
-
-Now get the calendar utility:
+The calendar is registered as a local utility with the root
+folder[#functionaltest]_:
 
 >>> import zope.component
 >>> import zeit.calendar.interfaces
@@ -29,3 +24,8 @@ Cleanup
 Restore the site:
 
 >>> zope.app.component.hooks.setSite(old_site)
+
+.. [#functionaltest]
+    >>> import zope.app.component.hooks
+    >>> old_site = zope.app.component.hooks.getSite()
+    >>> zope.app.component.hooks.setSite(getRootFolder())

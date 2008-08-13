@@ -57,7 +57,7 @@ class ICalendarEvent(zope.interface.Interface):
 
     completed = zope.schema.Bool(
         title=_('Completed?'),
-        description=_('Check whether the event has been completed.'),
+        description=_('Check when the event has been completed.'),
         default=False)
 
     added_by = zope.schema.Choice(

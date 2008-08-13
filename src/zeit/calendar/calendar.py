@@ -1,6 +1,5 @@
 # Copyright (c) 2007-2008 gocept gmbh & co. kg
 # See also LICENSE.txt
-# $Id$
 
 import datetime
 
@@ -79,7 +78,9 @@ def updateIndexOnEventChange(calendar_event, event):
 def date_range(start, end):
     """Generate all datetime.date objects from start through end.
 
-    If end is None, yield only start.
+    If end is None or earlier than start, yield only start. The range is never
+    empty so every event is always listed for at least one day. Otherwise
+    faulty dates might render an event unreachable via the index.
 
     >>> day1 = datetime.date(2008, 1, 30)
     >>> day2 = datetime.date(2008, 2, 2)
@@ -92,10 +93,10 @@ def date_range(start, end):
     >>> list(date_range(day1, day1))
     [datetime.date(2008, 1, 30)]
     >>> list(date_range(day2, day1))
-    []
+    [datetime.date(2008, 2, 2)]
 
     """
-    if end is None:
+    if end is None or end <= start:
         yield start
     else:
         for i in xrange(start.toordinal(), end.toordinal()+1):

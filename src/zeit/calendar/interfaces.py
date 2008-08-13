@@ -2,7 +2,7 @@
 # See also LICENSE.txt
 """Calendar interfaces.
 
-To some extend inspired by schooltool.
+To some extent inspired by schooltool.
 
 """
 
@@ -57,7 +57,7 @@ class ICalendarEvent(zope.interface.Interface):
 
     completed = zope.schema.Bool(
         title=_('Completed?'),
-        description=_('Check when the event has been completed.'),
+        description=_('Check whether the event has been completed.'),
         default=False)
 
     added_by = zope.schema.Choice(
@@ -82,7 +82,7 @@ class ICalendar(zope.app.container.interfaces.IReadContainer):
         """
 
     def haveEvents(date):
-        """Return if there are events occuring on `date`.
+        """Return whether there are events occuring on `date`.
 
         date: datetime.date object.
 

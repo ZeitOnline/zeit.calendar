@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Development/Unknown\n"
-"POT-Creation-Date: Thu Aug  7 15:01:42 2008\n"
+"POT-Creation-Date: Wed Aug 13 14:16:47 2008\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope3-dev@zope.org>\n"
@@ -24,24 +24,32 @@ msgstr ""
 "Generated-By: zope/app/locales/extract.py\n"
 
 #: src/zeit/calendar/browser/calendar_macros.pt:23
-msgid "Delete"
+msgid "Reactivate event"
 msgstr ""
 
-#: src/zeit/calendar/browser/calendar_macros.pt:69
+#: src/zeit/calendar/browser/calendar_macros.pt:30
+msgid "Complete event"
+msgstr ""
+
+#: src/zeit/calendar/browser/calendar_macros.pt:42
+msgid "${DYNAMIC_CONTENT}"
+msgstr ""
+
+#: src/zeit/calendar/browser/calendar_macros.pt:80
 msgid "Today"
 msgstr ""
 
-#: src/zeit/calendar/browser/calendar_view.py:183
+#: src/zeit/calendar/browser/calendar_view.py:204
 #. Default: ""
 msgid "Events for ${month}/${year}"
 msgstr ""
 
-#: src/zeit/calendar/browser/calendar_view.py:250
+#: src/zeit/calendar/browser/calendar_view.py:271
 #. Default: ""
 msgid "Events for ${start} - ${end}"
 msgstr ""
 
-#: src/zeit/calendar/browser/calendar_view.py:28
+#: src/zeit/calendar/browser/calendar_view.py:30
 msgid "Calendar"
 msgstr ""
 
@@ -53,30 +61,50 @@ msgstr ""
 msgid "Week"
 msgstr ""
 
+#: src/zeit/calendar/browser/event.py:134
+msgid "Event completed."
+msgstr ""
+
+#: src/zeit/calendar/browser/event.py:142
+msgid "Event reactivated."
+msgstr ""
+
 #: src/zeit/calendar/browser/event.py:24
 msgid "Event"
 msgstr ""
 
-#: src/zeit/calendar/browser/event.py:28
+#: src/zeit/calendar/browser/event.py:29
 #: src/zeit/calendar/interfaces.py:33
 msgid "Description"
 msgstr ""
 
-#: src/zeit/calendar/browser/event.py:32
+#: src/zeit/calendar/browser/event.py:33
 msgid "Related"
 msgstr ""
 
-#: src/zeit/calendar/browser/event.py:52
+#: src/zeit/calendar/browser/event.py:53
 #: src/zeit/calendar/browser/calendar_macros.pt:9
 msgid "Add event"
 msgstr ""
 
-#: src/zeit/calendar/browser/event.py:70
+#: src/zeit/calendar/browser/event.py:71
 msgid "Edit event"
 msgstr ""
 
-#: src/zeit/calendar/browser/event.py:73
+#: src/zeit/calendar/browser/event.py:74
 msgid "Apply"
+msgstr ""
+
+#: src/zeit/calendar/browser/event.py:83
+msgid "Delete event"
+msgstr ""
+
+#: src/zeit/calendar/browser/event.py:84
+msgid "Really delete event?"
+msgstr ""
+
+#: src/zeit/calendar/browser/event.py:88
+msgid "Event deleted."
 msgstr ""
 
 #: src/zeit/calendar/interfaces.py:25

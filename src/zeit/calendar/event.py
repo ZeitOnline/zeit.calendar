@@ -24,5 +24,6 @@ class Event(persistent.Persistent,
     related = ()
     ressort = None
     start = None
+    end = None
     thema = False
     title = None

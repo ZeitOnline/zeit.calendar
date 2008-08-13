@@ -114,3 +114,32 @@ After updating the index, getEvent returns the result correctly again:
 []
 >>> list(calendar.getEvents(datetime.date(2008, 10, 21)))
 [<zeit.calendar.event.Event object at 0x...>]
+
+
+Events spanning multiple days
+=============================
+
+When we set the end date of an event to a day after the start date, the event
+will be listed for each day from start through end:
+
+>>> event.end = datetime.date(2008, 10, 23)
+>>> updateIndexOnEventChange(event, object())
+>>> list(calendar.getEvents(datetime.date(2008, 10, 21)))
+[<zeit.calendar.event.Event object at 0x...>]
+>>> list(calendar.getEvents(datetime.date(2008, 10, 22)))
+[<zeit.calendar.event.Event object at 0x...>]
+>>> list(calendar.getEvents(datetime.date(2008, 10, 23)))
+[<zeit.calendar.event.Event object at 0x...>]
+>>> list(calendar.getEvents(datetime.date(2008, 10, 24)))
+[]
+
+When we delete the event from the calendar, it is removed neatly from all
+these days:
+
+>>> del calendar['ev']
+>>> list(calendar.getEvents(datetime.date(2008, 10, 21)))
+[]
+>>> list(calendar.getEvents(datetime.date(2008, 10, 22)))
+[]
+>>> list(calendar.getEvents(datetime.date(2008, 10, 23)))
+[]

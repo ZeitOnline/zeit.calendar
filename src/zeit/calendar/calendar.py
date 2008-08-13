@@ -37,27 +37,33 @@ class Calendar(zope.app.container.btree.BTreeContainer):
     def __setitem__(self, key, value):
         event = zeit.calendar.interfaces.ICalendarEvent(value)
         super(Calendar, self).__setitem__(key, value)
-        start = event.start
-        self._index(start, key)
+        self._index(key, event.start, event.end)
 
     def __delitem__(self, key):
         super(Calendar, self).__delitem__(key)
         self._unindex(key)
 
-    def _index(self, day, key):
-        if not isinstance(day, datetime.date):
-            raise ValueError("Expected date object, got %r instead" % day)
-        try:
-            day_idx = self._date_index[day]
-        except KeyError:
-            self._date_index[day] = day_idx = BTrees.OOBTree.OOTreeSet()
-        day_idx.insert(key)
-        self._key_index[key] = day
+    def _index(self, key, start, end):
+        if end is None:
+            check = (start,)
+        else:
+            check = (start, end)
+        for day in check:
+            if not isinstance(day, datetime.date):
+                raise ValueError("Expected date object, got %r instead" % day)
+        for day in date_range(start, end):
+            try:
+                day_idx = self._date_index[day]
+            except KeyError:
+                self._date_index[day] = day_idx = BTrees.OOBTree.OOTreeSet()
+            day_idx.insert(key)
+        self._key_index[key] = (start, end)
 
     def _unindex(self, key):
-        day = self._key_index[key]
+        start, end = self._key_index[key]
         del self._key_index[key]
-        self._date_index[day].remove(key)
+        for day in date_range(start, end):
+            self._date_index[day].remove(key)
 
 
 @zope.component.adapter(
@@ -67,4 +73,30 @@ def updateIndexOnEventChange(calendar_event, event):
     calendar = zope.proxy.removeAllProxies(calendar_event.__parent__)
     key = calendar_event.__name__
     calendar._unindex(key)
-    calendar._index(calendar_event.start, key)
+    calendar._index(key, calendar_event.start, calendar_event.end)
+
+
+def date_range(start, end):
+    """Generate all datetime.date objects from start through end.
+
+    If end is None, yield only start.
+
+    >>> day1 = datetime.date(2008, 1, 30)
+    >>> day2 = datetime.date(2008, 2, 2)
+
+    >>> list(date_range(day1, day2))
+    [datetime.date(2008, 1, 30), datetime.date(2008, 1, 31),
+     datetime.date(2008, 2, 1), datetime.date(2008, 2, 2)]
+    >>> list(date_range(day1, None))
+    [datetime.date(2008, 1, 30)]
+    >>> list(date_range(day1, day1))
+    [datetime.date(2008, 1, 30)]
+    >>> list(date_range(day2, day1))
+    []
+
+    """
+    if end is None:
+        yield start
+    else:
+        for i in xrange(start.toordinal(), end.toordinal()+1):
+            yield datetime.date.fromordinal(i)

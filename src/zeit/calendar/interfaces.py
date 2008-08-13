@@ -25,6 +25,11 @@ class ICalendarEvent(zope.interface.Interface):
         title=_("Start"),
         description=_("Date when the event starts."))
 
+    end = zope.schema.Date(
+        title=_("End"),
+        description=_("Date when the event ends."),
+        required=False)
+
     title = zope.schema.TextLine(
         title=_("Title"),
         description=_("Title will be shown in overview pages."))

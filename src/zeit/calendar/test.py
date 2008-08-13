@@ -10,6 +10,7 @@ from zope.testing import doctest
 import zope.app.testing.functional
 
 import zeit.cms.testing
+import zeit.calendar.calendar
 
 
 CalendarLayer = zope.app.testing.functional.ZCMLLayer(
@@ -17,12 +18,20 @@ CalendarLayer = zope.app.testing.functional.ZCMLLayer(
     __name__, 'CalendarLayer', allow_teardown=True)
 
 
+optionflags = (doctest.ELLIPSIS |
+               doctest.INTERPRET_FOOTNOTES |
+               doctest.NORMALIZE_WHITESPACE |
+               doctest.REPORT_NDIFF)
+
+
 def test_suite():
     suite = unittest.TestSuite()
+    suite.addTest(doctest.DocTestSuite(
+        zeit.calendar.calendar,
+        optionflags=optionflags))
     suite.addTest(doctest.DocFileSuite(
         'README.txt',
-        optionflags=(doctest.REPORT_NDIFF + doctest.NORMALIZE_WHITESPACE +
-                     doctest.ELLIPSIS)))
+        optionflags=optionflags))
     suite.addTest(zeit.cms.testing.FunctionalDocFileSuite(
         'calendar.txt',
         layer=CalendarLayer))

@@ -4,6 +4,8 @@ zeit.calendar changes
 1.3 (unreleased)
 ----------------
 
+- Termine können mehrere Tage dauern.
+
 1.2 (2008-08-07)
 ----------------
 

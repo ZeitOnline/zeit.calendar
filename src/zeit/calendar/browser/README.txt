@@ -325,6 +325,72 @@ the next Monday and ends on the Sunday following that. Since we saw that
 >>> browser.etree.xpath('//div[@id="content"]//h1')[0].text
 'Events for 02.01.2006 - 08.01.2006'
 
+
+Next four weeks
+===============
+
+The overview of the next four weeks has features of both the month calendar
+and next week's overview: it starts on the Monday following the selected date
+and covers exactly 28 days. The layout of the calendar is similar to that of
+the month view:
+
+>>> browser.getLink('Next four weeks').click()
+>>> print browser.contents
+<?xml version="1.0"?>
+<!DOCTYPE ...
+    <title> calendar – Events for 02.01.2006 - 29.01.2006 </title>
+    ...
+    <table id="calendar" class="month">
+      <thead>
+        <tr>
+          <th>Mon</th>
+          <th>Tue</th>
+          <th>Wed</th>
+          <th>Thu</th>
+          <th>Fri</th>
+          <th>Sat</th>
+          <th>Sun</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="day">
+            <div class="day" id="calendarday2">
+              2
+              <a ...
+        </tr>
+        ...
+        <tr>
+              ...?form.start=2006-01-29', 'calendarday29');</script>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+...
+
+>>> browser.etree.xpath('//div[@id="content"]//h1')[0].text
+'Events for 02.01.2006 - 29.01.2006'
+
+Navigating forward and backward moves us by one week, fast forward and fast
+backwards by four:
+
+>>> browser.getLink("‹").click()
+>>> browser.etree.xpath('//div[@id="content"]//h1')[0].text
+'Events for 26.12.2005 - 22.01.2006'
+
+>>> browser.getLink("»").click()
+>>> browser.etree.xpath('//div[@id="content"]//h1')[0].text
+'Events for 23.01.2006 - 19.02.2006'
+
+>>> browser.getLink("›").click()
+>>> browser.etree.xpath('//div[@id="content"]//h1')[0].text
+'Events for 30.01.2006 - 26.02.2006'
+
+>>> browser.getLink("«").click()
+>>> browser.etree.xpath('//div[@id="content"]//h1')[0].text
+'Events for 02.01.2006 - 29.01.2006'
+
+
 Deleting Events
 ===============
 

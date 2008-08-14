@@ -22,7 +22,12 @@ import zeit.cms.browser.view
 
 import zeit.calendar.interfaces
 import zeit.calendar.browser.interfaces
+import zeit.calendar.calendar
 from zeit.calendar.i18n import MessageFactory as _
+
+
+one_day = datetime.timedelta(days=1)
+one_week = datetime.timedelta(days=7)
 
 
 class MenuItem(zeit.cms.browser.menu.GlobalMenuItem):
@@ -66,6 +71,7 @@ class CalendarBase(object):
     def __init__(self, context, request):
         self.context = context
         self.request = request
+        self.today = datetime.date.today()
 
     def update(self):
         self._delete_event()
@@ -75,10 +81,6 @@ class CalendarBase(object):
         self.selected_day, self.selected_month, self.selected_year
 
     @zope.cachedescriptors.property.Lazy
-    def today(self):
-        return datetime.datetime.now().date()
-
-    @zope.cachedescriptors.property.Lazy
     def selected_date(self):
         return datetime.date(self.selected_year,
                              self.selected_month,
@@ -86,30 +88,22 @@ class CalendarBase(object):
 
     @zope.cachedescriptors.property.Lazy
     def selected_day(self):
-        now = datetime.datetime.now()
-        day = self._get_request_or_session_value('day', now.day)
-        return day
+        return self._get_request_or_session_value('day', self.today.day)
 
     @zope.cachedescriptors.property.Lazy
     def selected_month(self):
-        now = datetime.datetime.now()
-        month = self._get_request_or_session_value('month', now.month)
-        return month
+        return self._get_request_or_session_value('month', self.today.month)
 
     @zope.cachedescriptors.property.Lazy
     def selected_year(self):
-        now = datetime.datetime.now()
-        year = self._get_request_or_session_value('year', now.year)
-        return year
+        return self._get_request_or_session_value('year', self.today.year)
 
     def _get_request_or_session_value(self, name, default):
         value = self.request.get(name)
         if value:
             self.session[name] = value
         else:
-            value = self.session.get(name)
-        if not value:
-            value = default
+            value = self.session.get(name, default)
         return value
 
     @zope.cachedescriptors.property.Lazy
@@ -177,16 +171,9 @@ class CalendarBase(object):
             return ''
         return term.title
 
-
-
-
     @zope.cachedescriptors.property.Lazy
     def session(self):
         return zope.session.interfaces.ISession(self.request)['zeit.calendar']
-
-    @zope.cachedescriptors.property.Lazy
-    def today(self):
-        return datetime.date.today()
 
     @zope.cachedescriptors.property.Lazy
     def hidden_ressorts(self):
@@ -265,8 +252,8 @@ class Week(CalendarBase):
 
     @zope.cachedescriptors.property.Lazy
     def title(self):
-        start = self.day_list[0]
-        end = self.day_list[-1]
+        start = self.start_date
+        end = self.end_date
         # XXX we could/should use a locale dependent date formatter here
         return _('Events for ${start} - ${end}',
                  mapping=dict(
@@ -278,43 +265,40 @@ class Week(CalendarBase):
     def day_names(self):
         formatter = self.request.locale.dates.getFormatter('date')
         pattern = u'EEE, d. MMM'
-        weekdays = []
-        for day in self.day_list:
-            weekdays.append(formatter.format(day, pattern))
-        return weekdays
+        return [formatter.format(day, pattern) for day in self.day_list]
 
     @zope.cachedescriptors.property.Lazy
     def selected_week_calendar(self):
-        result = []
-        for day in self.day_list:
-            result.append(self._get_day_dict(day))
-        return result
+        return [self._get_day_dict(day) for day in self.day_list]
+
+    @zope.cachedescriptors.property.Lazy
+    def start_date(self):
+        return self.selected_date - one_day
+
+    @zope.cachedescriptors.property.Lazy
+    def end_date(self):
+        return self.start_date + one_week
 
     @zope.cachedescriptors.property.Lazy
     def day_list(self):
-        start_date = self.selected_date - datetime.timedelta(days=1)
-        end_date = self.selected_date + datetime.timedelta(days=7)
-        days = []
-        while start_date < end_date:
-            days.append(start_date)
-            start_date += datetime.timedelta(days=1)
-        return days
+        return list(zeit.calendar.calendar.date_range(self.start_date,
+                                                      self.end_date))
 
     @zope.cachedescriptors.property.Lazy
     def forward(self):
-        return self.selected_date + datetime.timedelta(days=1)
+        return self.selected_date + one_day
 
     @zope.cachedescriptors.property.Lazy
     def backward(self):
-        return self.selected_date - datetime.timedelta(days=1)
+        return self.selected_date - one_day
 
     @zope.cachedescriptors.property.Lazy
     def fastforward(self):
-        return self.selected_date + datetime.timedelta(days=7)
+        return self.selected_date + one_week
 
     @zope.cachedescriptors.property.Lazy
     def fastbackward(self):
-        return self.selected_date - datetime.timedelta(days=7)
+        return self.selected_date - one_week
 
 
 class Sidebar(zope.viewlet.viewlet.ViewletBase):

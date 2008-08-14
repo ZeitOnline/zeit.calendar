@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Development/Unknown\n"
-"POT-Creation-Date: Thu Aug 14 14:54:38 2008\n"
+"POT-Creation-Date: Thu Aug 14 15:57:44 2008\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope3-dev@zope.org>\n"
@@ -63,6 +63,10 @@ msgstr ""
 
 #: src/zeit/calendar/browser/configure.zcml:42
 msgid "Next week"
+msgstr ""
+
+#: src/zeit/calendar/browser/configure.zcml:51
+msgid "Next four weeks"
 msgstr ""
 
 #: src/zeit/calendar/browser/event.py:134

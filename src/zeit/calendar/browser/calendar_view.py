@@ -313,6 +313,47 @@ class NextWeek(Week):
         return self.start_date - one_day + one_week
 
 
+class NextFourWeeks(NextWeek):
+
+    @zope.cachedescriptors.property.Lazy
+    def selected_month_calendar(self):
+        result = []
+        start = self.start_date
+
+        for week_no in xrange(4):
+            result.append(
+                [self._get_day_dict(date) for date in
+                 zeit.calendar.calendar.date_range(start, start + 6*one_day)])
+            start += one_week
+
+        return result
+
+    @property
+    def day_names(self):
+        return self.request.locale.dates.calendars[
+            'gregorian'].getDayAbbreviations()
+
+    @zope.cachedescriptors.property.Lazy
+    def end_date(self):
+        return self.start_date - one_day + 4*one_week
+
+    @zope.cachedescriptors.property.Lazy
+    def forward(self):
+        return self.selected_date + one_week
+
+    @zope.cachedescriptors.property.Lazy
+    def backward(self):
+        return self.selected_date - one_week
+
+    @zope.cachedescriptors.property.Lazy
+    def fastforward(self):
+        return self.selected_date + 4*one_week
+
+    @zope.cachedescriptors.property.Lazy
+    def fastbackward(self):
+        return self.selected_date - 4*one_week
+
+
 class Sidebar(zope.viewlet.viewlet.ViewletBase):
     """Calendar sitebar view."""
 

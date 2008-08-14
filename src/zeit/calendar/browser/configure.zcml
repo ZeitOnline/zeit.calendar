@@ -48,6 +48,15 @@
     menu="zeit-context-views" title="Next week"
     />
 
+  <gocept:pagelet
+    for="zeit.calendar.interfaces.ICalendar"
+    permission="zope.View"
+    template="calendar.pt"
+    class=".calendar_view.NextFourWeeks"
+    name="nextfourweeks.html"
+    menu="zeit-context-views" title="Next four weeks"
+    />
+
   <browser:page
     for="zeit.calendar.interfaces.ICalendar"
     layer="zeit.cms.browser.interfaces.ICMSLayer"

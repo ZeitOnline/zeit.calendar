@@ -301,6 +301,18 @@ class Week(CalendarBase):
         return self.selected_date - one_week
 
 
+class NextWeek(Week):
+
+    @zope.cachedescriptors.property.Lazy
+    def start_date(self):
+        return (self.selected_date - one_day*self.selected_date.weekday()
+                + one_week)
+
+    @zope.cachedescriptors.property.Lazy
+    def end_date(self):
+        return self.start_date - one_day + one_week
+
+
 class Sidebar(zope.viewlet.viewlet.ViewletBase):
     """Calendar sitebar view."""
 

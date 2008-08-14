@@ -212,7 +212,7 @@ When we freshly enter the calendar we'll still see 1/2006:
 Week Overview
 =============
 
-There is also an overview showing the last day and the next 7 days. We were
+There is also an overview showing yesterday and the next 7 days. We were
 looking at 1/2006, so we see the week starting at 31.12.2005:
 
 >>> browser.getLink('Week').click()
@@ -268,6 +268,62 @@ Finally, the "today" link points us to the current week:
 >>> '%s/%s' % (now.month, now.year) in browser.contents
 True
 
+
+Next week's overview
+====================
+
+Next week's overview is similar to the week overview except that it starts on
+the next Monday and ends on the Sunday following that. Since we saw that
+2006/1/2 was a Monday, next week's overview ranges from 2006/1/2 through
+2006/1/8 for both 2005/12/30 and 2005/12/31:
+
+>>> browser.open(
+...     'http://localhost/++skin++cms/calendar/month.html'
+...     '?year:int=2005&month:int=12&day:int=30')
+>>> browser.getLink('Next week').click()
+>>> print browser.contents
+<?xml version="1.0"?>
+<!DOCTYPE ...
+  <table id="calendar" class="week">
+    <thead>
+      <tr>
+              <th>Mon, 2. Jan</th>
+              <th>Tue, 3. Jan</th>
+              <th>Wed, 4. Jan</th>
+              <th>Thu, 5. Jan</th>
+              <th>Fri, 6. Jan</th>
+              <th>Sat, 7. Jan</th>
+              <th>Sun, 8. Jan</th>
+      </tr>
+    </thead>
+    ...
+
+>>> browser.etree.xpath('//div[@id="content"]//h1')[0].text
+'Events for 02.01.2006 - 08.01.2006'
+
+>>> browser.open(
+...     'http://localhost/++skin++cms/calendar/month.html'
+...     '?year:int=2005&month:int=12&day:int=31')
+>>> browser.getLink('Next week').click()
+>>> print browser.contents
+<?xml version="1.0"?>
+<!DOCTYPE ...
+  <table id="calendar" class="week">
+    <thead>
+      <tr>
+              <th>Mon, 2. Jan</th>
+              <th>Tue, 3. Jan</th>
+              <th>Wed, 4. Jan</th>
+              <th>Thu, 5. Jan</th>
+              <th>Fri, 6. Jan</th>
+              <th>Sat, 7. Jan</th>
+              <th>Sun, 8. Jan</th>
+      </tr>
+    </thead>
+    ...
+
+>>> browser.etree.xpath('//div[@id="content"]//h1')[0].text
+'Events for 02.01.2006 - 08.01.2006'
 
 Deleting Events
 ===============

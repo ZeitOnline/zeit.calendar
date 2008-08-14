@@ -39,6 +39,15 @@
     menu="zeit-context-views" title="Week"
     />
 
+  <gocept:pagelet
+    for="zeit.calendar.interfaces.ICalendar"
+    permission="zope.View"
+    template="week_view.pt"
+    class=".calendar_view.NextWeek"
+    name="nextweek.html"
+    menu="zeit-context-views" title="Next week"
+    />
+
   <browser:page
     for="zeit.calendar.interfaces.ICalendar"
     layer="zeit.cms.browser.interfaces.ICMSLayer"

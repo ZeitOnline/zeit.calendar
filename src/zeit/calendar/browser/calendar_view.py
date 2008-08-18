@@ -184,6 +184,41 @@ class CalendarBase(object):
         return last_view.hidden_ressorts
 
 
+class Day(CalendarBase):
+
+    @zope.cachedescriptors.property.Lazy
+    def title(self):
+        return _('Events for ${date}', mapping=dict(
+            date='%02d.%02d.%4d' % (self.selected_day, self.selected_month,
+                                    self.selected_year)))
+
+    @zope.cachedescriptors.property.Lazy
+    def selected_week_calendar(self):
+        return [self._get_day_dict(self.selected_date)]
+
+    @zope.cachedescriptors.property.Lazy
+    def day_names(self):
+        formatter = self.request.locale.dates.getFormatter('date')
+        pattern = u'EEE, d. MMM'
+        return [formatter.format(self.selected_date, pattern)]
+
+    @zope.cachedescriptors.property.Lazy
+    def forward(self):
+        return self.selected_date + one_day
+
+    @zope.cachedescriptors.property.Lazy
+    def backward(self):
+        return self.selected_date - one_day
+
+    @zope.cachedescriptors.property.Lazy
+    def fastforward(self):
+        return self.selected_date + one_week
+
+    @zope.cachedescriptors.property.Lazy
+    def fastbackward(self):
+        return self.selected_date - one_week
+
+
 class Calendar(CalendarBase):
 
     @zope.cachedescriptors.property.Lazy

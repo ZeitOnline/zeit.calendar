@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Development/Unknown\n"
-"POT-Creation-Date: Thu Aug 14 15:57:44 2008\n"
+"POT-Creation-Date: Mon Aug 18 08:19:02 2008\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope3-dev@zope.org>\n"
@@ -41,10 +41,15 @@ msgstr ""
 
 #: src/zeit/calendar/browser/calendar_view.py:191
 #. Default: ""
+msgid "Events for ${date}"
+msgstr ""
+
+#: src/zeit/calendar/browser/calendar_view.py:226
+#. Default: ""
 msgid "Events for ${month}/${year}"
 msgstr ""
 
-#: src/zeit/calendar/browser/calendar_view.py:258
+#: src/zeit/calendar/browser/calendar_view.py:293
 #. Default: ""
 msgid "Events for ${start} - ${end}"
 msgstr ""
@@ -54,18 +59,22 @@ msgid "Calendar"
 msgstr ""
 
 #: src/zeit/calendar/browser/configure.zcml:24
-msgid "Month"
+msgid "Day"
 msgstr ""
 
 #: src/zeit/calendar/browser/configure.zcml:33
-msgid "Week"
+msgid "Month"
 msgstr ""
 
 #: src/zeit/calendar/browser/configure.zcml:42
-msgid "Next week"
+msgid "Week"
 msgstr ""
 
 #: src/zeit/calendar/browser/configure.zcml:51
+msgid "Next week"
+msgstr ""
+
+#: src/zeit/calendar/browser/configure.zcml:60
 msgid "Next four weeks"
 msgstr ""
 

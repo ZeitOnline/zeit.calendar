@@ -391,6 +391,52 @@ backwards by four:
 'Events for 02.01.2006 - 29.01.2006'
 
 
+Day view
+========
+
+The overview of the selected day's events looks like the week overview except
+that it covers only one day:
+
+>>> browser.open(
+...     'http://localhost/++skin++cms/calendar/month.html'
+...     '?year:int=2005&month:int=12&day:int=31')
+>>> browser.getLink('Day').click()
+>>> print browser.contents
+<?xml version="1.0"?>
+<!DOCTYPE ...
+    <title> calendar – Events for 31.12.2005 </title>
+    ...
+    <table id="calendar" class="week">
+      <thead>
+        <tr>
+          <th>Sat, 31. Dec</th>
+        </tr>
+      </thead>
+    ...
+
+>>> browser.etree.xpath('//div[@id="content"]//h1')[0].text
+'Events for 31.12.2005'
+
+Navigating forward and backward moves us by one day, fast forward and fast
+backwards by one week:
+
+>>> browser.getLink("‹").click()
+>>> browser.etree.xpath('//div[@id="content"]//h1')[0].text
+'Events for 30.12.2005'
+
+>>> browser.getLink("»").click()
+>>> browser.etree.xpath('//div[@id="content"]//h1')[0].text
+'Events for 06.01.2006'
+
+>>> browser.getLink("›").click()
+>>> browser.etree.xpath('//div[@id="content"]//h1')[0].text
+'Events for 07.01.2006'
+
+>>> browser.getLink("«").click()
+>>> browser.etree.xpath('//div[@id="content"]//h1')[0].text
+'Events for 31.12.2005'
+
+
 Deleting Events
 ===============
 

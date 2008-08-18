@@ -24,6 +24,15 @@
   <gocept:pagelet
     for="zeit.calendar.interfaces.ICalendar"
     permission="zope.View"
+    template="week_view.pt"
+    class=".calendar_view.Day"
+    name="day.html"
+    menu="zeit-context-views" title="Day"
+    />
+
+  <gocept:pagelet
+    for="zeit.calendar.interfaces.ICalendar"
+    permission="zope.View"
     template="calendar.pt"
     class=".calendar_view.Calendar"
     name="month.html"

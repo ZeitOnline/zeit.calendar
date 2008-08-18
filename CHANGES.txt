@@ -5,6 +5,8 @@ zeit.calendar changes
 ----------------
 
 - Termine können mehrere Tage dauern.
+- Es gibt neue Kalenderansichten für den Tag, die nächste Woche und die
+  nächsten 4 Wochen.
 
 1.2 (2008-08-07)
 ----------------

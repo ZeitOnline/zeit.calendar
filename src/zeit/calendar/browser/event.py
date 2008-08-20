@@ -1,9 +1,9 @@
 # Copyright (c) 2007-2008 gocept gmbh & co. kg
 # See also LICENSE.txt
-# $Id$
 
 import datetime
 
+import gocept.form.action
 import gocept.form.grouped
 import zope.formlib.form
 

@@ -62,11 +62,28 @@ When we just open the add form, the start date is empty:
 Fill the form with values and submit:
 
 >>> browser.getControl(name='form.start').value = '2006-05-04'
+>>> browser.getControl(name='form.end').value = '2006-05-03'
 >>> browser.getControl(name='form.title').value = 'Bild erstellen'
 >>> browser.getControl(name='form.description').value = '... fuer Artikel'
 >>> browser.getControl('Add Related content').click()
 >>> browser.getControl(name='form.related.0.').value = (
 ...     'http://xml.zeit.de/online')
+>>> browser.getControl(name='form.actions.add').click()
+
+We've set the end date before the start date. This won't work of couse:
+
+>>> print browser.contents
+<?xml ...
+    <div id="messages" class="haveMessages">
+      <ul>
+        <li class="error">The event ends before it starts.</li>
+      </ul>
+      ...
+
+
+Remove the end date again:
+
+>>> browser.getControl(name='form.end').value = ''
 >>> browser.getControl(name='form.actions.add').click()
 
 After successful adding, the calendar is displayed for the added month:

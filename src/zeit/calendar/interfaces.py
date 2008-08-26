@@ -18,6 +18,13 @@ import zeit.calendar.source
 from zeit.calendar.i18n import MessageFactory as _
 
 
+class EndBeforeStart(zope.schema.ValidationError):
+
+    def doc(self):
+        return _('The event ends before it starts.')
+
+
+
 class ICalendarEvent(zope.interface.Interface):
     """An event."""
 
@@ -74,6 +81,14 @@ class ICalendarEvent(zope.interface.Interface):
         title=_('Priority'),
         required=False,
         source=zeit.calendar.source.PrioritySource())
+
+    @zope.interface.invariant
+    def start_before_end(self):
+        if not self.end:
+            return True
+        if self.start <= self.end:
+            return True
+        raise EndBeforeStart(self.start, self.end)
 
 
 class ICalendar(zope.app.container.interfaces.IReadContainer):

@@ -143,3 +143,23 @@ these days:
 []
 >>> list(calendar.getEvents(datetime.date(2008, 10, 23)))
 []
+
+
+Note that it is invalid to have an event ending before the start:
+
+>>> event.end = datetime.date(2008, 10, 19)
+>>> zeit.calendar.interfaces.ICalendarEvent.validateInvariants(event)
+Traceback (most recent call last):
+    ...
+EndBeforeStart: (datetime.date(2008, 10, 21), datetime.date(2008, 10, 19))
+
+
+It is okay to have an event ending on the same day as it begins:
+
+>>> event.end = event.start
+>>> zeit.calendar.interfaces.ICalendarEvent.validateInvariants(event)
+
+It is of course also okay to have no end specified:
+
+>>> event.end = None
+>>> zeit.calendar.interfaces.ICalendarEvent.validateInvariants(event)

@@ -29,7 +29,7 @@ True
 >>> print browser.contents
 <?xml version="1.0"?>
 <!DOCTYPE ...
-    <title> calendar – Events for 8/2008 </title>
+    <title> calendar – Events for ... </title>
     ...
     <table id="calendar" class="month">
       <thead>

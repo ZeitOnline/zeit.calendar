@@ -1,0 +1,15 @@
+<tal:block>
+  <div class="calendar-drag-title"
+    tal:content="context/title"></div>
+  <div class="calendar-drag-description"
+    tal:content="context/description | nothing">Knopfen</div>
+  <ol class="calendar-drag-related"
+    tal:define="related context/related"
+    tal:condition="related">
+    <li
+      tal:repeat="obj related"
+      tal:content="python:obj.uniqueId">
+      http://...
+    </li>
+  </ol>
+</tal:block>

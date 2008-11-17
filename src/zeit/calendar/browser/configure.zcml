@@ -108,6 +108,20 @@
     permission="zeit.calendar.Edit"
     />
 
+  <browser:defaultView
+    for="zeit.calendar.interfaces.ICalendarEvent"
+    layer="zeit.cms.browser.interfaces.ICMSLayer"
+    name="edit.html"
+    />
+
+  <browser:page
+    for="zeit.calendar.interfaces.ICalendarEvent"
+    layer="zeit.cms.browser.interfaces.ICMSLayer"
+    name="drag-pane.html"
+    template="event-drag.html"
+    permission="zeit.calendar.Edit"
+    />
+
   <browser:page
     for="zeit.calendar.interfaces.ICalendarEvent"
     layer="zeit.cms.browser.interfaces.ICMSLayer"

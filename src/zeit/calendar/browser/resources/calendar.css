@@ -164,3 +164,23 @@ div.day {
   font-size: 1.2em;
   margin-bottom: 0.5em;
 }
+
+/* Tooltip */
+
+.calendar-drag-title {
+    font-weight: bold;
+}
+
+.calendar-drag-description {
+    white-space: pre-wrap;
+}
+
+.calendar-drag-related:before {
+    content: "Related:"
+}
+
+.calendar-drag-related {
+    list-style: none;
+    padding-left: 0;
+    padding-top: 1em;
+}

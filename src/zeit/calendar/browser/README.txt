@@ -5,6 +5,7 @@ Calendar Browser Test
 The calendar is rendered as a table showing one full month at a time.
 
 Create a browser first:
+
 >>> from z3c.etestbrowser.testing import ExtendedTestBrowser 
 >>> browser = ExtendedTestBrowser()
 >>> browser.addHeader('Authorization', 'Basic user:userpw')
@@ -108,7 +109,7 @@ After successful adding, the calendar is displayed for the added month:
            href="http://localhost/++skin++cms/calendar/bild-erstellen/@@complete">
           <input type="checkbox" />
         </a>
-      <a href="...@@edit.html"...>...Bild erstellen </a>
+      <a ...Bild erstellen </a>...
     </div>
   </td>
 ... 
@@ -547,13 +548,13 @@ associated:
 <?xml ...
       <div class="event wirtschaft">
         ...
-        <a href="http://localhost/++skin++cms/calendar/oelpreis/@@edit.html"
-           class="event-title" title="Oelpreis">...Oelpreis </a>
+        <a href="http://localhost/++skin++cms/calendar/oelpreis"
+            ...Oelpreis </a>...
       </div>
       <div class="event politik">
         ...
-        <a href="http://localhost/++skin++cms/calendar/olympia/@@edit.html"
-           class="event-title" title="Olympia">...Olympia </a>
+        <a href="http://localhost/++skin++cms/calendar/olympia"
+            ...Olympia </a>...
       </div>
       ...
 
@@ -606,13 +607,13 @@ Accessing the calendar now shows 1. that the Politk checkbox is not checked and
     ...
       <div class="event wirtschaft">
         ...
-        <a href="http://localhost/++skin++cms/calendar/oelpreis/@@edit.html"
-           class="event-title" title="Oelpreis">...Oelpreis </a>
+        <a href="http://localhost/++skin++cms/calendar/oelpreis"
+            ...Oelpreis </a>...
       </div>
       <div class="event politik hidden">
         ...
-        <a href="http://localhost/++skin++cms/calendar/olympia/@@edit.html"
-           class="event-title" title="Olympia">...Olympia </a>
+        <a href="http://localhost/++skin++cms/calendar/olympia"
+            ...Olympia </a>...
       </div>
       ...
 
@@ -657,13 +658,13 @@ We can of course hide more than one at a time:
     ...
       <div class="event wirtschaft hidden">
         ...
-        <a href="http://localhost/++skin++cms/calendar/oelpreis/@@edit.html"
-           class="event-title" title="Oelpreis">...Oelpreis </a>
+        <a href="http://localhost/++skin++cms/calendar/oelpreis"
+            ...Oelpreis </a>...
       </div>
       <div class="event politik hidden">
         ...
-        <a href="http://localhost/++skin++cms/calendar/olympia/@@edit.html"
-           class="event-title" title="Olympia">...Olympia </a>
+        <a href="http://localhost/++skin++cms/calendar/olympia"
+            ...Olympia </a>...
       </div>
       ...
 
@@ -709,13 +710,13 @@ Let's show politik again:
     ...
       <div class="event wirtschaft hidden">
         ...
-        <a href="http://localhost/++skin++cms/calendar/oelpreis/@@edit.html"
-           class="event-title" title="Oelpreis">...Oelpreis </a>
+        <a href="http://localhost/++skin++cms/calendar/oelpreis"
+            ...Oelpreis </a>...
       </div>
       <div class="event politik">
         ...
-        <a href="http://localhost/++skin++cms/calendar/olympia/@@edit.html"
-           class="event-title" title="Olympia">...Olympia </a>
+        <a href="http://localhost/++skin++cms/calendar/olympia"
+            ...Olympia </a>...
       </div>
       ...
 
@@ -731,8 +732,8 @@ When we add an event to no ressort it will be added to the misc class:
 <?xml ...
       <div class="event misc">
         ...
-        <a href="http://localhost/++skin++cms/calendar/ocht/@@edit.html"
-           class="event-title" title="Ocht">...Ocht </a>
+        <a href="http://localhost/++skin++cms/calendar/ocht"
+            ...Ocht </a>...
       </div>
       ...
 
@@ -746,8 +747,8 @@ Other ressors are also added to misc:
 <?xml ...
       <div class="event misc">
         ...
-        <a href="http://localhost/++skin++cms/calendar/ocht/@@edit.html"
-           class="event-title" title="Ocht">...Ocht </a>
+        <a href="http://localhost/++skin++cms/calendar/ocht"
+            ...Ocht </a>...
       </div>
       ...
 
@@ -761,8 +762,8 @@ Those can be hidden as well:
 <?xml ...
       <div class="event misc hidden">
         ...
-        <a href="http://localhost/++skin++cms/calendar/ocht/@@edit.html"
-           class="event-title" title="Ocht">...Ocht </a>
+        <a href="http://localhost/++skin++cms/calendar/ocht"
+            ...Ocht </a>...
       </div>
       ...
 
@@ -781,8 +782,8 @@ is not checked thus the event is not completed:
            href="http://localhost/++skin++cms/calendar/olympia/@@complete">
           <input type="checkbox" />
         </a>
-        <a href="http://localhost/++skin++cms/calendar/olympia/@@edit.html"
-           class="event-title" title="Olympia">...Olympia </a>
+        <a href="http://localhost/++skin++cms/calendar/olympia"
+            ...Olympia </a>...
       </div>
       ...
 
@@ -800,8 +801,8 @@ open it):
            href="http://localhost/++skin++cms/calendar/olympia/@@uncomplete">
           <input type="checkbox" checked="checked" />
         </a>
-        <a href="http://localhost/++skin++cms/calendar/olympia/@@edit.html"
-           class="event-title" title="Olympia">...Olympia </a>
+        <a href="http://localhost/++skin++cms/calendar/olympia"
+            ...Olympia </a>...
       </div>
       ...
 
@@ -818,8 +819,8 @@ We can of course also "uncomplete" the event:
            href="http://localhost/++skin++cms/calendar/olympia/@@complete">
           <input type="checkbox" />
         </a>
-        <a href="http://localhost/++skin++cms/calendar/olympia/@@edit.html"
-           class="event-title" title="Olympia">...Olympia </a>
+        <a href="http://localhost/++skin++cms/calendar/olympia"
+            ...Olympia </a>...
       </div>
       ...
 
@@ -838,11 +839,10 @@ set:
            href="http://localhost/++skin++cms/calendar/olympia/@@complete">
           <input type="checkbox" />
         </a>
-        <a href="http://localhost/++skin++cms/calendar/olympia/@@edit.html"
-           class="event-title" title="Olympia">
+        <a href="http://localhost/++skin++cms/calendar/olympia"...>
           <span class="priority"></span>
           Olympia
-        </a>
+        </a>...
       </div>
       ...
 
@@ -859,10 +859,9 @@ Set to "suggestion"
            href="http://localhost/++skin++cms/calendar/olympia/@@complete">
           <input type="checkbox" />
         </a>
-        <a href="http://localhost/++skin++cms/calendar/olympia/@@edit.html"
-           class="event-title" title="Olympia">
+        <a href="http://localhost/++skin++cms/calendar/olympia"...>
           <span class="priority">&gt; suggestion</span>
           Olympia
-        </a>
+        </a>...
       </div>
       ...

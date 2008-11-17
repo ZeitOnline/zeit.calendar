@@ -18,6 +18,7 @@
     </div>
     <tal:event repeat="event day/events">
       <div class="event"
+        tal:define="event_id python:'event.%s' % modules['time'].time()"
         tal:attributes="class event/css">
 
         <a title="Reactivate event" class="event-completed"
@@ -37,8 +38,8 @@
         <a href="#"
           class="event-title"
           tal:attributes="
-          href string:${event/obj/@@absolute_url}/@@edit.html;
-          title event/obj/title">
+          href event/obj/@@absolute_url;
+          id event_id">
           <span class="priority"
             tal:content="event/priority" 
             i18n:translate="" />
@@ -46,6 +47,10 @@
             Knopfen
           </span>
         </a>
+        <script language="javascript" tal:content="string:
+          new zeit.cms.LinkToolTip('${event_id}');
+          ">
+        </script>
       </div>
     </tal:event>
   </metal:macro>

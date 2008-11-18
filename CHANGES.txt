@@ -1,7 +1,7 @@
 zeit.calendar changes
 =====================
 
-1.4 (unreleased)
+1.4 (2008-11-18)
 ----------------
 
 - Tooltipps für Kalendereinträge.

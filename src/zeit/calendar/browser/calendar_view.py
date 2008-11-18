@@ -4,6 +4,7 @@
 
 import calendar
 import datetime
+import time
 
 import persistent
 import zope.annotation
@@ -127,6 +128,7 @@ class CalendarBase(object):
             events = sorted(events, key=lambda e: e.completed)
             event_dicts = [dict(obj=event,
                                 priority=self.get_event_priority(event),
+                                id='event.%f' % time.time(),
                                 css=self.get_event_css(event))
                             for event in events]
         return {'day': date.day,

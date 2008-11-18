@@ -865,3 +865,45 @@ Set to "suggestion"
         </a>...
       </div>
       ...
+
+
+Tooltips
+========
+
+There are tooltips which are displayed via javascript. Each event gets an id
+(which is unique)[#unique]_:
+
+>>> browser.open('http://localhost/++skin++cms/calendar')
+>>> print browser.contents
+<?xml...
+      <div class="event...">
+        ...
+        <a href="http://localhost/++skin++cms/calendar/olympia"...id="event...">
+          ...Olympia
+        </a>...
+        <script language="javascript">
+          new zeit.cms.LinkToolTip('event...');
+          </script>
+          ...
+
+
+The LinkToolTip opens the @@drag-pane.html view:
+
+
+>>> browser.open(
+...     'http://localhost/++skin++cms/calendar/olympia/@@drag-pane.html')
+>>> print browser.contents
+  <div class="calendar-drag-title">Olympia</div>
+  <div class="calendar-drag-description"></div>
+
+
+.. [#unique] We explicitly test this since there was a bug where the ids where
+    not unique.
+
+    >>> browser.open('http://localhost/++skin++cms/calendar')
+    >>> nodes = browser.etree.xpath("//div[contains(@class, 'event')]/a[@id]")
+    >>> ids = [node.get('id') for node in nodes]
+    >>> len(ids)
+    3
+    >>> len(set(ids))
+    3

@@ -1,8 +1,10 @@
 zeit.calendar changes
 =====================
 
-1.5 (unreleased)
-----------------
+1.4.1 (2008-11-18)
+------------------
+
+- IDs der Events korrigiert, damit funktionieren auch die Tooltips.
 
 1.4 (2008-11-18)
 ----------------

@@ -12,7 +12,7 @@ zeit.calendar changes
 1.4 (2008-11-18)
 ----------------
 
-- Tooltipps für Kalendereinträge.
+- Tooltips für Kalendereinträge.
 
 1.3.1 (2008-09-11)
 ------------------

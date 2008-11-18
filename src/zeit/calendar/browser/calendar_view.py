@@ -4,9 +4,8 @@
 
 import calendar
 import datetime
-import time
-
 import persistent
+import time
 import zope.annotation
 import zope.app.container.contained
 import zope.app.form.browser.interfaces
@@ -18,12 +17,11 @@ import zope.security.interfaces
 import zope.session.interfaces
 import zope.viewlet.viewlet
 
-import zeit.cms.browser.menu
-import zeit.cms.browser.view
-
-import zeit.calendar.interfaces
 import zeit.calendar.browser.interfaces
 import zeit.calendar.calendar
+import zeit.calendar.interfaces
+import zeit.cms.browser.menu
+import zeit.cms.browser.view
 from zeit.calendar.i18n import MessageFactory as _
 
 

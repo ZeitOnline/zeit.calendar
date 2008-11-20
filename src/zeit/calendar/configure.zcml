@@ -1,6 +1,11 @@
 <configure xmlns="http://namespaces.zope.org/zope"
   xmlns:i18n="http://namespaces.zope.org/i18n">
 
+  <permission
+    id="zeit.calendar.Edit"
+    title="Create and modify calendar entries"
+    />
+
   <class class=".calendar.Calendar">
     <require
       interface=".interfaces.ICalendar"

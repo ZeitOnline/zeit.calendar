@@ -20,4 +20,9 @@
   <include package="zeit.calendar" />
   <include package="zeit.calendar.browser" />
 
+  <grant
+    principal="zope.Authenticated"
+    permission="zeit.calendar.Edit"
+    />
+
 </configure>

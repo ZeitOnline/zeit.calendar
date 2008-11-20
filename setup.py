@@ -16,11 +16,7 @@ setup(
     namespace_packages = ['zeit'],
     install_requires=[
         'setuptools',
+        'z3c.etestbrowser',
         'zeit.cms>=1.3',
-    ],
-    extras_require={
-        'test': [
-            'z3c.etestbrowser',
         ],
-    },
 )

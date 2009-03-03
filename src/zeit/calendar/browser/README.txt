@@ -55,12 +55,22 @@ Events can be added to the calendar:
 >>> browser.open('http://localhost/++skin++cms/calendar/'
 ...              '@@zeit.calendar.Event.AddForm')
 
+
 When we just open the add form, the start date is empty:
 
 >>> browser.getControl(name='form.start').value
 ''
 
-Fill the form with values and submit:
+Aborting takes us back to the calendar:
+
+>>> browser.getControl('Cancel').click()
+>>> print browser.title.strip()
+calendar – Events for 3/2009
+
+Create an entry:
+
+>>> browser.open('http://localhost/++skin++cms/calendar/'
+...              '@@zeit.calendar.Event.AddForm')
 
 >>> browser.getControl(name='form.start').value = '2006-05-04'
 >>> browser.getControl(name='form.end').value = '2006-05-03'

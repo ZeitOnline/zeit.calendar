@@ -65,7 +65,7 @@ Aborting takes us back to the calendar:
 
 >>> browser.getControl('Cancel').click()
 >>> print browser.title.strip()
-calendar – Events for 3/2009
+calendar – Events for ...
 
 Create an entry:
 

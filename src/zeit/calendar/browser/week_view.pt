@@ -1,4 +1,4 @@
-<tal:block i18n:domain="zeit.calendar">
+<tal:block i18n:domain="zeit.cms">
 
   <tal:replace replace="resource_library:zeit.calendar" />
   <tal:replace replace="resource_library:zeit.calendar.js" />

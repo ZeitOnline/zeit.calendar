@@ -1,6 +1,11 @@
 zeit.calendar changes
 =====================
 
+1.4.5 (2009-05-15)
+------------------
+
+- Jetzt wirklich keine eigene Translationdomain mehr.
+
 1.4.4 (2009-05-15)
 ------------------
 

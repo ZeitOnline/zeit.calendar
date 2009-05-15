@@ -1,5 +1,4 @@
-<configure xmlns="http://namespaces.zope.org/zope"
-  xmlns:i18n="http://namespaces.zope.org/i18n">
+<configure xmlns="http://namespaces.zope.org/zope">
 
   <permission
     id="zeit.calendar.Edit"
@@ -35,7 +34,5 @@
     />
 
   <subscriber handler=".calendar.updateIndexOnEventChange" />
-
-  <i18n:registerTranslations directory="locales" />
 
 </configure>

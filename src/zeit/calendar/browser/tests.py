@@ -1,14 +1,10 @@
 # Copyright (c) 2007-2008 gocept gmbh & co. kg
 # See also LICENSE.txt
-# $Id$
-
-import unittest
 
 from zope.testing import doctest
-
+import unittest
+import zeit.calendar.tests
 import zeit.cms.testing
-
-import zeit.calendar.test
 
 def test_suite():
     suite = unittest.TestSuite()
@@ -18,5 +14,5 @@ def test_suite():
                      doctest.ELLIPSIS + doctest.INTERPRET_FOOTNOTES)))
     suite.addTest(zeit.cms.testing.FunctionalDocFileSuite(
         'README.txt',
-        layer=zeit.calendar.test.CalendarLayer))
+        layer=zeit.calendar.tests.CalendarLayer))
     return suite

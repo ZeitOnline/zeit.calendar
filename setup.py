@@ -17,6 +17,6 @@ setup(
     install_requires=[
         'setuptools',
         'z3c.etestbrowser',
-        'zeit.cms>1.4',
+        'zeit.cms>=1.20',
         ],
 )

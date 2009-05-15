@@ -1,6 +1,15 @@
 zeit.calendar changes
 =====================
 
+1.4.4 (2009-05-15)
+------------------
+
+- Tests repariert
+
+- Anpassungen für zeit.cms 1.20
+
+- Alle ``test.py`` nach ``tests.py`` umbenannt.
+
 1.4.3 (2009-03-03)
 ------------------
 

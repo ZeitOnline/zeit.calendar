@@ -10,6 +10,8 @@ zeit.calendar changes
 
 - Alle ``test.py`` nach ``tests.py`` umbenannt.
 
+- Keine eigene Translationdomain mehr, Übersetzungen via zeit.locales.
+
 1.4.3 (2009-03-03)
 ------------------
 

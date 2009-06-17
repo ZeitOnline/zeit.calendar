@@ -1,6 +1,11 @@
 zeit.calendar changes
 =====================
 
+1.4.6 (2009-06-17)
+------------------
+
+- Veraltete Resource-Library zeit.content.DragAndDrop nicht mehr verwenden.
+
 1.4.5 (2009-05-15)
 ------------------
 

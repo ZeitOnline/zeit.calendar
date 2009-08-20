@@ -916,7 +916,7 @@ In the vivi skin there is a link in the sidebar:
 >>> browser.open('/++skin++vivi')
 >>> print browser.contents
 <...
-   <div id="sidebar" class="sidebar-expanded"><div class="panel" id="calendar">
+   <div id="sidebar" class="sidebar-expanded"><div class="panel" id="sidebar-calendar">
    <a href="http://localhost/++skin++vivi/calendar">Calendar</a>...
 
 >>> browser.getLink('Calendar').click()

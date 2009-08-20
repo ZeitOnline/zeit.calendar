@@ -1,0 +1,4 @@
+<div class="panel" id="calendar" i18n:domain="zeit.cms">
+  <a tal:attributes="href view/calendar/@@absolute_url"
+     i18n:translate="">Calendar</a>
+</div>

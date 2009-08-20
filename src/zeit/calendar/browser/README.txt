@@ -907,6 +907,23 @@ The LinkToolTip opens the @@drag-pane.html view:
   <div class="calendar-drag-description"></div>
 
 
+
+Link in the sidebar
+===================
+
+In the vivi skin there is a link in the sidebar:
+
+>>> browser.open('/++skin++vivi')
+>>> print browser.contents
+<...
+   <div id="sidebar" class="sidebar-expanded"><div class="panel" id="calendar">
+   <a href="http://localhost/++skin++vivi/calendar">Calendar</a>...
+
+>>> browser.getLink('Calendar').click()
+>>> print browser.title.strip()
+calendar – Events for 8/2009
+
+
 .. [#unique] We explicitly test this since there was a bug where the ids where
     not unique.
 

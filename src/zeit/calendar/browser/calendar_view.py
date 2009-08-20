@@ -390,16 +390,11 @@ class NextFourWeeks(NextWeek):
 
 
 class Sidebar(zope.viewlet.viewlet.ViewletBase):
-    """Calendar sitebar view."""
+    """Calendar sidebar view."""
 
     @zope.cachedescriptors.property.Lazy
     def calendar(self):
-        calendar = zope.component.getUtility(
-            zeit.calendar.interfaces.ICalendar)
-        view = zope.component.getMultiAdapter(
-            (calendar, self.request),
-            name='month.html')
-        return view
+        return zope.component.getUtility(zeit.calendar.interfaces.ICalendar)
 
 
 class LastView(persistent.Persistent,

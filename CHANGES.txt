@@ -1,7 +1,7 @@
 zeit.calendar changes
 =====================
 
-1.5 (unreleased)
+1.5 (2009-08-21)
 ----------------
 
 - Der Kalender ist jetzt über einen Link in der Sidebar erreichbar, nicht mehr

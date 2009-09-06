@@ -921,7 +921,7 @@ In the vivi skin there is a link in the sidebar:
 
 >>> browser.getLink('Calendar').click()
 >>> print browser.title.strip()
-calendar – Events for 8/2009
+calendar – Events for ...
 
 
 .. [#unique] We explicitly test this since there was a bug where the ids where

@@ -1,8 +1,8 @@
 zeit.calendar changes
 =====================
 
-1.6 (unreleased)
-----------------
+1.5.1 (2009-09-06)
+------------------
 
 - Test repariert der nur im August funktionierte.
 

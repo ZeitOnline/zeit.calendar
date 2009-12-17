@@ -2,6 +2,8 @@
 Calendar View
 =============
 
+>>> import zeit.cms.testing
+>>> zeit.cms.testing.set_site()
 
 Monthly Calendar
 ================
@@ -31,7 +33,7 @@ Request a calendar for 6/2006:
 ...     form={'year': 2001, 'month': 6})
 >>> calendar = Calendar(CalendarMock(), request)
 
-According to the request we expect the calendar for 6/2001 back[#session]_:
+According to the request we expect the calendar for 6/2001 back:
 
 >>> calendar.selected_year
 2001
@@ -185,13 +187,3 @@ P=1 C=True
 P=0 C=True
 P=-1 C=True
 P=None C=True
-
-Clean up:
-
->>> zope.session.tests.tearDown()
-
-.. [#session] set up session
-
-    >>> import zope.session.tests
-    >>> dummy = zope.session.tests.setUp()
-

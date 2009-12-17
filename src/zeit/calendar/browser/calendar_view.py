@@ -1,4 +1,4 @@
-# Copyright (c) 2007-2008 gocept gmbh & co. kg
+# Copyright (c) 2007-2009 gocept gmbh & co. kg
 # See also LICENSE.txt
 """Calendar views."""
 
@@ -48,25 +48,6 @@ class IndexRedirect(zeit.cms.browser.view.Base):
 
 class CalendarBase(object):
 
-    misc_class = 'misc'
-    combined_ressort = (
-        dict(title=u'Politik',
-             ressorts=('Deutschland', 'International'),
-             css_class='politik'),
-        dict(title=u'Wirtschaft',
-             ressorts=('Wirtschaft', 'Finanzen'),
-             css_class='wirtschaft'),
-        dict(title=u'Kultur',
-             ressorts=('Kultur', 'Feuilleton', 'Musik', 'Literatur'),
-             css_class='kultur'),
-        dict(title=u'weitere Themen',
-             css_class=misc_class))
-
-    ressort_css = {}
-    for combined in combined_ressort:
-        for ressort in combined.get('ressorts', []):
-            ressort_css[ressort] = combined['css_class']
-
     def __init__(self, context, request):
         self.context = context
         self.request = request
@@ -111,6 +92,11 @@ class CalendarBase(object):
             (self, self.request),
             name='absolute_url')()
 
+    @property
+    def combined_ressort(self):
+        return zope.component.getUtility(
+            zeit.calendar.interfaces.IRessortGroupManager).groups
+
     def get_navigation_url(self, date):
         return '%s?%s' % (self.url, self.get_navigation_query(date))
 
@@ -152,7 +138,8 @@ class CalendarBase(object):
             classes.append('completed')
         if event.thema:
             classes.append('thema')
-        ressort_class = self.ressort_css.get(event.ressort, self.misc_class)
+        ressort_class = zope.component.getUtility(
+            zeit.calendar.interfaces.IRessortGroupManager).css(event.ressort)
         classes.append(ressort_class)
         if ressort_class in self.hidden_ressorts:
             classes.append('hidden')

@@ -24,6 +24,7 @@ current month is:
 
 Open the calendar and check for the current month:
 
+>>> browser.handleErrors = False
 >>> browser.open('http://localhost/++skin++cms/calendar/month.html')
 >>> '%s/%s' % (now.month, now.year) in browser.contents
 True

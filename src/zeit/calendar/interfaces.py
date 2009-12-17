@@ -111,3 +111,16 @@ class ICalendar(zope.app.container.interfaces.IReadContainer):
 
 class IEditCalendar(zope.app.container.interfaces.IWriteContainer):
     pass
+
+
+class IRessortGroupManager(zope.interface.Interface):
+
+    groups = zope.interface.Attribute(
+        """A list of dicts. Each entry has the following keys:
+        - title
+        - css_class
+        - ressorts: list of ressort names
+        """)
+
+    def css(ressort):
+        """returns the css class for the given ressort."""

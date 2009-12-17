@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<ressortgroups>
+    <group title="Politik" css_class="politik">
+      <ressort name="Deutschland"/>
+      <ressort name="International"/>
+    </group>
+    <group title="Wirtschaft" css_class="wirtschaft">
+      <ressort name="Wirtschaft"/>
+      <ressort name="Finanzen"/>
+    </group>
+    <group title="Kultur" css_class="kultur">
+      <ressort name="Kultur"/>
+      <ressort name="Feuilleton"/>
+      <ressort name="Musik"/>
+      <ressort name="Literatur"/>
+    </group>
+    <misc title="weitere Themen" css_class="misc"/>
+</ressortgroups>

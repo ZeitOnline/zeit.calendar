@@ -3,16 +3,21 @@
 
 from zope.testing import doctest
 import unittest
+import zeit.calendar.calendar
 import zeit.calendar.testing
 
 
 def test_suite():
     suite = unittest.TestSuite()
+    suite.addTest(doctest.DocTestSuite(
+        zeit.calendar.calendar,
+        optionflags=zeit.calendar.testing.optionflags))
     suite.addTest(doctest.DocFileSuite(
-        'event.txt',
+        'README.txt',
+        package='zeit.calendar',
         optionflags=zeit.calendar.testing.optionflags))
     suite.addTest(zeit.calendar.testing.FunctionalDocFileSuite(
-        'README.txt',
-        'calendar_view.txt',
+        'calendar.txt',
+        package='zeit.calendar',
         ))
     return suite

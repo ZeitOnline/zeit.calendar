@@ -35,4 +35,5 @@
 
   <subscriber handler=".calendar.updateIndexOnEventChange" />
 
+  <utility factory=".ressort.RessortGroupManager" />
 </configure>

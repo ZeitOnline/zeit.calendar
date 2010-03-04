@@ -4,7 +4,7 @@ zeit.calendar changes
 1.6.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix tests after core changes (#6878)
 
 
 1.6.0 (2009-12-18)

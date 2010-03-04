@@ -177,10 +177,10 @@ add form which an already assigned document. Construct the url manually here:
 >>> url = ("http://localhost/++skin++cms/calendar/"
 ...        "@@zeit.calendar.Event.AddForm?form.start=2006-05-04"
 ...        "&form.related.count=1"
-...        "&form.related.0.=http://xml.zeit.de/politik.feed")
+...        "&form.related.0.=http://xml.zeit.de/testcontent")
 >>> browser.open(url)
 >>> browser.getControl(name="form.related.0.").value
-'http://xml.zeit.de/politik.feed'
+'http://xml.zeit.de/testcontent'
 
 Navigating
 ==========

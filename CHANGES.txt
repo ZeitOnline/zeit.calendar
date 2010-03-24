@@ -4,7 +4,7 @@ zeit.calendar changes
 1.6.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Using versions from the ZTK.
 
 
 1.6.1 (2010-03-10)

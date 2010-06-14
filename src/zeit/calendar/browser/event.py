@@ -10,6 +10,7 @@ import zeit.calendar.interfaces
 import zeit.cms.browser.form
 import zeit.cms.browser.interfaces
 import zeit.cms.browser.view
+import zeit.cms.content.interfaces
 import zeit.cms.repository.interfaces
 import zope.formlib.form
 

@@ -1,20 +1,17 @@
 # Copyright (c) 2007-2010 gocept gmbh & co. kg
 # See also LICENSE.txt
 
+from zeit.calendar.i18n import MessageFactory as _
 import datetime
-
 import gocept.form.action
 import gocept.form.grouped
-import zope.formlib.form
-
+import zeit.calendar.event
+import zeit.calendar.interfaces
 import zeit.cms.browser.form
 import zeit.cms.browser.interfaces
 import zeit.cms.browser.view
 import zeit.cms.repository.interfaces
-
-import zeit.calendar.event
-import zeit.calendar.interfaces
-from zeit.calendar.i18n import MessageFactory as _
+import zope.formlib.form
 
 
 class EventFormBase(object):

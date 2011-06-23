@@ -60,14 +60,14 @@
             if (target.nodeName != 'INPUT') {
                 return;
             }
-            var class = target.name;
+            var class_ = target.name;
             var active = target.checked;
-            this.setClass(class, active);
-            this.updateClassOnServer(class, active)
+            this.setClass(class_, active);
+            this.updateClassOnServer(class_, active)
         },
 
-        setClass: function(class, active) {
-            var elements = getElementsByTagAndClassName('div', class);
+        setClass: function(class_, active) {
+            var elements = getElementsByTagAndClassName('div', class_);
             var func;
             if (active) {
                 func = MochiKit.DOM.removeElementClass;
@@ -77,7 +77,7 @@
             forEach(elements, function(element) {func(element, 'hidden')});
         },
 
-        updateClassOnServer: function(class, active) {
+        updateClassOnServer: function(class_, active) {
             var view;
             if (active) {
                 view = 'show-ressort';
@@ -85,7 +85,7 @@
                 view = 'hide-ressort';
             }
             var url = this.calendar_url + '/@@' + view;
-            return doSimpleXMLHttpRequest(url, {ressort: class});
+            return doSimpleXMLHttpRequest(url, {ressort: class_});
         },
 
     }

@@ -4,7 +4,7 @@ zeit.calendar changes
 1.6.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Compatibility fix for Firefox 5 (#9236).
 
 
 1.6.4 (2010-08-09)

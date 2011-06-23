@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='zeit.calendar',
-    version='1.6.5',
+    version='1.6.6dev',
     author='gocept',
     author_email='mail@gocept.com',
     url='https://svn.gocept.com/repos/gocept-int/zeit.cms/zeit.calendar',

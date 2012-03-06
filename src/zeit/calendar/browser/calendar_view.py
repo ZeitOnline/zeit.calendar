@@ -112,9 +112,9 @@ class CalendarBase(object):
             events = sorted(events, key=lambda e: e.completed)
             event_dicts = [dict(obj=event,
                                 priority=self.get_event_priority(event),
-                                id='event.%f' % time.time(),
+                                id='event.%s.%f' % (i, time.time()),
                                 css=self.get_event_css(event))
-                            for event in events]
+                            for i, event in enumerate(events)]
         return {'day': date.day,
                 'date_str': '%4d-%02d-%02d' % (date.year, date.month,
                                                date.day),

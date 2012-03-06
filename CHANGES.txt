@@ -4,7 +4,8 @@ zeit.calendar changes
 1.6.6 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Make event HTML id generation more robust for systems where `time.time()` is
+  not guaranteed to increased between calls.
 
 
 1.6.5 (2011-06-23)

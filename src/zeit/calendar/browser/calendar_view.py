@@ -11,6 +11,7 @@ import zope.app.container.contained
 import zope.app.form.browser.interfaces
 import zope.cachedescriptors.property
 import zope.component
+import zope.i18n.format
 import zope.interface
 import zope.security.interfaces
 import zope.session.interfaces
@@ -19,12 +20,20 @@ import zope.viewlet.viewlet
 import zeit.calendar.browser.interfaces
 import zeit.calendar.calendar
 import zeit.calendar.interfaces
+import zeit.cms.browser.menu
 import zeit.cms.browser.view
 from zeit.calendar.i18n import MessageFactory as _
 
 
 one_day = datetime.timedelta(days=1)
 one_week = datetime.timedelta(days=7)
+
+
+class MenuItem(zeit.cms.browser.menu.GlobalMenuItem):
+
+    title = _("Calendar")
+    viewURL = 'calendar'
+    pathitem = 'calendar'
 
 
 class IndexRedirect(zeit.cms.browser.view.Base):

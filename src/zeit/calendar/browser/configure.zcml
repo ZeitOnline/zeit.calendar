@@ -13,6 +13,16 @@
 
   <browser:viewlet
     for="*"
+    layer="zeit.cms.browser.interfaces.ICMSOldStyles"
+    manager="zeit.cms.browser.interfaces.IGlobalViews"
+    name="calendar"
+    class=".calendar_view.MenuItem"
+    permission="zope.View"
+    sort="10"
+    />
+
+  <browser:viewlet
+    for="*"
     layer="zeit.cms.browser.interfaces.ICMSStyles"
     name="03_calendar"
     manager="zeit.cms.browser.interfaces.ISidebar"

@@ -9,14 +9,14 @@ setup(
     description="""\
 """,
     packages=find_packages('src'),
-    package_dir = {'': 'src'},
-    include_package_data = True,
+    package_dir={'': 'src'},
+    include_package_data=True,
     zip_safe=False,
     license='gocept proprietary',
-    namespace_packages = ['zeit'],
+    namespace_packages=['zeit'],
     install_requires=[
         'setuptools',
         'z3c.etestbrowser',
         'zeit.cms>=1.20',
-        ],
+    ],
 )

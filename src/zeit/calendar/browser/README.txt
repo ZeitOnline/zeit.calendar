@@ -6,7 +6,7 @@ The calendar is rendered as a table showing one full month at a time.
 
 Create a browser first:
 
->>> from z3c.etestbrowser.testing import ExtendedTestBrowser 
+>>> from z3c.etestbrowser.testing import ExtendedTestBrowser
 >>> browser = ExtendedTestBrowser()
 >>> browser.addHeader('Authorization', 'Basic user:userpw')
 >>> browser.addHeader('Accept-Language', 'en')
@@ -99,7 +99,7 @@ Remove the end date again:
 >>> browser.getControl(name='form.actions.add').click()
 
 After successful adding, the calendar is displayed for the added month:
-    
+
 >>> print browser.contents
 <?xml version="1.0"?>
 <!DOCTYPE ...
@@ -123,7 +123,7 @@ After successful adding, the calendar is displayed for the added month:
       <a ...Bild erstellen </a>...
     </div>
   </td>
-... 
+...
 
 
 The event can be edited again:
@@ -197,7 +197,7 @@ year back" link, we're at 2005/05:
 'Events for 5/2005'
 
 The "month back" link takes us to 4/2005 then:
-    
+
 >>> browser.getLink("‹").click()
 >>> browser.etree.xpath('//div[@id="content"]//h1')[0].text
 'Events for 4/2005'
@@ -226,7 +226,7 @@ The "month forward" again will result in 1/2005:
 
 
 The "year forward" leaps us to 1/2006:
-    
+
 >>> browser.getLink("»").click()
 >>> browser.etree.xpath('//div[@id="content"]//h1')[0].text
 'Events for 1/2006'
@@ -267,19 +267,19 @@ looking at 1/2006, so we see the week starting at 31.12.2005:
 'Events for 31.12.2005 - 07.01.2006'
 
 Navigation works like with the month calendar. Move one day forward:
-    
+
 >>> browser.getLink("›").click()
 >>> browser.etree.xpath('//div[@id="content"]//h1')[0].text
 'Events for 01.01.2006 - 08.01.2006'
 
 Move 7 days forward:
-    
+
 >>> browser.getLink("»").click()
 >>> browser.etree.xpath('//div[@id="content"]//h1')[0].text
 'Events for 08.01.2006 - 15.01.2006'
 
 Move 1 day backward:
-    
+
 >>> browser.getLink("‹").click()
 >>> browser.etree.xpath('//div[@id="content"]//h1')[0].text
 'Events for 07.01.2006 - 14.01.2006'

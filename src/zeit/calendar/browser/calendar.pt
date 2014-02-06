@@ -1,8 +1,5 @@
 <tal:block i18n:domain="zeit.cms">
 
-  <tal:replace replace="resource_library:zeit.calendar" />
-  <tal:replace replace="resource_library:zeit.calendar.js" />
-
   <div id="full-content-area"
     tal:define="
     calendar_macros nocall:context/@@calendar-macros;

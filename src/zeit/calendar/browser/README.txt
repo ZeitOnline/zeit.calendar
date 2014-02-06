@@ -109,7 +109,7 @@ After successful adding, the calendar is displayed for the added month:
       <a href="http://.../calendar/@@zeit.calendar.Event.AddForm?form.start=2006-05-04"
          class="add-event" title="Add event">
         <img alt="(+)"
-             src="http://localhost/++skin++cms/@@/zeit.cms/icons/insert.png" />
+             src="http://localhost/++skin++cms/fanstatic/zeit.cms/icons/insert.png" />
       </a>
       <script ...
         ...</script>

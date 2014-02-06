@@ -17,6 +17,11 @@ setup(
     install_requires=[
         'setuptools',
         'z3c.etestbrowser',
-        'zeit.cms>=1.20',
+        'zeit.cms>=2.14.0.dev0',
     ],
+    entry_points={
+        'fanstatic.libraries': [
+            'zeit_calendar=zeit.calendar.browser.resources:lib',
+        ],
+    }
 )

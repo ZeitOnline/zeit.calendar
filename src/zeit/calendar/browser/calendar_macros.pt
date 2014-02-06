@@ -10,7 +10,7 @@
         tal:attributes="href day_url"
         i18n:attributes="title">
         <img alt="(+)"
-          tal:attributes="src context/++resource++zeit.cms/icons/insert.png" />
+          tal:attributes="src string:${request/getApplicationURL}/fanstatic/zeit.cms/icons/insert.png" />
       </a>
       <script type="text/javascript" tal:content="string:
         var $element_id = new zeit.calendar.DND('$day_url', '$element_id');"

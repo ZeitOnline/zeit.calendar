@@ -153,12 +153,4 @@
 
   <adapter factory=".calendar_view.lastViewFactory" trusted="yes" />
 
-  <resourceLibrary name="zeit.calendar">
-    <directory source="resources" include="calendar.css" />
-  </resourceLibrary>
-  <resourceLibrary name="zeit.calendar.js" require="zeit.cms">
-    <directory source="resources" include="calendar.js" />
-  </resourceLibrary>
-
-
 </configure>

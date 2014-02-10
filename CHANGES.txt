@@ -1,6 +1,12 @@
 zeit.calendar changes
 =====================
 
+1.6.9 (unreleased)
+------------------
+
+- Nothing changed yet.
+
+
 1.6.8 (2014-02-10)
 ------------------
 

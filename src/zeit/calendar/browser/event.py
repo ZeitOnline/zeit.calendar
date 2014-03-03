@@ -50,6 +50,7 @@ class AddForm(EventFormBase, zeit.cms.browser.form.AddForm):
 
     title = _('Add event')
     factory = zeit.calendar.event.Event
+    widgets_of_new_object = False
     form_fields = EventFormBase.form_fields.omit('added_by')
     cancel_next_view = 'index.html'
 

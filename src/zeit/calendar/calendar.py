@@ -99,5 +99,5 @@ def date_range(start, end):
     if end is None or end <= start:
         yield start
     else:
-        for i in xrange(start.toordinal(), end.toordinal()+1):
+        for i in xrange(start.toordinal(), end.toordinal() + 1):
             yield datetime.date.fromordinal(i)

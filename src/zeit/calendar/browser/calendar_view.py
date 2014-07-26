@@ -114,7 +114,7 @@ class CalendarBase(object):
                                 priority=self.get_event_priority(event),
                                 id='event.%s.%f' % (i, time.time()),
                                 css=self.get_event_css(event))
-                            for i, event in enumerate(events)]
+                           for i, event in enumerate(events)]
         return {'day': date.day,
                 'date_str': '%4d-%02d-%02d' % (date.year, date.month,
                                                date.day),
@@ -327,7 +327,7 @@ class NextWeek(Week):
 
     @zope.cachedescriptors.property.Lazy
     def start_date(self):
-        return (self.selected_date - one_day*self.selected_date.weekday()
+        return (self.selected_date - one_day * self.selected_date.weekday()
                 + one_week)
 
     @zope.cachedescriptors.property.Lazy
@@ -345,7 +345,8 @@ class NextFourWeeks(NextWeek):
         for week_no in xrange(4):
             result.append(
                 [self._get_day_dict(date) for date in
-                 zeit.calendar.calendar.date_range(start, start + 6*one_day)])
+                 zeit.calendar.calendar.date_range(
+                     start, start + 6 * one_day)])
             start += one_week
 
         return result
@@ -357,7 +358,7 @@ class NextFourWeeks(NextWeek):
 
     @zope.cachedescriptors.property.Lazy
     def end_date(self):
-        return self.start_date - one_day + 4*one_week
+        return self.start_date - one_day + 4 * one_week
 
     @zope.cachedescriptors.property.Lazy
     def forward(self):
@@ -369,11 +370,11 @@ class NextFourWeeks(NextWeek):
 
     @zope.cachedescriptors.property.Lazy
     def fastforward(self):
-        return self.selected_date + 4*one_week
+        return self.selected_date + 4 * one_week
 
     @zope.cachedescriptors.property.Lazy
     def fastbackward(self):
-        return self.selected_date - 4*one_week
+        return self.selected_date - 4 * one_week
 
 
 class Sidebar(zope.viewlet.viewlet.ViewletBase):

@@ -78,7 +78,6 @@ class EditForm(EventFormBase, zeit.cms.browser.form.EditForm):
         self.request.response.redirect(self.nextURL())
         return "Redirect..."
 
-
     @gocept.form.action.confirm(
         _('Delete event'),
         confirm_message=_('Really delete event?'))

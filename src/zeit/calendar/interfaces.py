@@ -6,23 +6,20 @@ To some extent inspired by schooltool.
 
 """
 
+from zeit.calendar.i18n import MessageFactory as _
+import zeit.calendar.source
+import zeit.cms.content.contentsource
+import zeit.cms.content.sources
 import zope.app.container.interfaces
 import zope.app.security.vocabulary
 import zope.interface
 import zope.schema
-
-import zeit.cms.content.contentsource
-import zeit.cms.content.sources
-
-import zeit.calendar.source
-from zeit.calendar.i18n import MessageFactory as _
 
 
 class EndBeforeStart(zope.schema.ValidationError):
 
     def doc(self):
         return _('The event ends before it starts.')
-
 
 
 class ICalendarEvent(zope.interface.Interface):

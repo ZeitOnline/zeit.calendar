@@ -20,5 +20,5 @@ def test_suite():
     suite.addTest(zeit.calendar.testing.FunctionalDocFileSuite(
         'calendar.txt',
         package='zeit.calendar',
-        ))
+    ))
     return suite

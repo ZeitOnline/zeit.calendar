@@ -17,7 +17,7 @@ setup(
     install_requires=[
         'setuptools',
         'z3c.etestbrowser',
-        'zeit.cms>=2.15.0.dev0',
+        'zeit.cms>=2.32.0.dev0',
     ],
     entry_points={
         'fanstatic.libraries': [

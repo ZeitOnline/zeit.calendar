@@ -158,7 +158,7 @@ On the edit screen there is also information about who created the image:
 Add a related and set the ressort:
 
 >>> browser.getControl(name='form.related.0.').value
-'http://xml.zeit.de/online'
+'http://xml.zeit.de/online/'
 >>> browser.getControl(name='form.related.0.').value = (
 ...     'http://xml.zeit.de/online/2007')
 >>> browser.getControl('Ressort').displayValue = ['International']

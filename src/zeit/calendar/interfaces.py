@@ -1,11 +1,3 @@
-# Copyright (c) 2007-2010 gocept gmbh & co. kg
-# See also LICENSE.txt
-"""Calendar interfaces.
-
-To some extent inspired by schooltool.
-
-"""
-
 from zeit.calendar.i18n import MessageFactory as _
 import zeit.calendar.source
 import zeit.cms.content.contentsource

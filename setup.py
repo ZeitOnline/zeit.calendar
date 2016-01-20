@@ -16,8 +16,9 @@ setup(
     namespace_packages=['zeit'],
     install_requires=[
         'setuptools',
+        'pyramid_dogpile_cache2',
         'z3c.etestbrowser',
-        'zeit.cms>=2.32.0.dev0',
+        'zeit.cms>=2.64.0.dev0',
     ],
     entry_points={
         'fanstatic.libraries': [

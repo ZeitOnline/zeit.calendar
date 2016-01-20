@@ -4,7 +4,7 @@ zeit.calendar changes
 1.6.11 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Replace gocept.cache.method with dogpile.cache (ZON-2576).
 
 
 1.6.10 (2014-12-17)

@@ -1,4 +1,4 @@
-import gocept.cache.method
+from zeit.cms.application import CONFIG_CACHE
 import gocept.lxml.objectify
 import logging
 import urllib2
@@ -18,7 +18,7 @@ class RessortGroupManager(object):
         self._css = {}
         self.misc_class = ''
 
-    @gocept.cache.method.Memoize(600)
+    @CONFIG_CACHE.cache_on_arguments()
     def get_groups(self):
         result = []
         config = zope.app.appsetup.product.getProductConfiguration(

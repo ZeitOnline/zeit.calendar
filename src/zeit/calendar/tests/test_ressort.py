@@ -1,5 +1,5 @@
-import gocept.cache
 import pkg_resources
+import pyramid_dogpile_cache2
 import zeit.calendar.testing
 import zope.app.appsetup.product
 import zope.component
@@ -21,7 +21,7 @@ class RessortGroupManagerTest(zeit.calendar.testing.FunctionalTestCase):
         config['ressortgroup-url'] = (
             'file://' + pkg_resources.resource_filename(
                 'zeit.calendar.tests.fixtures', filename))
-        gocept.cache.method.clear()
+        pyramid_dogpile_cache2.clear()
 
     def test_valid_file_should_be_loaded(self):
         self._set_rules('ressortgroups.xml')

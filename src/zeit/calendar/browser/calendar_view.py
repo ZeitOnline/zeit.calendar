@@ -1,25 +1,22 @@
-
+from zeit.calendar.i18n import MessageFactory as _
 import calendar
 import datetime
 import persistent
 import time
-import zope.annotation
-import zope.app.container.contained
-import zope.app.form.browser.interfaces
-import zope.cachedescriptors.property
-import zope.component
-import zope.i18n.format
-import zope.interface
-import zope.security.interfaces
-import zope.session.interfaces
-import zope.viewlet.viewlet
-
 import zeit.calendar.browser.interfaces
 import zeit.calendar.calendar
 import zeit.calendar.interfaces
 import zeit.cms.browser.menu
 import zeit.cms.browser.view
-from zeit.calendar.i18n import MessageFactory as _
+import zope.annotation
+import zope.app.container.contained
+import zope.app.form.browser.interfaces
+import zope.cachedescriptors.property
+import zope.component
+import zope.interface
+import zope.security.interfaces
+import zope.session.interfaces
+import zope.viewlet.viewlet
 
 
 one_day = datetime.timedelta(days=1)
@@ -263,7 +260,7 @@ class Calendar(CalendarBase):
     @zope.cachedescriptors.property.Lazy
     def fastbackward(self):
         month = self.selected_month
-        year = self.selected_year -1
+        year = self.selected_year - 1
         return datetime.date(year, month, 1)
 
 
@@ -324,8 +321,8 @@ class NextWeek(Week):
 
     @zope.cachedescriptors.property.Lazy
     def start_date(self):
-        return (self.selected_date - one_day * self.selected_date.weekday()
-                + one_week)
+        return (self.selected_date - one_day * self.selected_date.weekday() +
+                one_week)
 
     @zope.cachedescriptors.property.Lazy
     def end_date(self):

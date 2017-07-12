@@ -49,7 +49,7 @@ class ICalendarEvent(zope.interface.Interface):
 
     ressort = zope.schema.Choice(
         title=_('Ressort'),
-        source=zeit.cms.content.sources.NavigationSource(),
+        source=zeit.cms.content.sources.RessortSource(),
         required=False)
 
     thema = zope.schema.Bool(

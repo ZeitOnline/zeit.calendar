@@ -4,7 +4,7 @@ zeit.calendar changes
 1.6.12 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- MAINT: Rename navigation source
 
 
 1.6.11 (2016-01-20)

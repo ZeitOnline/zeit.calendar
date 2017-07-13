@@ -18,7 +18,7 @@ setup(
         'setuptools',
         'pyramid_dogpile_cache2',
         'z3c.etestbrowser',
-        'zeit.cms>=2.64.0.dev0',
+        'zeit.cms>=2.105.1.dev0',
     ],
     entry_points={
         'fanstatic.libraries': [
